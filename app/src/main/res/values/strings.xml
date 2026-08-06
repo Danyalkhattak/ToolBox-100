@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ToolBox-100</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_search">Search tools…</string>
+    
+    <!-- Home Screen -->
+    <string name="home_title">ToolBox-100</string>
+    <string name="home_favorites">Favorites</string>
+    <string name="home_recently_used">Recently Used</string>
+    <string name="home_categories">Categories</string>
+    <string name="home_all_tools">All Tools</string>
+    <string name="home_no_favorites">No favorite tools yet</string>
+    <string name="home_no_recent">No recently used tools</string>
+    <string name="home_clear_history">Clear History</string>
+    
+    <!-- Categories -->
+    <string name="category_calculators">Calculators</string>
+    <string name="category_converters">Converters</string>
+    <string name="category_math">Math</string>
+    <string name="category_text">Text</string>
+    <string name="category_developer">Developer</string>
+    <string name="category_security">Security</string>
+    <string name="category_internet">Internet</string>
+    <string name="category_image_color">Images &amp; Colors</string>
+    <string name="category_files">Files</string>
+    <string name="category_everyday">Everyday</string>
+    
+    <!-- Common Actions -->
+    <string name="action_copy">Copy</string>
+    <string name="action_copied">Copied to clipboard</string>
+    <string name="action_paste">Paste</string>
+    <string name="action_share">Share</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_favorite">Favorite</string>
+    <string name="action_unfavorite">Unfavorite</string>
+    <string name="action_generate">Generate</string>
+    <string name="action_calculate">Calculate</string>
+    <string name="action_convert">Convert</string>
+    <string name="action_start">Start</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_resume">Resume</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_close">Close</string>
+    <string name="action_back">Back</string>
+    <string name="action_swap">Swap</string>
+    <string name="action_scan">Scan</string>
+    <string name="action_pick">Pick</string>
+    <string name="action_browse">Browse</string>
+    
+    <!-- Common Labels -->
+    <string name="label_result">Result</string>
+    <string name="label_input">Input</string>
+    <string name="label_output">Output</string>
+    <string name="label_from">From</string>
+    <string name="label_to">To</string>
+    <string name="label_value">Value</string>
+    <string name="label_unit">Unit</string>
+    
+    <!-- Common States -->
+    <string name="state_empty">No results</string>
+    <string name="state_loading">Loading…</string>
+    <string name="state_error">An error occurred</string>
+    <string name="state_no_results">No matching tools found</string>
+    <string name="state_offline">No internet connection</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_app">App</string>
+    <string name="settings_favorites">Manage Favorites</string>
+    <string name="settings_recently_used">Recently Used Tools</string>
+    <string name="settings_clear_history">Clear Recent History</string>
+    <string name="settings_updates">Updates</string>
+    <string name="settings_current_version">Current Version: %s</string>
+    <string name="settings_check_updates">Check for Updates</string>
+    <string name="settings_about">About</string>
+    <string name="settings_app_name">ToolBox-100</string>
+    <string name="settings_version">Version %s</string>
+    <string name="settings_github">GitHub Repository</string>
+    <string name="settings_privacy">Privacy Policy</string>
+    <string name="settings_open_source">Open Source</string>
+    <string name="settings_licenses">Licenses</string>
+    
+    <!-- Update Checker -->
+    <string name="update_title">Update Available</string>
+    <string name="update_available">Version %s is available!</string>
+    <string name="update_current">Current version: %s</string>
+    <string name="update_notes">Release Notes:</string>
+    <string name="update_download">Download Update</string>
+    <string name="update_up_to_date">You\'re up to date!</string>
+    <string name="update_latest">Latest version: %s</string>
+    <string name="update_error">Failed to check for updates</string>
+    <string name="update_checking">Checking for updates…</string>
+    
+    <!-- Tool Names - Calculators -->
+    <string name="tool_basic_calculator">Basic Calculator</string>
+    <string name="tool_scientific_calculator">Scientific Calculator</string>
+    <string name="tool_percentage_calculator">Percentage Calculator</string>
+    <string name="tool_discount_calculator">Discount Calculator</string>
+    <string name="tool_tip_calculator">Tip Calculator</string>
+    <string name="tool_split_bill">Split Bill Calculator</string>
+    <string name="tool_age_calculator">Age Calculator</string>
+    <string name="tool_date_difference">Date Difference Calculator</string>
+    <string name="tool_time_difference">Time Difference Calculator</string>
+    <string name="tool_bmi_calculator">BMI Calculator</string>
+    
+    <!-- Tool Names - Converters -->
+    <string name="tool_length_converter">Length Converter</string>
+    <string name="tool_weight_converter">Weight Converter</string>
+    <string name="tool_temperature_converter">Temperature Converter</string>
+    <string name="tool_area_converter">Area Converter</string>
+    <string name="tool_volume_converter">Volume Converter</string>
+    <string name="tool_speed_converter">Speed Converter</string>
+    <string name="tool_time_converter">Time Converter</string>
+    <string name="tool_data_storage_converter">Data Storage Converter</string>
+    <string name="tool_number_system_converter">Number System Converter</string>
+    <string name="tool_roman_numeral_converter">Roman Numeral Converter</string>
+    
+    <!-- Tool Names - Math -->
+    <string name="tool_fraction_calculator">Fraction Calculator</string>
+    <string name="tool_ratio_calculator">Ratio Calculator</string>
+    <string name="tool_proportion_calculator">Proportion Calculator</string>
+    <string name="tool_average_calculator">Average Calculator</string>
+    <string name="tool_gcd_lcm">GCD &amp; LCM</string>
+    <string name="tool_prime_checker">Prime Number Checker</string>
+    <string name="tool_factorial_calculator">Factorial Calculator</string>
+    <string name="tool_power_calculator">Power Calculator</string>
+    <string name="tool_square_root_calculator">Square Root Calculator</string>
+    <string name="tool_random_number_generator">Random Number Generator</string>
+    
+    <!-- Tool Names - Text -->
+    <string name="tool_word_counter">Word Counter</string>
+    <string name="tool_character_counter">Character Counter</string>
+    <string name="tool_sentence_counter">Sentence Counter</string>
+    <string name="tool_case_converter">Case Converter</string>
+    <string name="tool_text_reverser">Text Reverser</string>
+    <string name="tool_remove_duplicates">Remove Duplicate Lines</string>
+    <string name="tool_sort_lines">Sort Lines</string>
+    <string name="tool_find_replace">Find &amp; Replace</string>
+    <string name="tool_text_diff">Text Diff</string>
+    <string name="tool_slug_generator">Slug Generator</string>
+    
+    <!-- Tool Names - Developer -->
+    <string name="tool_json_formatter">JSON Formatter</string>
+    <string name="tool_json_validator">JSON Validator</string>
+    <string name="tool_base64_encoder">Base64 Encoder</string>
+    <string name="tool_base64_decoder">Base64 Decoder</string>
+    <string name="tool_url_encoder">URL Encoder</string>
+    <string name="tool_url_decoder">URL Decoder</string>
+    <string name="tool_html_entity_encoder">HTML Entity Encoder</string>
+    <string name="tool_html_entity_decoder">HTML Entity Decoder</string>
+    <string name="tool_uuid_generator">UUID Generator</string>
+    <string name="tool_regex_tester">Regex Tester</string>
+    
+    <!-- Tool Names - Security -->
+    <string name="tool_password_generator">Password Generator</string>
+    <string name="tool_password_strength">Password Strength Checker</string>
+    <string name="tool_sha256_hash">SHA-256 Hash</string>
+    <string name="tool_sha1_hash">SHA-1 Hash</string>
+    <string name="tool_md5_hash">MD5 Hash</string>
+    <string name="tool_hmac_generator">HMAC Generator</string>
+    <string name="tool_token_generator">Random Token Generator</string>
+    <string name="tool_pin_generator">PIN Generator</string>
+    <string name="tool_passphrase_generator">Passphrase Generator</string>
+    <string name="tool_hash_identifier">Hash Identifier</string>
+    
+    <!-- Tool Names - Internet -->
+    <string name="tool_my_ip_address">My IP Address</string>
+    <string name="tool_dns_lookup">DNS Lookup</string>
+    <string name="tool_ping_tester">Ping Tester</string>
+    <string name="tool_http_status">HTTP Status Checker</string>
+    <string name="tool_user_agent_viewer">User-Agent Viewer</string>
+    <string name="tool_url_parser">URL Parser</string>
+    <string name="tool_qr_code_generator">QR Code Generator</string>
+    <string name="tool_qr_code_scanner">QR Code Scanner</string>
+    <string name="tool_wifi_qr_generator">Wi-Fi QR Generator</string>
+    <string name="tool_barcode_scanner">Barcode Scanner</string>
+    
+    <!-- Tool Names - Images & Colors -->
+    <string name="tool_image_compressor">Image Compressor</string>
+    <string name="tool_image_resizer">Image Resizer</string>
+    <string name="tool_image_cropper">Image Cropper</string>
+    <string name="tool_image_format_converter">Image Format Converter</string>
+    <string name="tool_color_picker">Color Picker</string>
+    <string name="tool_hex_rgb_converter">HEX to RGB Converter</string>
+    <string name="tool_rgb_hsl_converter">RGB to HSL Converter</string>
+    <string name="tool_palette_generator">Color Palette Generator</string>
+    <string name="tool_contrast_checker">Contrast Checker</string>
+    <string name="tool_metadata_viewer">Image Metadata Viewer</string>
+    
+    <!-- Tool Names - Files -->
+    <string name="tool_image_to_pdf">Image to PDF</string>
+    <string name="tool_pdf_to_images">PDF to Images</string>
+    <string name="tool_file_size_converter">File Size Converter</string>
+    <string name="tool_file_hash_checker">File Hash Checker</string>
+    <string name="tool_text_to_pdf">Text to PDF</string>
+    <string name="tool_text_to_qr">Text to QR Code</string>
+    <string name="tool_qr_to_text">QR Code to Text</string>
+    <string name="tool_file_extension_info">File Extension Info</string>
+    <string name="tool_mime_type_lookup">MIME Type Lookup</string>
+    <string name="tool_filename_generator">File Name Generator</string>
+    
+    <!-- Tool Names - Everyday -->
+    <string name="tool_stopwatch">Stopwatch</string>
+    <string name="tool_countdown_timer">Countdown Timer</string>
+    <string name="tool_pomodoro_timer">Pomodoro Timer</string>
+    <string name="tool_world_clock">World Clock</string>
+    <string name="tool_metronome">Metronome</string>
+    <string name="tool_coin_flip">Coin Flip</string>
+    <string name="tool_dice_roller">Dice Roller</string>
+    <string name="tool_random_choice">Random Choice Picker</string>
+    <string name="tool_habit_counter">Habit Counter</string>
+    <string name="tool_notes">Notes</string>
+    
+    <!-- Permission Messages -->
+    <string name="permission_camera_title">Camera Permission Required</string>
+    <string name="permission_camera_message">Camera permission is required to scan QR codes and barcodes. Please grant permission to continue.</string>
+    <string name="permission_storage_title">Storage Permission Required</string>
+    <string name="permission_storage_message">Storage permission is required to access and save images. Please grant permission to continue.</string>
+    <string name="permission_denied">Permission denied. You can enable it in Settings.</string>
+    <string name="permission_granted">Permission granted</string>
+    
+    <!-- Error Messages -->
+    <string name="error_invalid_input">Invalid input</string>
+    <string name="error_empty_input">Please enter a value</string>
+    <string name="error_invalid_number">Please enter a valid number</string>
+    <string name="error_calculation_failed">Calculation failed</string>
+    <string name="error_network_error">Network error occurred</string>
+    <string name="error_file_not_found">File not found</string>
+    <string name="error_unsupported_format">Unsupported format</string>
+    <string name="error_generic">Something went wrong</string>
+    
+</resources>
