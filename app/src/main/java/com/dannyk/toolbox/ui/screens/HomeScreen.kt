@@ -20,12 +20,14 @@ import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.domain.model.Category
 import com.dannyk.toolbox.tools.ToolRegistry
 import com.dannyk.toolbox.ui.components.*
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController) {
     val context = LocalContext.current
     val preferencesManager = (context.applicationContext as ToolBoxApplication).preferencesManager
+    val coroutineScope = rememberCoroutineScope()
     
     var searchQuery by remember { mutableStateOf("") }
     
@@ -100,10 +102,14 @@ fun HomeScreen(navController: NavHostController) {
                         ToolCard(
                             tool = tool,
                             onClick = {
-                                navigateToTool(navController, tool.id, preferencesManager)
+                                coroutineScope.launch {
+                                    navigateToTool(navController, tool.id, preferencesManager)
+                                }
                             },
                             onFavoriteClick = {
-                                toggleFavorite(tool.id, preferencesManager)
+                                coroutineScope.launch {
+                                    toggleFavorite(tool.id, preferencesManager)
+                                }
                             }
                         )
                     }
@@ -123,10 +129,14 @@ fun HomeScreen(navController: NavHostController) {
                         ToolCard(
                             tool = tool,
                             onClick = {
-                                navigateToTool(navController, tool.id, preferencesManager)
+                                coroutineScope.launch {
+                                    navigateToTool(navController, tool.id, preferencesManager)
+                                }
                             },
                             onFavoriteClick = {
-                                toggleFavorite(tool.id, preferencesManager)
+                                coroutineScope.launch {
+                                    toggleFavorite(tool.id, preferencesManager)
+                                }
                             }
                         )
                     }
@@ -149,10 +159,14 @@ fun HomeScreen(navController: NavHostController) {
                         ToolCard(
                             tool = tool,
                             onClick = {
-                                navigateToTool(navController, tool.id, preferencesManager)
+                                coroutineScope.launch {
+                                    navigateToTool(navController, tool.id, preferencesManager)
+                                }
                             },
                             onFavoriteClick = {
-                                toggleFavorite(tool.id, preferencesManager)
+                                coroutineScope.launch {
+                                    toggleFavorite(tool.id, preferencesManager)
+                                }
                             }
                         )
                     }
@@ -194,10 +208,14 @@ fun HomeScreen(navController: NavHostController) {
                             ToolCard(
                                 tool = tool,
                                 onClick = {
-                                    navigateToTool(navController, tool.id, preferencesManager)
+                                    coroutineScope.launch {
+                                        navigateToTool(navController, tool.id, preferencesManager)
+                                    }
                                 },
                                 onFavoriteClick = {
-                                    toggleFavorite(tool.id, preferencesManager)
+                                    coroutineScope.launch {
+                                        toggleFavorite(tool.id, preferencesManager)
+                                    }
                                 },
                                 modifier = Modifier.height(90.dp)
                             )
