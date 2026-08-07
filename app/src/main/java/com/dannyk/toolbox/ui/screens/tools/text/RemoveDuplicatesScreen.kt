@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -185,7 +187,7 @@ fun RemoveDuplicatesScreen(navController: NavHostController) {
                     // Progress indicator showing reduction
                     if (originalCount > 0) {
                         Column(
-                            modifier = Modifier.padding(horizontal = 16.dp, bottom = 16.dp)
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                         ) {
                             LinearProgressIndicator(
                                 progress = { uniqueCount.toFloat() / originalCount },
