@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.dannyk.toolbox.ui.components.ToolTopAppBar
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,6 +29,7 @@ fun UserAgentViewerScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     
     val currentUA = remember { getDefaultUserAgent(context) }
     
@@ -176,16 +178,18 @@ fun UserAgentViewerScreen(
 
                     Button(
                         onClick = {
-                            testServerSees(
-                                context = context,
-                                onLoading = { isLoadingServer = it },
-                                onSuccess = { response ->
-                                    serverResponse = response
-                                },
-                                onError = { error ->
-                                    serverResponse = "Error: $error"
-                                }
-                            )
+                            scope.launch {
+                                testServerSees(
+                                    context = context,
+                                    onLoading = { isLoadingServer = it },
+                                    onSuccess = { response ->
+                                        serverResponse = response
+                                    },
+                                    onError = { error ->
+                                        serverResponse = "Error: $error"
+                                    }
+                                )
+                            }
                         },
                         enabled = !isLoadingServer,
                         modifier = Modifier.fillMaxWidth()

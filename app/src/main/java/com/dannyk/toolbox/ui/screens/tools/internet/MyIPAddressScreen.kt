@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
 import com.dannyk.toolbox.ui.components.ToolTopAppBar
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.net.HttpURLConnection
@@ -31,6 +32,7 @@ fun MyIPAddressScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     
     var ipAddress by remember { mutableStateOf<String?>(null) }
     var ispInfo by remember { mutableStateOf<ISPInfo?>(null) }
@@ -159,18 +161,20 @@ fun MyIPAddressScreen(
             // Refresh Button
             OutlinedButton(
                 onClick = {
-                    fetchIPInfo(
-                        context = context,
-                        onLoading = { isLoading = it },
-                        onSuccess = { ip, isp ->
-                            ipAddress = ip
-                            ispInfo = isp
-                            errorMessage = null
-                        },
-                        onError = { message ->
-                            errorMessage = message
-                        }
-                    )
+                    scope.launch {
+                        fetchIPInfo(
+                            context = context,
+                            onLoading = { isLoading = it },
+                            onSuccess = { ip, isp ->
+                                ipAddress = ip
+                                ispInfo = isp
+                                errorMessage = null
+                            },
+                            onError = { message ->
+                                errorMessage = message
+                            }
+                        )
+                    }
                 },
                 enabled = !isLoading
             ) {

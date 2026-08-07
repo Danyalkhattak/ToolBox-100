@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.dannyk.toolbox.ui.components.ToolTopAppBar
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
@@ -33,6 +34,7 @@ fun HTTPStatusScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     
     var urlInput by remember { mutableStateOf("https://google.com") }
     var isLoading by remember { mutableStateOf(false) }
@@ -95,18 +97,20 @@ fun HTTPStatusScreen(
                     Button(
                         onClick = {
                             if (urlInput.isNotBlank()) {
-                                checkHTTPStatus(
-                                    urlString = urlInput.trim(),
-                                    onLoading = { isLoading = it },
-                                    onSuccess = { result ->
-                                        httpResult = result
-                                        errorMessage = null
-                                    },
-                                    onError = { message ->
-                                        errorMessage = message
-                                        httpResult = null
-                                    }
-                                )
+                                scope.launch {
+                                    checkHTTPStatus(
+                                        urlString = urlInput.trim(),
+                                        onLoading = { isLoading = it },
+                                        onSuccess = { result ->
+                                            httpResult = result
+                                            errorMessage = null
+                                        },
+                                        onError = { message ->
+                                            errorMessage = message
+                                            httpResult = null
+                                        }
+                                    )
+                                }
                             }
                         },
                         enabled = urlInput.isNotBlank() && !isLoading,

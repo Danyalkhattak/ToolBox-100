@@ -18,6 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.dannyk.toolbox.ui.components.ToolTopAppBar
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.InetAddress
 
@@ -28,6 +29,7 @@ fun DNSLookupScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     
     var domainInput by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
@@ -99,19 +101,21 @@ fun DNSLookupScreen(
                     Button(
                         onClick = {
                             if (domainInput.isNotBlank()) {
-                                performDNSLookup(
-                                    context = context,
-                                    domain = domainInput,
-                                    onLoading = { isLoading = it },
-                                    onSuccess = { results ->
-                                        lookupResults = results
-                                        errorMessage = null
-                                    },
-                                    onError = { message ->
-                                        errorMessage = message
-                                        lookupResults = emptyList()
-                                    }
-                                )
+                                scope.launch {
+                                    performDNSLookup(
+                                        context = context,
+                                        domain = domainInput,
+                                        onLoading = { isLoading = it },
+                                        onSuccess = { results ->
+                                            lookupResults = results
+                                            errorMessage = null
+                                        },
+                                        onError = { message ->
+                                            errorMessage = message
+                                            lookupResults = emptyList()
+                                        }
+                                    )
+                                }
                             }
                         },
                         enabled = domainInput.isNotBlank() && !isLoading,
