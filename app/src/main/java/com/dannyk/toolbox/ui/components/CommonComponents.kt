@@ -3,6 +3,7 @@ package com.dannyk.toolbox.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.outlined.*
@@ -17,6 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.domain.model.Tool
@@ -534,6 +536,78 @@ fun ToolHeader(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 16.dp, bottom = 16.dp)
             )
+        }
+    }
+}
+
+/**
+ * Simple top bar used by individual tool screens that manage their own
+ * Scaffold/layout and just need a back button + title.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ToolTopBar(
+    title: String,
+    onBackClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TopAppBar(
+        title = { Text(text = title) },
+        navigationIcon = {
+            IconButton(onClick = onBackClick) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Back"
+                )
+            }
+        },
+        modifier = modifier
+    )
+}
+
+/**
+ * Top app bar for tool screens that build their own Scaffold and pass
+ * this in as the `topBar`. Handles back navigation via [navController].
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ToolTopAppBar(
+    title: String,
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    TopAppBar(
+        title = { Text(text = title) },
+        navigationIcon = {
+            IconButton(onClick = { navController.navigateUp() }) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Back"
+                )
+            }
+        },
+        modifier = modifier
+    )
+}
+
+/**
+ * Full-screen scaffold wrapper for tool screens: renders a [ToolTopAppBar]
+ * and hosts [content] below it, respecting the Scaffold's inner padding.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ToolScreenLayout(
+    title: String,
+    navController: NavHostController,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Scaffold(
+        modifier = modifier,
+        topBar = { ToolTopAppBar(title = title, navController = navController) }
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            content()
         }
     }
 }

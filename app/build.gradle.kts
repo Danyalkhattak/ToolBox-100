@@ -48,6 +48,7 @@ android {
     
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     
     composeOptions {
@@ -105,6 +106,16 @@ dependencies {
     
     // QR Code
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
+    // CameraX (for barcode/QR scanning previews)
+    val cameraxVersion = "1.3.4"
+    implementation("androidx.camera:camera-core:$cameraxVersion")
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    // EXIF metadata reading
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
     
     // PDF
     implementation("com.itextpdf:itext7-core:7.2.5")
