@@ -331,9 +331,11 @@ fun BarcodeScannerScreen(
             if (scanHistory.isNotEmpty()) {
                 val uniqueFormats = scanHistory.map { it.format }.distinct().sorted()
                 
-                Row(modifier = Modifier.horizontalScroll(rememberScrollState()))
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.fillMaxWidth()
+                Row(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState())
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     FilterChip(
                         selected = selectedFilter == null,
