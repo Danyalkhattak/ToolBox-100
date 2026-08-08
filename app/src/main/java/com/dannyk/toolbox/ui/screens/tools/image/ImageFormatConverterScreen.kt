@@ -106,7 +106,7 @@ fun ImageFormatConverterScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Format Converter") { navController.navigateUp() } }
+        topBar = { ToolTopBar("Format Converter", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

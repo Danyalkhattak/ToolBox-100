@@ -8,7 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -281,7 +281,7 @@ fun ScientificCalculatorScreen(navHostController: NavHostController) {
         
         // Copy button
         OutlinedButton(
-            onClick = { copyToClipboard(context, currentInput) },
+            onClick = { copyToClipboard_ScientificCalculatorScreen(context, currentInput) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
@@ -601,7 +601,7 @@ private fun formatScientificDisplay(number: String): String {
     }
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_ScientificCalculatorScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Calculator Result", text)
     clipboard.setPrimaryClip(clip)

@@ -299,14 +299,14 @@ fun SplitBillScreen(navHostController: NavHostController) {
                         
                         Spacer(modifier = Modifier.height(8.dp))
                         
-                        ResultRowItem(label = "Total Bill", value = formatCurrency(res.totalBill))
-                        ResultRowItem(label = "Tip (${res.tipPercentage}%)", value = formatCurrency(res.tipAmount))
+                        ResultRowItem(label = "Total Bill", value = formatCurrency_SplitBillScreen(res.totalBill))
+                        ResultRowItem(label = "Tip (${res.tipPercentage}%)", value = formatCurrency_SplitBillScreen(res.tipAmount))
                         
                         Divider(modifier = Modifier.fillMaxWidth())
                         
                         ResultRowItem(
                             label = "Total with Tip",
-                            value = formatCurrency(res.totalWithTip),
+                            value = formatCurrency_SplitBillScreen(res.totalWithTip),
                             isBold = true
                         )
                         
@@ -314,7 +314,7 @@ fun SplitBillScreen(navHostController: NavHostController) {
                             Divider(modifier = Modifier.fillMaxWidth())
                             ResultRowItem(
                                 label = "Each person pays",
-                                value = formatCurrency(res.perPersonAverage),
+                                value = formatCurrency_SplitBillScreen(res.perPersonAverage),
                                 valueColor = MaterialTheme.colorScheme.primary,
                                 isBold = true
                             )
@@ -408,7 +408,7 @@ fun SplitBillScreen(navHostController: NavHostController) {
                                 text = if (res.isBalanced) 
                                     "All shares add up correctly"
                                 else 
-                                    "Difference: ${formatCurrency(res.difference)}",
+                                    "Difference: ${formatCurrency_SplitBillScreen(res.difference)}",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (res.isBalanced) 
                                     MaterialTheme.colorScheme.onSecondaryContainer 
@@ -489,14 +489,14 @@ private fun PersonShareRow(
             
             if (isCustom) {
                 Text(
-                    text = "Bill: ${formatCurrency(billShare)} | Tip: ${formatCurrency(tipShare)}",
+                    text = "Bill: ${formatCurrency_SplitBillScreen(billShare)} | Tip: ${formatCurrency_SplitBillScreen(tipShare)}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
             
             Text(
-                text = formatCurrency(totalShare),
+                text = formatCurrency_SplitBillScreen(totalShare),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary
@@ -628,7 +628,7 @@ private fun String.extractNumber(): Int {
     return Regex("\\d+").find(this)?.value?.toIntOrNull() ?: 0
 }
 
-private fun formatCurrency(amount: Double): String {
+private fun formatCurrency_SplitBillScreen(amount: Double): String {
     return try {
         DecimalFormat("$#,##0.00").format(amount)
     } catch (e: Exception) {
@@ -636,13 +636,13 @@ private fun formatCurrency(amount: Double): String {
     }
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_SplitBillScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Split Bill Result", text)
     clipboard.setPrimaryClip(clip)
 }
 
 private fun copyAllShares(context: Context, shares: List<PersonShare>) {
-    val text = shares.joinToString("\n") { "${it.name}: ${formatCurrency(it.totalShare)}" }
-    copyToClipboard(context, text)
+    val text = shares.joinToString("\n") { "${it.name}: ${formatCurrency_SplitBillScreen(it.totalShare)}" }
+    copyToClipboard_SplitBillScreen(context, text)
 }

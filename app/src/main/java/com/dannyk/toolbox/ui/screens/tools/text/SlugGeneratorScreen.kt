@@ -75,7 +75,7 @@ fun SlugGeneratorScreen(navController: NavHostController) {
     )
 
     Scaffold(
-        topBar = { ToolTopBar("URL Slug Generator") { navController.navigateUp() } }
+        topBar = { ToolTopBar("URL Slug Generator", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

@@ -60,7 +60,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("WCAG Contrast Checker") { navController.navigateUp() } }
+        topBar = { ToolTopBar("WCAG Contrast Checker", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -166,13 +166,13 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     ) {
                         Box(
                             modifier = Modifier
-                                .fillMaxWidth((contrastRatio / 21f).coerceAtMost(1f))
+                                .fillMaxWidth((contrastRatio.toFloat() / 21f).coerceAtMost(1f))
                                 .fillMaxHeight()
                                 .clip(RoundedCornerShape(6.dp))
                                 .background(
                                     when {
-                                        contrastRatio >= 7f -> MaterialTheme.colorScheme.primary
-                                        contrastRatio >= 4.5f -> MaterialTheme.colorScheme.secondary
+                                        contrastRatio >= 7.0 -> MaterialTheme.colorScheme.primary
+                                        contrastRatio >= 4.5 -> MaterialTheme.colorScheme.secondary
                                         else -> MaterialTheme.colorScheme.error
                                     }
                                  )
@@ -202,7 +202,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     textType = "Normal Text (<18px or <14px bold)",
                     requiredRatio = "4.5:1",
                     actualRatio = contrastRatio,
-                    passes = contrastRatio >= 4.5f
+                    passes = contrastRatio >= 4.5
                 )
 
                 // Level AA Large Text
@@ -211,7 +211,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     textType = "Large Text (≥18px or ≥14px bold)",
                     requiredRatio = "3:1",
                     actualRatio = contrastRatio,
-                    passes = contrastRatio >= 3f
+                    passes = contrastRatio >= 3.0
                 )
 
                 // Level AAA Normal Text
@@ -220,7 +220,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     textType = "Normal Text (<18px or <14px bold)",
                     requiredRatio = "7:1",
                     actualRatio = contrastRatio,
-                    passes = contrastRatio >= 7f
+                    passes = contrastRatio >= 7.0
                 )
 
                 // Level AAA Large Text
@@ -229,7 +229,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     textType = "Large Text (≥18px or ≥14px bold)",
                     requiredRatio = "4.5:1",
                     actualRatio = contrastRatio,
-                    passes = contrastRatio >= 4.5f
+                    passes = contrastRatio >= 4.5
                 )
             }
 

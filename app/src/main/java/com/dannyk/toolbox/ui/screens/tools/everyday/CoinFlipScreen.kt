@@ -168,7 +168,8 @@ fun CoinFlipScreen(navHostController: NavHostController) {
                     .size(160.dp * scaleAnimation)
                     .graphicsLayer {
                         // Apply 3D-like rotation effect
-                        scaleX = kotlin.math.abs(kotlin.math.cos(kotlin.math.toRadians(rotationAnimation.toDouble()))).toFloat()
+                        val radians = Math.toRadians(rotationAnimation.toDouble())
+                        scaleX = kotlin.math.abs(kotlin.math.cos(radians)).toFloat()
                     }
                     .clip(CircleSize())
             ) {

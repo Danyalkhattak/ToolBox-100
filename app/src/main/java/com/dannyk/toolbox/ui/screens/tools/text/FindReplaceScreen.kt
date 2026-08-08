@@ -79,7 +79,7 @@ fun FindReplaceScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Find & Replace") { navController.navigateUp() } }
+        topBar = { ToolTopBar("Find & Replace", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

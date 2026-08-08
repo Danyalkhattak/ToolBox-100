@@ -92,7 +92,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("RGB ↔ HSL Converter") { navController.navigateUp() } }
+        topBar = { ToolTopBar("RGB ↔ HSL Converter", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

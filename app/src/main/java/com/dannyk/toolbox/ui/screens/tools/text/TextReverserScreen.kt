@@ -52,7 +52,7 @@ fun TextReverserScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Text Reverser") { navController.navigateUp() } }
+        topBar = { ToolTopBar("Text Reverser", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

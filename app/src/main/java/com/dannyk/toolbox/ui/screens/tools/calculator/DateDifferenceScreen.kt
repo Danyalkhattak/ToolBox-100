@@ -236,7 +236,7 @@ fun DateDifferenceScreen(navHostController: NavHostController) {
                         Spacer(modifier = Modifier.height(8.dp))
                         
                         TextButton(onClick = { 
-                            copyToClipboard(context, "${diff.years}y ${diff.months}m ${diff.days}d")
+                            copyToClipboard_DateDifferenceScreen(context, "${diff.years}y ${diff.months}m ${diff.days}d")
                         }) {
                             Icon(Icons.Default.ContentCopy, contentDescription = null, modifier = Modifier.size(18.dp))
                             Spacer(modifier = Modifier.width(4.dp))
@@ -664,7 +664,7 @@ private fun formatNumber(number: Long): String {
     return "%,d".format(number)
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_DateDifferenceScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Date Difference Result", text)
     clipboard.setPrimaryClip(clip)

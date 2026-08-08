@@ -86,7 +86,7 @@ data class ExifMetadata(
     val copyright: String? = null,
     val resolutionUnit: String? = null,
     val xResolution: String? = null,
-    yResolution: String? = null,
+    val yResolution: String? = null,
     val colorSpace: String? = null,
     val compression: String? = null,
     
@@ -150,7 +150,7 @@ fun MetadataViewerScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("EXIF Metadata Viewer") { navController.navigateUp() } }
+        topBar = { ToolTopBar("EXIF Metadata Viewer", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

@@ -294,7 +294,7 @@ fun BasicCalculatorScreen(navHostController: NavHostController) {
         if (lastResult != null || currentInput != "0") {
             OutlinedButton(
                 onClick = {
-                    copyToClipboard(context, currentInput)
+                    copyToClipboard_BasicCalculatorScreen(context, currentInput)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -493,7 +493,7 @@ private fun formatDisplayNumber(number: String): String {
     }
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_BasicCalculatorScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Calculator Result", text)
     clipboard.setPrimaryClip(clip)

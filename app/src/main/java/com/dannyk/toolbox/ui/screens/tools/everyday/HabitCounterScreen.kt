@@ -670,7 +670,7 @@ private fun HeatmapCalendar(
                                 )
                                 .then(
                                     if (isToday) Modifier.then(
-                                        androidx.compose.ui.draw.border(
+                                        border(
                                             width = 2.dp,
                                             color = MaterialTheme.colorScheme.primary,
                                             shape = RoundedCornerShape(4.dp)

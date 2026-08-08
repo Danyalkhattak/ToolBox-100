@@ -174,7 +174,7 @@ private fun BasicPercentageMode(
         ResultCard(
             title = "Result",
             result = it,
-            onCopy = { copyToClipboard(context, it) }
+            onCopy = { copyToClipboard_PercentageCalculatorScreen(context, it) }
         )
         
         Spacer(modifier = Modifier.height(8.dp))
@@ -260,7 +260,7 @@ private fun PercentageChangeMode(
                         color = color,
                         modifier = Modifier.weight(1f)
                     )
-                    IconButton(onClick = { copyToClipboard(context, percent) }) {
+                    IconButton(onClick = { copyToClipboard_PercentageCalculatorScreen(context, percent) }) {
                         Icon(Icons.Default.ContentCopy, contentDescription = "Copy", modifier = Modifier.size(18.dp))
                     }
                 }
@@ -350,7 +350,7 @@ private fun IncreaseDecreaseMode(
             ResultCard(
                 title = "New Value",
                 result = newVal,
-                onCopy = { copyToClipboard(context, newVal) }
+                onCopy = { copyToClipboard_PercentageCalculatorScreen(context, newVal) }
             )
             
             Card(
@@ -427,7 +427,7 @@ private fun PartOfWholeMode(
         ResultCard(
             title = "Result",
             result = "$it%",
-            onCopy = { copyToClipboard(context, it) }
+            onCopy = { copyToClipboard_PercentageCalculatorScreen(context, it) }
         )
         
         Spacer(modifier = Modifier.height(8.dp))
@@ -505,7 +505,7 @@ private fun calculatePartOfWhole(part: String, whole: String): String? {
     }
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_PercentageCalculatorScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Percentage Result", text)
     clipboard.setPrimaryClip(clip)

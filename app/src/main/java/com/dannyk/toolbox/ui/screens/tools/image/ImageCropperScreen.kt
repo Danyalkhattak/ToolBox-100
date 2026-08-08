@@ -44,7 +44,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.content.Intent
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.CornerRadius
 import androidx.compose.foundation.ScrollState
 import android.os.Environment
 
@@ -89,7 +88,7 @@ fun ImageCropperScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Image Cropper") { navController.navigateUp() } }
+        topBar = { ToolTopBar("Image Cropper", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -347,7 +346,7 @@ private fun CropOverlay(
                 Offset(cropLeft, cropTop), 
                 Size(cropRight - cropLeft, cropBottom - cropTop)
             ))
-            fillType = Path.FillType.EvenOdd
+            fillType = PathFillType.EvenOdd
         }
         
         drawPath(path = overlayPath, color = Color.Black.copy(alpha = 0.5f))
@@ -405,7 +404,7 @@ private fun CropOverlay(
                 color = Color.White,
                 topLeft = offset,
                 size = Size(handleSize, handleSize),
-                radius = handleRadius
+                cornerRadius = handleRadius
             )
         }
     }

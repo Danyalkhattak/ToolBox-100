@@ -117,7 +117,7 @@ fun CharacterCounterScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Character Counter") { navController.navigateUp() } }
+        topBar = { ToolTopBar("Character Counter", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

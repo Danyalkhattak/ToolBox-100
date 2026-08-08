@@ -80,7 +80,7 @@ fun ImageResizerScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Image Resizer") { navController.navigateUp() } }
+        topBar = { ToolTopBar("Image Resizer", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

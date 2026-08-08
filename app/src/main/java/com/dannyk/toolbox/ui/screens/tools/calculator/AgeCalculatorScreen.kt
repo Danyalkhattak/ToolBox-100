@@ -181,7 +181,7 @@ fun AgeCalculatorScreen(navHostController: NavHostController) {
                         
                         // Copy button
                         TextButton(onClick = { 
-                            copyToClipboard(context, "${result.years} years, ${result.months} months, ${result.days} days")
+                            copyToClipboard_AgeCalculatorScreen(context, "${result.years} years, ${result.months} months, ${result.days} days")
                         }) {
                             Icon(Icons.Default.ContentCopy, contentDescription = null, modifier = Modifier.size(18.dp))
                             Spacer(modifier = Modifier.width(4.dp))
@@ -413,7 +413,7 @@ private fun funFactItem(label: String, value: String, context: Context) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { copyToClipboard(context, "$label: $value") },
+            .clickable { copyToClipboard_AgeCalculatorScreen(context, "$label: $value") },
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
@@ -627,7 +627,7 @@ private fun formatNumber(number: Long): String {
     return "%,d".format(number)
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_AgeCalculatorScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Age Result", text)
     clipboard.setPrimaryClip(clip)

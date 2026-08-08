@@ -229,7 +229,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Medium
                         )
-                        IconButton(onClick = { copyToClipboard(context, result.finalPrice) }) {
+                        IconButton(onClick = { copyToClipboard_DiscountCalculatorScreen(context, result.finalPrice) }) {
                             Icon(
                                 Icons.Default.ContentCopy,
                                 contentDescription = "Copy price",
@@ -241,7 +241,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                     Spacer(modifier = Modifier.height(4.dp))
                     
                     Text(
-                        text = formatCurrency(result.finalPrice),
+                        text = formatCurrency_DiscountCalculatorScreen(result.finalPrice),
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
@@ -249,7 +249,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                     
                     if (result.originalPrice.isNotEmpty()) {
                         Text(
-                            text = "was ${formatCurrency(result.originalPrice)}",
+                            text = "was ${formatCurrency_DiscountCalculatorScreen(result.originalPrice)}",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textDecoration = androidx.compose.ui.text.style.TextDecoration.LineThrough
@@ -292,7 +292,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                             )
                         }
                         Text(
-                            text = formatCurrency(result.totalSavings),
+                            text = formatCurrency_DiscountCalculatorScreen(result.totalSavings),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.error
@@ -302,17 +302,17 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                     Divider(modifier = Modifier.fillMaxWidth())
                     
                     // Breakdown items
-                    ResultRow(label = "Original Price", value = formatCurrency(result.originalPrice))
+                    ResultRow(label = "Original Price", value = formatCurrency_DiscountCalculatorScreen(result.originalPrice))
                     ResultRow(
                         label = "First Discount (${result.discountPercentage}%)", 
-                        value = "-${formatCurrency(result.firstDiscount)}",
+                        value = "-${formatCurrency_DiscountCalculatorScreen(result.firstDiscount)}",
                         valueColor = MaterialTheme.colorScheme.error
                     )
                     
                     if (result.additionalDiscountAmount > 0) {
                         ResultRow(
                             label = "Additional Discount (${result.additionalDiscountPercentage}%)",
-                            value = "-${formatCurrency(result.additionalDiscountAmount)}",
+                            value = "-${formatCurrency_DiscountCalculatorScreen(result.additionalDiscountAmount)}",
                             valueColor = MaterialTheme.colorScheme.error
                         )
                     }
@@ -320,7 +320,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                     if (result.taxAmount > 0) {
                         ResultRow(
                             label = "Tax (${result.taxRate}%)",
-                            value = "+${formatCurrency(result.taxAmount)}",
+                            value = "+${formatCurrency_DiscountCalculatorScreen(result.taxAmount)}",
                             valueColor = MaterialTheme.colorScheme.tertiary
                         )
                     }
@@ -329,7 +329,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                     
                     ResultRow(
                         label = "You Save",
-                        value = formatCurrency(result.totalSavings),
+                        value = formatCurrency_DiscountCalculatorScreen(result.totalSavings),
                         valueStyle = MaterialTheme.typography.titleMedium,
                         valueColor = MaterialTheme.colorScheme.error,
                         isBold = true
@@ -506,7 +506,7 @@ private fun calculateDiscount(
     }
 }
 
-private fun formatCurrency(amount: String): String {
+private fun formatCurrency_DiscountCalculatorScreen(amount: String): String {
     return try {
         val num = amount.toDoubleOrNull() ?: return "$0.00"
         val formatter = DecimalFormat("$#,##0.00")
@@ -516,11 +516,11 @@ private fun formatCurrency(amount: String): String {
     }
 }
 
-private fun formatCurrency(amount: Double): String {
-    return formatCurrency(amount.toString())
+private fun formatCurrency_DiscountCalculatorScreen(amount: Double): String {
+    return formatCurrency_DiscountCalculatorScreen(amount.toString())
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_DiscountCalculatorScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Discount Result", text)
     clipboard.setPrimaryClip(clip)

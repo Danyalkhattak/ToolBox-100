@@ -82,7 +82,7 @@ fun SentenceCounterScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Sentence Counter") { navController.navigateUp() } }
+        topBar = { ToolTopBar("Sentence Counter", onBackClick = { navController.navigateUp() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

@@ -340,7 +340,7 @@ fun TimeDifferenceScreen(navHostController: NavHostController) {
                         Spacer(modifier = Modifier.height(12.dp))
                         
                         TextButton(onClick = { 
-                            copyToClipboard(context, "${diff.hours}h ${diff.minutes}m ${diff.seconds}s")
+                            copyToClipboard_TimeDifferenceScreen(context, "${diff.hours}h ${diff.minutes}m ${diff.seconds}s")
                         }) {
                             Icon(Icons.Default.ContentCopy, contentDescription = null, modifier = Modifier.size(18.dp))
                             Spacer(modifier = Modifier.width(4.dp))
@@ -741,7 +741,7 @@ private fun setToNowMinusHours(
     setIsPM(hour24 >= 12)
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_TimeDifferenceScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Time Difference Result", text)
     clipboard.setPrimaryClip(clip)

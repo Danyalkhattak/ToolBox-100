@@ -279,7 +279,7 @@ fun BMICalculatorScreen(navHostController: NavHostController) {
                         
                         Spacer(modifier = Modifier.height(12.dp))
                         
-                        TextButton(onClick = { copyToClipboard(context, String.format("%.1f", bmiResult.bmi)) }) {
+                        TextButton(onClick = { copyToClipboard_BMICalculatorScreen(context, String.format("%.1f", bmiResult.bmi)) }) {
                             Icon(Icons.Default.ContentCopy, contentDescription = null, modifier = Modifier.size(18.dp))
                             Spacer(modifier = Modifier.width(4.dp))
                             Text("Copy BMI")
@@ -690,7 +690,7 @@ private fun calculateBMI(
     }
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_BMICalculatorScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("BMI Result", text)
     clipboard.setPrimaryClip(clip)

@@ -123,7 +123,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                                     Text(label)
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text(
-                                        text = "(${formatCurrency(calculateTipOnly(billAmount, value.toString()))})",
+                                        text = "(${formatCurrency_TipCalculatorScreen(calculateTipOnly(billAmount, value.toString()))})",
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
@@ -174,7 +174,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                     val currentTipPct = if (isCustomTip) customTipPercentage else tipPercentage
                     if (currentTipPct.isNotEmpty()) {
                         Text(
-                            text = "Tip Amount: ${formatCurrency(calculateTipOnly(billAmount, currentTipPct))}",
+                            text = "Tip Amount: ${formatCurrency_TipCalculatorScreen(calculateTipOnly(billAmount, currentTipPct))}",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Medium
@@ -293,7 +293,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                                 color = MaterialTheme.colorScheme.primary,
                                 fontWeight = FontWeight.Medium
                             )
-                            IconButton(onClick = { copyToClipboard(context, res.totalPerPerson) }) {
+                            IconButton(onClick = { copyToClipboard_TipCalculatorScreen(context, res.totalPerPerson) }) {
                                 Icon(
                                     Icons.Default.ContentCopy,
                                     contentDescription = "Copy",
@@ -305,7 +305,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                         Spacer(modifier = Modifier.height(4.dp))
                         
                         Text(
-                            text = formatCurrency(res.total),
+                            text = formatCurrency_TipCalculatorScreen(res.total),
                             style = MaterialTheme.typography.headlineMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.primary
@@ -313,7 +313,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                         
                         if (res.peopleCount > 1) {
                             Text(
-                                text = "${formatCurrency(res.totalPerPerson)} per person",
+                                text = "${formatCurrency_TipCalculatorScreen(res.totalPerPerson)} per person",
                                 style = MaterialTheme.typography.bodyLarge,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -332,10 +332,10 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                         modifier = Modifier.padding(16.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        ResultRowItem(label = "Bill Amount", value = formatCurrency(res.billAmount))
+                        ResultRowItem(label = "Bill Amount", value = formatCurrency_TipCalculatorScreen(res.billAmount))
                         ResultRowItem(
                             label = "Tip (${res.tipPercentage}%)", 
-                            value = formatCurrency(res.tipAmount),
+                            value = formatCurrency_TipCalculatorScreen(res.tipAmount),
                             valueColor = MaterialTheme.colorScheme.primary
                         )
                         
@@ -343,7 +343,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                         
                         ResultRowItem(
                             label = "Total", 
-                            value = formatCurrency(res.total),
+                            value = formatCurrency_TipCalculatorScreen(res.total),
                             isBold = true
                         )
                         
@@ -359,7 +359,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                             
                             ResultRowItem(
                                 label = "Each person pays:", 
-                                value = formatCurrency(res.totalPerPerson),
+                                value = formatCurrency_TipCalculatorScreen(res.totalPerPerson),
                                 valueStyle = MaterialTheme.typography.titleMedium,
                                 valueColor = MaterialTheme.colorScheme.primary,
                                 isBold = true
@@ -367,11 +367,11 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                             
                             ResultRowItem(
                                 label = "  - Bill portion", 
-                                value = formatCurrency(res.billPerPerson)
+                                value = formatCurrency_TipCalculatorScreen(res.billPerPerson)
                             )
                             ResultRowItem(
                                 label = "  - Tip portion", 
-                                value = formatCurrency(res.tipPerPerson)
+                                value = formatCurrency_TipCalculatorScreen(res.tipPerPerson)
                             )
                         }
                     }
@@ -402,13 +402,13 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                                 Text(
-                                    text = formatCurrency(res.totalPerPerson),
+                                    text = formatCurrency_TipCalculatorScreen(res.totalPerPerson),
                                     style = MaterialTheme.typography.titleLarge,
                                     fontWeight = FontWeight.Bold
                                 )
                             }
                             Spacer(modifier = Modifier.weight(1f))
-                            TextButton(onClick = { copyToClipboard(context, res.totalPerPerson) }) {
+                            TextButton(onClick = { copyToClipboard_TipCalculatorScreen(context, res.totalPerPerson) }) {
                                 Text("Share")
                             }
                         }
@@ -533,7 +533,7 @@ private fun calculateTip(
     }
 }
 
-private fun formatCurrency(amount: Double): String {
+private fun formatCurrency_TipCalculatorScreen(amount: Double): String {
     return try {
         DecimalFormat("$#,##0.00").format(amount)
     } catch (e: Exception) {
@@ -541,7 +541,7 @@ private fun formatCurrency(amount: Double): String {
     }
 }
 
-private fun formatCurrency(amount: String): String {
+private fun formatCurrency_TipCalculatorScreen(amount: String): String {
     return try {
         val num = amount.toDoubleOrNull() ?: return "$0.00"
         DecimalFormat("$#,##0.00").format(num)
@@ -550,7 +550,7 @@ private fun formatCurrency(amount: String): String {
     }
 }
 
-private fun copyToClipboard(context: Context, text: String) {
+private fun copyToClipboard_TipCalculatorScreen(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Tip Result", text)
     clipboard.setPrimaryClip(clip)
