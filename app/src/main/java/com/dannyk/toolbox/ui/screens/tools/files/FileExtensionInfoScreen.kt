@@ -103,7 +103,7 @@ fun FileExtensionInfoScreen(navController: NavHostController) {
                         }
                     }
                     
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
                     
                     // Extension List
                     Text(
@@ -190,7 +190,7 @@ fun FileExtensionInfoScreen(navController: NavHostController) {
             
             // Right Panel - Details
             if (selectedExtension != null) {
-                HorizontalDivider(
+                Divider(modifier = Modifier.fillMaxWidth(), 
                     modifier = Modifier
                         .fillMaxHeight()
                         .width(1.dp)

@@ -113,7 +113,7 @@ fun SentenceCounterScreen(navController: NavHostController) {
                 )
             )
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Main Statistics Card
             Text(

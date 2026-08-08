@@ -157,7 +157,7 @@ fun SortLinesScreen(navController: NavHostController) {
                         Text("🎲 Random Shuffle")
                     }
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // Sort Order
                     Text(
@@ -188,7 +188,7 @@ fun SortLinesScreen(navController: NavHostController) {
                         )
                     }
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // Additional Options
                     Text(
@@ -223,7 +223,7 @@ fun SortLinesScreen(navController: NavHostController) {
                 }
             }
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Result Section
             Text(

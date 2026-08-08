@@ -140,7 +140,7 @@ fun HexRGBConverterScreen(navController: NavHostController) {
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
                     )
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // Parsed RGB Values
                     if (hexError == null && hexInput.length >= 6) {
@@ -280,7 +280,7 @@ fun HexRGBConverterScreen(navController: NavHostController) {
                         )
                     }
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // Generated HEX Value
                     if (rgbError == null && redInput.isNotEmpty() && 

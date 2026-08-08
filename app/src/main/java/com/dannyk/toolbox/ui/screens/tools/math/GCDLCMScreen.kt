@@ -246,14 +246,14 @@ fun GCDLCMScreen(navController: NavHostController) {
                                     }
                                     
                                     if (number != res.factorizations.keys.last()) {
-                                        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                                        Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
                                     }
                                 }
                                 
                                 // Show how to get GCD/LCM from factorization
                                 res.gcdFromFactors?.let { gcdFactors ->
                                     Spacer(modifier = Modifier.height(16.dp))
-                                    HorizontalDivider()
+                                    Divider(modifier = Modifier.fillMaxWidth())
                                     Spacer(modifier = Modifier.height(16.dp))
                                     
                                     Text("GCD from Factors:", style = MaterialTheme.typography.titleSmall)

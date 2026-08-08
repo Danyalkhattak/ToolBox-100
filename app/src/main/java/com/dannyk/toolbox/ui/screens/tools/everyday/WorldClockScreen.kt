@@ -23,6 +23,7 @@ import com.dannyk.toolbox.ui.components.SearchBar
 import com.dannyk.toolbox.ui.components.ToolHeader
 import java.util.Calendar
 import java.util.TimeZone
+import androidx.compose.ui.geometry.Offset
 
 data class TimeZoneCity(
     val id: String,

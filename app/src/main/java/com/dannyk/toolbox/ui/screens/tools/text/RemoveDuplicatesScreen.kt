@@ -157,7 +157,7 @@ fun RemoveDuplicatesScreen(navController: NavHostController) {
                 }
             }
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Statistics Section
             if (inputText.isNotBlank()) {

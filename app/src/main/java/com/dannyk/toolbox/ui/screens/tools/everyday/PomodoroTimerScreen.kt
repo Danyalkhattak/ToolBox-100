@@ -27,6 +27,7 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.ui.geometry.Offset
 
 data class PomodoroSession(
     val id: Int,

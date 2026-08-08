@@ -292,7 +292,7 @@ fun FactorialCalculatorScreen(navController: NavHostController) {
                         InfoRow("Divisible by 10", if (res.n >= 5) "Yes" else "No")
                         
                         // Time complexity note
-                        HorizontalDivider()
+                        Divider(modifier = Modifier.fillMaxWidth())
                         Text(
                             "Note: Factorials grow extremely fast. 70! is already larger than a googol (10^100).",
                             style = MaterialTheme.typography.bodySmall,

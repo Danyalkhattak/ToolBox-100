@@ -178,7 +178,7 @@ fun AverageCalculatorScreen(navController: NavHostController) {
                             
                             // Mean - Primary result
                             StatResultRow("Mean (Average)", stats.mean.formatDecimal(), isPrimary = true)
-                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                            Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
                             
                             // Median
                             StatResultRow("Median", stats.median.formatDecimal())
@@ -188,7 +188,7 @@ fun AverageCalculatorScreen(navController: NavHostController) {
                                 if (stats.modes.isEmpty()) "No mode" 
                                 else stats.modes.joinToString(", ") { it.formatDecimal() })
                             
-                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                            Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
                             
                             // Range
                             StatResultRow("Range", stats.range.formatDecimal())
@@ -209,7 +209,7 @@ fun AverageCalculatorScreen(navController: NavHostController) {
                             InfoRow("Minimum", stats.min.formatDecimal())
                             InfoRow("Maximum", stats.max.formatDecimal())
                             
-                            HorizontalDivider()
+                            Divider(modifier = Modifier.fillMaxWidth())
                             
                             InfoRow("Standard Deviation", stats.standardDeviation.formatDecimal())
                             InfoRow("Variance", stats.variance.formatDecimal())

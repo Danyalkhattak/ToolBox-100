@@ -304,7 +304,7 @@ fun SplitBillScreen(navHostController: NavHostController) {
                         ResultRowItem(label = "Total Bill", value = formatCurrency(res.totalBill))
                         ResultRowItem(label = "Tip (${res.tipPercentage}%)", value = formatCurrency(res.tipAmount))
                         
-                        HorizontalDivider()
+                        Divider(modifier = Modifier.fillMaxWidth())
                         
                         ResultRowItem(
                             label = "Total with Tip",
@@ -313,7 +313,7 @@ fun SplitBillScreen(navHostController: NavHostController) {
                         )
                         
                         if (res.people.size > 1) {
-                            HorizontalDivider()
+                            Divider(modifier = Modifier.fillMaxWidth())
                             ResultRowItem(
                                 label = "Each person pays",
                                 value = formatCurrency(res.perPersonAverage),
@@ -367,7 +367,7 @@ fun SplitBillScreen(navHostController: NavHostController) {
                             )
                             
                             if (index < res.people.lastIndex) {
-                                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
                             }
                         }
                     }

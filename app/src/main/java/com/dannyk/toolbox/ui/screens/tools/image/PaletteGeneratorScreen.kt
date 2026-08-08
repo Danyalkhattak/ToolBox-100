@@ -225,7 +225,7 @@ fun PaletteGeneratorScreen(navController: NavHostController) {
                         PaletteColorRow(index + 1, colorInt)
                     }
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // Export options
                     Text("Export Options:", style = MaterialTheme.typography.labelLarge)

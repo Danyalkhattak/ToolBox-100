@@ -206,7 +206,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                         )
                     }
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // HSL Output from RGB
                     Text(
@@ -358,7 +358,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                         )
                     }
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // RGB Output from HSL
                     Text(

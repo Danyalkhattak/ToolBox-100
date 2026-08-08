@@ -451,7 +451,7 @@ fun HashIdentifierScreen(navController: NavHostController) {
 
                 Spacer(modifier = Modifier.height(12.dp))
                 
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 

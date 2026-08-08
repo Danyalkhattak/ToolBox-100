@@ -259,7 +259,7 @@ fun MD5HashScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // Hash Info
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     Spacer(modifier = Modifier.height(16.dp))
 
@@ -339,7 +339,7 @@ fun MD5HashScreen(navController: NavHostController) {
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 
@@ -399,7 +399,7 @@ fun MD5HashScreen(navController: NavHostController) {
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 

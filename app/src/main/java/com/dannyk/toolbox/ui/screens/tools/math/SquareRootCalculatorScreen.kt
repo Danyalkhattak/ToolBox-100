@@ -339,7 +339,7 @@ fun SquareRootCalculatorScreen(navController: NavHostController) {
                         InfoRow("Result", res.result)
                         InfoRow("Is Exact", if (res.isExact) "Yes" else "No")
                         
-                        HorizontalDivider()
+                        Divider(modifier = Modifier.fillMaxWidth())
                         
                         InfoRow("Result²", formatNumber(res.result.toDouble().pow(2)))
                         if (res.rootDegree == 3) {

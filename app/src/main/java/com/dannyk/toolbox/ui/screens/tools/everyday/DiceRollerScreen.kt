@@ -37,6 +37,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.CornerRadius
 
 data class DiceResult(
     val id: Int,
@@ -321,7 +322,7 @@ fun DiceRollerScreen(navHostController: NavHostController) {
                     }
                 }
                 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
+                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 12.dp))
                 
                 // Dice type selector
                 Text(

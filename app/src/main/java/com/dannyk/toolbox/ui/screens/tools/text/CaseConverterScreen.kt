@@ -86,7 +86,7 @@ fun CaseConverterScreen(navController: NavHostController) {
                 )
             )
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Conversion Results
             if (inputText.isNotBlank()) {

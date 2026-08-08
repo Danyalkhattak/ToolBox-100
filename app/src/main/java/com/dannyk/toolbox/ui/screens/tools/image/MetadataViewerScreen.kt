@@ -39,6 +39,7 @@ import java.util.*
 import androidx.compose.ui.graphics.Color
 import android.content.Intent
 import android.content.ClipboardManager
+import androidx.compose.ui.graphics.Path
 
 data class ExifMetadata(
     // Camera info

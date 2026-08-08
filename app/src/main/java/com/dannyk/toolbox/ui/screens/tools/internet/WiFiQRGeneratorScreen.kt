@@ -45,6 +45,7 @@ import android.content.ClipboardManager
 import android.content.ClipData
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.ui.graphics.Path
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

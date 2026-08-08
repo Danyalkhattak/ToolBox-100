@@ -216,7 +216,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(20.dp))
 
                 // Options
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
                 
                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -380,7 +380,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                         Spacer(modifier = Modifier.height(16.dp))
 
                         // PIN Security Info
-                        HorizontalDivider()
+                        Divider(modifier = Modifier.fillMaxWidth())
                         
                         Spacer(modifier = Modifier.height(16.dp))
 
@@ -457,7 +457,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                         Spacer(modifier = Modifier.height(16.dp))
 
                         // Summary info
-                        HorizontalDivider()
+                        Divider(modifier = Modifier.fillMaxWidth())
                         
                         Spacer(modifier = Modifier.height(12.dp))
                         
@@ -526,7 +526,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
 
                 Spacer(modifier = Modifier.height(12.dp))
 

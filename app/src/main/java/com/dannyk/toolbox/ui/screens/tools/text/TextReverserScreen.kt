@@ -86,7 +86,7 @@ fun TextReverserScreen(navController: NavHostController) {
                 )
             )
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Mode Selection
             Text(
@@ -152,7 +152,7 @@ fun TextReverserScreen(navController: NavHostController) {
                 }
             }
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Result Section
             Text(
@@ -249,7 +249,7 @@ fun TextReverserScreen(navController: NavHostController) {
 
             // All Results Preview (showing all modes at once)
             if (inputText.isNotBlank() && inputText.length <= 100) {
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
                 
                 Text(
                     text = "All Modes Preview",

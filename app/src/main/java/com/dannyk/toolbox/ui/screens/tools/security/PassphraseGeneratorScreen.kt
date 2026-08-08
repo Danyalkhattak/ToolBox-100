@@ -543,7 +543,7 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     Spacer(modifier = Modifier.height(16.dp))
 
@@ -635,7 +635,7 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
                 
                 Spacer(modifier = Modifier.height(12.dp))
 

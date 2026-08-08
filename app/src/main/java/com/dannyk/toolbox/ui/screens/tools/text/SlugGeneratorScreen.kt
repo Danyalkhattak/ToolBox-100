@@ -250,7 +250,7 @@ fun SlugGeneratorScreen(navController: NavHostController) {
                 }
             }
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Generated Slug Result
             Text(

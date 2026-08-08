@@ -243,7 +243,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
                         }
                     }
                     
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                    Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
                     
                     // Random String Option
                     Row(
@@ -293,7 +293,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
                         }
                     }
                     
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                    Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
                     
                     // Sequential Number Option
                     Row(
@@ -591,7 +591,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
                                     }
                                     
                                     if (index < bulkFilenames.lastIndex) {
-                                        HorizontalDivider(
+                                        Divider(modifier = Modifier.fillMaxWidth(), 
                                             color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f)
                                         )
                                     }

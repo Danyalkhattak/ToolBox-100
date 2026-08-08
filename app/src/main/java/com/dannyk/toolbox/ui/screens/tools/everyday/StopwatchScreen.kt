@@ -252,7 +252,7 @@ fun StopwatchScreen(navHostController: NavHostController) {
                         )
                     }
                     
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
                     
                     LazyColumn(
                         modifier = Modifier.heightIn(max = 200.dp)
@@ -343,7 +343,7 @@ fun StopwatchScreen(navHostController: NavHostController) {
                             }
                             
                             if (lapNumber > 1) {
-                                HorizontalDivider(
+                                Divider(modifier = Modifier.fillMaxWidth(), 
                                     modifier = Modifier.padding(horizontal = 8.dp)
                                 )
                             }

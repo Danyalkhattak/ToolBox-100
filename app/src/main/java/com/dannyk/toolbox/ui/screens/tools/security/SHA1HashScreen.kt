@@ -249,7 +249,7 @@ fun SHA1HashScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // Hash Info
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     Spacer(modifier = Modifier.height(16.dp))
 
@@ -327,7 +327,7 @@ fun SHA1HashScreen(navController: NavHostController) {
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 

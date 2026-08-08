@@ -492,7 +492,7 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
                     )
                 }
                 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
                 
                 Text(
                     text = "⚠️ Passwords stored in memory only. Cleared when app closes.",

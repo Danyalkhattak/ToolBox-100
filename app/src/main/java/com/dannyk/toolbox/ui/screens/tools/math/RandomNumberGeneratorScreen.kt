@@ -170,7 +170,7 @@ fun RandomNumberGeneratorScreen(navController: NavHostController) {
                             )
                         }
                         
-                        HorizontalDivider()
+                        Divider(modifier = Modifier.fillMaxWidth())
                         
                         // Sort results toggle
                         Row(
@@ -362,7 +362,7 @@ fun RandomNumberGeneratorScreen(navController: NavHostController) {
                             InfoRow("Unique Mode", if (info.isUnique) "Yes" else "No")
                             
                             if (results.isNotEmpty()) {
-                                HorizontalDivider()
+                                Divider(modifier = Modifier.fillMaxWidth())
                                 
                                 // Distribution info
                                 val frequencyMap = results.groupingBy { it }.eachCount()

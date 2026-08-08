@@ -285,7 +285,7 @@ fun DateDifferenceScreen(navHostController: NavHostController) {
                         
                         InfoRow("Weekdays between", diff.weekdaysCount.toString())
                         InfoRow("Weekend days", diff.weekendDaysCount.toString())
-                        HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                        Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 4.dp))
                         InfoRow("Percentage of year", String.format("%.2f%%", diff.percentageOfYear))
                         InfoRow("Is leap year span?", if (diff.containsLeapYear) "Yes" else "No")
                     }

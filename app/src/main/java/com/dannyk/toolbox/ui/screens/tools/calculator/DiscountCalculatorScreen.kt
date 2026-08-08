@@ -302,7 +302,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                         )
                     }
                     
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
                     
                     // Breakdown items
                     ResultRow(label = "Original Price", value = formatCurrency(result.originalPrice))
@@ -328,7 +328,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                         )
                     }
                     
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
                     
                     ResultRow(
                         label = "You Save",

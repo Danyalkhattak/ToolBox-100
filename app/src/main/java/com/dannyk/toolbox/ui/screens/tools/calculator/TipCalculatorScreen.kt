@@ -341,7 +341,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                             valueColor = MaterialTheme.colorScheme.primary
                         )
                         
-                        HorizontalDivider()
+                        Divider(modifier = Modifier.fillMaxWidth())
                         
                         ResultRowItem(
                             label = "Total", 
@@ -350,7 +350,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                         )
                         
                         if (res.peopleCount > 1) {
-                            HorizontalDivider()
+                            Divider(modifier = Modifier.fillMaxWidth())
                             
                             Text(
                                 text = "Split ${res.peopleCount} ways:",

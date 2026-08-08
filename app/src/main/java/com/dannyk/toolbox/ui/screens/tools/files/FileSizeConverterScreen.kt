@@ -323,7 +323,7 @@ fun FileSizeConverterScreen(navController: NavHostController) {
                             }
                             
                             if (unit != "PB") {
-                                HorizontalDivider(
+                                Divider(modifier = Modifier.fillMaxWidth(), 
                                     modifier = Modifier.padding(vertical = 2.dp),
                                     color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
                                 )

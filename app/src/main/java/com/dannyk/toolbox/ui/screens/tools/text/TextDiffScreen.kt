@@ -107,7 +107,7 @@ fun TextDiffScreen(navController: NavHostController) {
                         )
                     )
 
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
 
                     // Modified Text
                     Text(

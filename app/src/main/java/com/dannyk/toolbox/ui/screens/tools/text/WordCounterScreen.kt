@@ -116,7 +116,7 @@ fun WordCounterScreen(navController: NavHostController) {
                 )
             )
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Statistics Grid
             Text(

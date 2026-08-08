@@ -342,7 +342,7 @@ fun PasswordStrengthScreen(navController: NavHostController) {
                     isExcellent = password.length >= 16
                 )
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
 
                 // Uppercase
                 CriterionRow(
@@ -351,7 +351,7 @@ fun PasswordStrengthScreen(navController: NavHostController) {
                     isMet = hasUppercase
                 )
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
 
                 // Lowercase
                 CriterionRow(
@@ -360,7 +360,7 @@ fun PasswordStrengthScreen(navController: NavHostController) {
                     isMet = hasLowercase
                 )
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
 
                 // Numbers
                 CriterionRow(
@@ -369,7 +369,7 @@ fun PasswordStrengthScreen(navController: NavHostController) {
                     isMet = hasNumbers
                 )
 
-                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
 
                 // Special Characters
                 CriterionRow(
@@ -414,7 +414,7 @@ fun PasswordStrengthScreen(navController: NavHostController) {
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                HorizontalDivider()
+                Divider(modifier = Modifier.fillMaxWidth())
 
                 Spacer(modifier = Modifier.height(12.dp))
 

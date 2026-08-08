@@ -107,7 +107,7 @@ fun MimeTypeLookupScreen(navController: NavHostController) {
                         }
                     }
                     
-                    HorizontalDivider()
+                    Divider(modifier = Modifier.fillMaxWidth())
                     
                     // Results Count
                     Text(
@@ -191,7 +191,7 @@ fun MimeTypeLookupScreen(navController: NavHostController) {
             
             // Right Panel - Details
             if (selectedMimeType != null) {
-                HorizontalDivider(
+                Divider(modifier = Modifier.fillMaxWidth(), 
                     modifier = Modifier
                         .fillMaxHeight()
                         .width(1.dp)

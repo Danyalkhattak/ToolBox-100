@@ -29,6 +29,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.ui.graphics.Path
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -565,7 +566,7 @@ private fun QueryParamCard(
             
             // Show decoded values if different from encoded
             if (decodedKey != key || decodedValue != value) {
-                HorizontalDivider(modifier = Modifier.padding(vertical = 6.dp))
+                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 6.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = "Decoded:",

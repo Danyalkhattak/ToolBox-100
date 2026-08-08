@@ -148,7 +148,7 @@ fun CharacterCounterScreen(navController: NavHostController) {
                 )
             )
 
-            HorizontalDivider()
+            Divider(modifier = Modifier.fillMaxWidth())
 
             // Overview Stats Card
             Text(
