@@ -132,7 +132,7 @@ fun FileHashCheckerScreen(navController: NavHostController) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(80.dp)
-                                .shape(RoundedCornerShape(8.dp))
+                                .clip(RoundedCornerShape(8.dp))
                                 .border(
                                     width = 2.dp,
                                     color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),

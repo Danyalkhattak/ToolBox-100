@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -171,7 +172,6 @@ fun PDFToImagesScreen(navController: NavHostController) {
                 // Page Range Selection
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = selectedPdfUri != null,
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
@@ -236,7 +236,6 @@ fun PDFToImagesScreen(navController: NavHostController) {
                 // Image Quality Selection
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = selectedPdfUri != null,
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
@@ -285,7 +284,6 @@ fun PDFToImagesScreen(navController: NavHostController) {
                 // Image Format Selection
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = selectedPdfUri != null,
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {

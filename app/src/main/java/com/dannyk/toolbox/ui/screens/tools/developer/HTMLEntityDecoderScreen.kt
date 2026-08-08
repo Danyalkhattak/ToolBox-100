@@ -22,6 +22,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.foundation.ScrollState
 import androidx.core.text.HtmlCompat
@@ -361,8 +362,8 @@ fun HTMLEntityDecoderScreen(navController: NavHostController) {
                         Triple("&#x20AC;", "\u20AC", "Hex euro"),
                         Triple("&#9733;", "\u2603", "Decimal snowman ☃"),
                         Triple("&#x2603;", "\u2603", "Hex snowman ☃"),
-                        Triple("&#128512;", "\U0001F600", "Grinning face 😀"),
-                        Triple("&#x1F600;", "\U0001F600", "Hex grinning face 😀")
+                        Triple("&#128512;", "\uD83D\uDE00", "Grinning face 😀"),
+                        Triple("&#x1F600;", "\uD83D\uDE00", "Hex grinning face 😀")
                     )
 
                     numericExamples.chunked(2).forEach { row ->

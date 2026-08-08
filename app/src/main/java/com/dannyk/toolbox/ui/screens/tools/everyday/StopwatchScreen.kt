@@ -302,7 +302,7 @@ fun StopwatchScreen(navHostController: NavHostController) {
                                                 when {
                                                     isBestLap -> MaterialTheme.colorScheme.primary
                                                     isWorstLap -> MaterialTheme.colorScheme.error
-                                                    else -> MaterialTheme.colorScheme.surfaceContainerest
+                                                    else -> MaterialTheme.colorScheme.surfaceContainerLowest
                                                 }
                                             ),
                                         contentAlignment = Alignment.Center

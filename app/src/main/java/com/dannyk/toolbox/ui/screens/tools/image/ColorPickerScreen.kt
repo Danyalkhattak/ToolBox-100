@@ -80,7 +80,7 @@ fun ColorPickerScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Color Picker", navController) }
+        topBar = { ToolTopBar("Color Picker") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

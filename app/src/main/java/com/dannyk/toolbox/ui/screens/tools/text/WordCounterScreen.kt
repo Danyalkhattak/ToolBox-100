@@ -84,7 +84,7 @@ fun WordCounterScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Word Counter", navController) }
+        topBar = { ToolTopBar("Word Counter") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

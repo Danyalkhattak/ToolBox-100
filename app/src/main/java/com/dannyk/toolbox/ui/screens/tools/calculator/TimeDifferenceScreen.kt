@@ -253,7 +253,7 @@ fun TimeDifferenceScreen(navHostController: NavHostController) {
                     }
                 },
                 onPeriodToggle = { isEndPM = !isEndPM },
-                icon = Icons.Default.Finish,
+                icon = Icons.Default.Flag,
                 color = MaterialTheme.colorScheme.secondaryContainer,
                 modifier = Modifier.weight(1f)
             )
@@ -679,9 +679,9 @@ private fun formatTimeInWords(totalSeconds: Long): String {
     val seconds = totalSeconds % 60
     
     val parts = mutableListOf<String>()
-    if (hours > 0) parts.add("$hours hour${if (hours != 1) "s" else ""}")
-    if (minutes > 0) parts.add("$minutes minute${if (minutes != 1) "s" else ""}")
-    if (seconds > 0 || parts.isEmpty()) parts.add("$seconds second${if (seconds != 1) "s" else ""}")
+    if (hours > 0) parts.add("$hours hour${if (hours != 1L) "s" else ""}")
+    if (minutes > 0) parts.add("$minutes minute${if (minutes != 1L) "s" else ""}")
+    if (seconds > 0 || parts.isEmpty()) parts.add("$seconds second${if (seconds != 1L) "s" else ""}")
     
     return parts.joinToString(", ")
 }

@@ -53,7 +53,7 @@ fun CaseConverterScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Case Converter", navController) }
+        topBar = { ToolTopBar("Case Converter") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

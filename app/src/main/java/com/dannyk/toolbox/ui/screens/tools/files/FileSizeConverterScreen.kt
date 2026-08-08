@@ -188,7 +188,7 @@ fun FileSizeConverterScreen(navController: NavHostController) {
                 ) {
                     Icon(Icons.Default.SwapHoriz, contentDescription = null)
                     Spacer(modifier = Modifier.width(8.dp))
-                    text = "Swap Units"
+                    Text("Swap Units")
                 }
             }
 

@@ -634,7 +634,7 @@ private fun buildHighlightedText(text: String, matches: List<MatchDetail>): Anno
             }
             
             // Add highlighted match
-            withStyle(style = SpanStyle(backgroundColor = Color(0xFF4CAF50), color = Color.White)) {
+            withStyle(style = SpanStyle(background = Color(0xFF4CAF50), color = Color.White)) {
                 append(match.value)
             }
             

@@ -516,6 +516,10 @@ private fun formatCurrency(amount: String): String {
     }
 }
 
+private fun formatCurrency(amount: Double): String {
+    return formatCurrency(amount.toString())
+}
+
 private fun copyToClipboard(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Discount Result", text)

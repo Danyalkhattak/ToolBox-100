@@ -75,7 +75,7 @@ fun SlugGeneratorScreen(navController: NavHostController) {
     )
 
     Scaffold(
-        topBar = { ToolTopBar("URL Slug Generator", navController) }
+        topBar = { ToolTopBar("URL Slug Generator") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -222,7 +222,7 @@ fun SlugGeneratorScreen(navController: NavHostController) {
                             }
                         },
                         modifier = Modifier.fillMaxWidth(),
-                        label { Text("Maximum Length (optional)") },
+                        label = { Text("Maximum Length (optional)") },
                         placeholder = { Text("e.g., 50 for max 50 chars") },
                         singleLine = true,
                         leadingIcon = {
@@ -331,15 +331,15 @@ fun SlugGeneratorScreen(navController: NavHostController) {
                             )
                             
                             Text(
-                                text = if (generatedSlug.isEmpty()) "(enter text above)" 
+                                text = if (generatedSlug.isEmpty()) "(enter text above)"
                                       else generatedSlug,
                                 style = MaterialTheme.typography.headlineSmall.copy(
                                     fontFamily = FontFamily.Monospace,
-                                    color = if (generatedSlug.isEmpty()) 
-                                        MaterialTheme.colorScheme.outline else 
+                                    color = if (generatedSlug.isEmpty())
+                                        MaterialTheme.colorScheme.outline else
                                         MaterialTheme.colorScheme.primary
                                 ),
-                                wordBreak = androidx.compose.ui.text.style.WordBreak.BreakAll
+                                overflow = TextOverflow.Ellipsis
                             )
                         }
                     }
@@ -477,15 +477,15 @@ private fun generateSlug(
     
     // Replace any existing separators and whitespace with our chosen one
     result = result.replace(Regex("[\\s\\-_]+"), sepChar)
-    
+
     // Remove leading/trailing separators
-    result = result.trim(sepChar)
-    
+    result = result.trim(sepChar.single())
+
     // Apply max length if specified (try to cut at word boundary)
     if (maxLen != null && maxLen > 0 && result.length > maxLen) {
         result = result.substring(0, maxLen)
         // Don't end with partial word or separator
-        result = result.trimEnd(sepChar).trimEnd()
+        result = result.trimEnd(sepChar.single()).trimEnd()
     }
     
     return result

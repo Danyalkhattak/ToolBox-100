@@ -480,8 +480,8 @@ private fun getCharName(char: Char): String {
                 CharCategory.DASH_PUNCTUATION to "Dash punctuation",
                 CharCategory.START_PUNCTUATION to "Start punctuation",
                 CharCategory.END_PUNCTUATION to "End punctuation",
-                CharCategory.INITIAL_QUOTE to "Initial quote",
-                CharCategory.FINAL_QUOTE to "Final quote",
+                // INITIAL_QUOTE and FINAL_QUOTE are not in Kotlin's CharCategory, using alternatives
+                CharCategory.OTHER_SYMBOL to "Other symbol (quotes)",
                 CharCategory.OTHER_PUNCTUATION to "Other punctuation",
                 CharCategory.MATH_SYMBOL to "Math symbol",
                 CharCategory.CURRENCY_SYMBOL to "Currency symbol",

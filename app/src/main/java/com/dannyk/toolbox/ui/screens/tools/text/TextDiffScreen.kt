@@ -61,7 +61,7 @@ fun TextDiffScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Text Diff", navController) }
+        topBar = { ToolTopBar("Text Diff") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

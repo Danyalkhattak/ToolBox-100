@@ -22,12 +22,11 @@ import org.json.JSONObject
 import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.pushStyle
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.toAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.foundation.ScrollState
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 
 @Composable
@@ -116,7 +115,7 @@ fun JSONFormatterScreen(navController: NavHostController) {
                                 }
                             },
                             enabled = jsonInput.isNotBlank(),
-                            icon = Icons.Default.AlignHorizontalLeft,
+                            icon = Icons.Default.FormatAlignLeft,
                             modifier = Modifier.weight(1f)
                         )
 
@@ -284,60 +283,60 @@ private fun highlightJsonSyntax(json: String): AnnotatedString {
         while (i < json.length) {
             when (json[i]) {
                 '{', '}' -> {
-                    pushStyle(SpanStyle(color = Color(0xFFCE9178)))
-                    append(json[i])
-                    pop()
+                    withStyle(SpanStyle(color = Color(0xFFCE9178))) {
+                        append(json[i])
+                    }
                 }
                 '[', ']' -> {
-                    pushStyle(SpanStyle(color = Color(0xFFFFD700)))
-                    append(json[i])
-                    pop()
+                    withStyle(SpanStyle(color = Color(0xFFFFD700))) {
+                        append(json[i])
+                    }
                 }
                 ':' -> {
-                    pushStyle(SpanStyle(color = Color(0xFFFFFFFF)))
-                    append(json[i])
-                    pop()
+                    withStyle(SpanStyle(color = Color(0xFFFFFFFF))) {
+                        append(json[i])
+                    }
                 }
                 ',' -> {
-                    pushStyle(SpanStyle(color = Color(0xFFFFFFFF)))
-                    append(json[i])
-                    pop()
+                    withStyle(SpanStyle(color = Color(0xFFFFFFFF))) {
+                        append(json[i])
+                    }
                 }
                 '"' -> {
                     // Find the end of the string
-                    pushStyle(SpanStyle(color = Color(0xFF6A9955)))
-                    append('"')
-                    i++
-                    while (i < json.length && json[i] != '"') {
-                        if (json[i] == '\\') {
-                            append(json[i])
-                            i++
-                            if (i < json.length) {
+                    withStyle(SpanStyle(color = Color(0xFF6A9955))) {
+                        append('"')
+                        i++
+                        while (i < json.length && json[i] != '"') {
+                            if (json[i] == '\\') {
+                                append(json[i])
+                                i++
+                                if (i < json.length) {
+                                    append(json[i])
+                                }
+                            } else {
                                 append(json[i])
                             }
-                        } else {
-                            append(json[i])
+                            i++
                         }
-                        i++
+                        if (i < json.length) {
+                            append('"')
+                        }
                     }
-                    if (i < json.length) {
-                        append('"')
-                    }
-                    pop()
                 }
                 in '0'..'9', '-' -> {
-                    pushStyle(SpanStyle(color = Color(0xFFB5CEA8)))
-                    while (i < json.length && (json[i].isDigit() || json[i] == '.' || json[i] == '-' || json[i] == '+' || json[i] == 'e' || json[i] == 'E')) {
-                        append(json[i])
-                        i++
+                    withStyle(SpanStyle(color = Color(0xFFB5CEA8))) {
+                        while (i < json.length && (json[i].isDigit() || json[i] == '.' || json[i] == '-' || json[i] == '+' || json[i] == 'e' || json[i] == 'E')) {
+                            append(json[i])
+                            i++
+                        }
                     }
-                    pop()
                     continue
                 }
                 ' ', '\t', '\n', '\r' -> {
-                    pushStyle(SpanStyle(color = Color(0xFF808080)))
-                    append(json[i])
-                    pop()
+                    withStyle(SpanStyle(color = Color(0xFF808080))) {
+                        append(json[i])
+                    }
                 }
                 else -> {
                     append(json[i])

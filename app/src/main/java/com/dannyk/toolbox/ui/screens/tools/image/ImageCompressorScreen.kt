@@ -80,7 +80,7 @@ fun ImageCompressorScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Image Compressor", navController) }
+        topBar = { ToolTopBar("Image Compressor") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

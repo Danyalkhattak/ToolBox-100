@@ -144,7 +144,7 @@ fun DateDifferenceScreen(navHostController: NavHostController) {
         DateInputCard(
             title = "End Date",
             date = endDate,
-            icon = Icons.Default.Finish,
+            icon = Icons.Default.Flag,
             onClick = { showEndPicker = true },
             modifier = Modifier.fillMaxWidth()
         )

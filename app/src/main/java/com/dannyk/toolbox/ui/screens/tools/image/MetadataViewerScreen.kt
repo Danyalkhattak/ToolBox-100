@@ -150,7 +150,7 @@ fun MetadataViewerScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("EXIF Metadata Viewer", navController) }
+        topBar = { ToolTopBar("EXIF Metadata Viewer") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

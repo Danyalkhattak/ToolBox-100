@@ -403,7 +403,8 @@ private suspend fun generateQRCode(
     
     for (x in 0 until width) {
         for (y in 0 until height) {
-            bitmap.setPixel(x, y, if (bitMatrix[x, y]) foregroundColor else backgroundColor)
+            val androidColor = if (bitMatrix[x, y]) foregroundColor else backgroundColor
+            bitmap.setPixel(x, y, androidColor.toArgb())
         }
     }
     

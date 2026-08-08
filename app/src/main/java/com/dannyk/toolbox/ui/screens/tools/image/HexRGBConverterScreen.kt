@@ -68,7 +68,7 @@ fun HexRGBConverterScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("HEX ↔ RGB Converter", navController) }
+        topBar = { ToolTopBar("HEX ↔ RGB Converter") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

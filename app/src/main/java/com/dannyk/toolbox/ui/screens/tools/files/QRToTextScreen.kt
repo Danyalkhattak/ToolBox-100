@@ -58,6 +58,33 @@ fun QRToTextScreen(navController: NavHostController) {
     var isDecoding by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
+    // Function to decode QR code from bitmap
+    fun decodeQRFromBitmap(bitmap: Bitmap) {
+        isDecoding = true
+        decodedResults = emptyList()
+        errorMessage = null
+        
+        scope.launch {
+            try {
+                val results = decodeQRCodes(bitmap)
+                
+                withContext(Dispatchers.Main) {
+                    decodedResults = results
+                    isDecoding = false
+                    
+                    if (results.isEmpty()) {
+                        errorMessage = "No QR code found in this image"
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    isDecoding = false
+                    errorMessage = "Error decoding: ${e.message}"
+                }
+            }
+        }
+    }
+
     val imagePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
@@ -88,33 +115,6 @@ fun QRToTextScreen(navController: NavHostController) {
                     withContext(Dispatchers.Main) {
                         errorMessage = "Error loading image: ${e.message}"
                     }
-                }
-            }
-        }
-    }
-
-    // Function to decode QR code from bitmap
-    fun decodeQRFromBitmap(bitmap: Bitmap) {
-        isDecoding = true
-        decodedResults = emptyList()
-        errorMessage = null
-        
-        scope.launch {
-            try {
-                val results = decodeQRCodes(bitmap)
-                
-                withContext(Dispatchers.Main) {
-                    decodedResults = results
-                    isDecoding = false
-                    
-                    if (results.isEmpty()) {
-                        errorMessage = "No QR code found in this image"
-                    }
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    isDecoding = false
-                    errorMessage = "Error decoding: ${e.message}"
                 }
             }
         }

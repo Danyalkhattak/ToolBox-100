@@ -29,13 +29,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.CornerRadius
 import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.LaunchedEffect
 
@@ -135,7 +135,7 @@ fun DiceRollerScreen(navHostController: NavHostController) {
                                 modifier = Modifier
                                     .size(70.dp)
                                     .clip(RoundedCornerShape(12.dp))
-                                    .background(MaterialTheme.colorScheme.surfaceContainerest.copy(alpha = 0.5f)),
+                                    .background(MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.5f)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(

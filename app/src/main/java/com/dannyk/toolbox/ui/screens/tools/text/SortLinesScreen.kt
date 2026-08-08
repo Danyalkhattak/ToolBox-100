@@ -53,7 +53,7 @@ fun SortLinesScreen(navController: NavHostController) {
     val resultLineCount = if (result.isBlank()) 0 else result.split("\n").size
 
     Scaffold(
-        topBar = { ToolTopBar("Sort Lines", navController) }
+        topBar = { ToolTopBar("Sort Lines") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

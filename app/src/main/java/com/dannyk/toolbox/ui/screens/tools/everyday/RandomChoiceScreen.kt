@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
+import kotlin.random.Random
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.graphics.graphicsLayer
@@ -61,7 +62,7 @@ fun RandomChoiceScreen(navHostController: NavHostController) {
     val animatedScale by animateFloatAsState(
         targetValue = if (isPicking && currentWinner != null) 1.1f else 1f,
         animationSpec = repeatable(
-            iterations = if (isPicking) Infinite else 1,
+            iterations = if (isPicking) Int.MAX_VALUE else 1,
             animation = keyframes {
                 durationMillis = 100
                 1f at 0
@@ -341,7 +342,7 @@ fun RandomChoiceScreen(navHostController: NavHostController) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = if (eliminationMode) Icons.Default.Eliminate else Icons.Default.Shuffle,
+                        imageVector = if (eliminationMode) Icons.Default.Close else Icons.Default.Shuffle,
                         contentDescription = null,
                         tint = if (eliminationMode) MaterialTheme.colorScheme.primary 
                                else MaterialTheme.colorScheme.onSurfaceVariant
@@ -462,7 +463,7 @@ fun RandomChoiceScreen(navHostController: NavHostController) {
                                                 item.isEliminated -> MaterialTheme.colorScheme.errorContainer
                                                 item.wasPicked -> MaterialTheme.colorScheme.tertiaryContainer
                                                 isWinner -> MaterialTheme.colorScheme.primary
-                                                else -> MaterialTheme.colorScheme.surfaceContainerest
+                                                else -> MaterialTheme.colorScheme.surfaceContainerLowest
                                             }
                                         ),
                                     contentAlignment = Alignment.Center

@@ -63,7 +63,7 @@ fun RemoveDuplicatesScreen(navController: NavHostController) {
     val uniqueCount = result.lines.size
 
     Scaffold(
-        topBar = { ToolTopBar("Remove Duplicates", navController) }
+        topBar = { ToolTopBar("Remove Duplicates") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

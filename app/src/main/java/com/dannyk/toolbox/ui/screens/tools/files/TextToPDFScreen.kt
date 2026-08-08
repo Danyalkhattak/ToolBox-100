@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolScreenLayout
 import kotlinx.coroutines.Dispatchers
@@ -24,10 +25,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color as ComposeColor
 import android.content.ClipboardManager
 import android.content.ClipData
-import android.graphics.Color
+import android.graphics.Color as AndroidColor
 import android.content.Context
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
@@ -425,9 +426,9 @@ private suspend fun generateTextPdf(
     val contentHeight = pageHeight - (margins * 2)
     
     // Paint for text
-    val paint = Paint().apply {
-        this.fontSize = fontSize.toFloat()
-        color = Color.BLACK
+    val paint = android.graphics.Paint().apply {
+        this.textSize = fontSize.toFloat()
+        color = AndroidColor.BLACK
         isAntiAlias = true
         
         typeface = when (fontFamily.lowercase()) {

@@ -56,7 +56,7 @@ fun PaletteGeneratorScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Palette Generator", navController) }
+        topBar = { ToolTopBar("Palette Generator") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

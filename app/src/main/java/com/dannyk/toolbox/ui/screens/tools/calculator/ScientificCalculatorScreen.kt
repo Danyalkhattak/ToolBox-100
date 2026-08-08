@@ -259,7 +259,7 @@ fun ScientificCalculatorScreen(navHostController: NavHostController) {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SciCalcButton(text = "0", modifier = Modifier.weight(2f)) {
-                handleDigit("0", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                handleDigit("0", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
             }
             SciCalcButton(text = ".") {
                 if (!currentInput.contains(".")) {

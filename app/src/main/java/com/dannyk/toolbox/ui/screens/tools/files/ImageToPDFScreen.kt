@@ -59,7 +59,7 @@ fun ImageToPDFScreen(navController: NavHostController) {
     var showSuccessMessage by remember { mutableStateOf<String?>(null) }
 
     val imagePickerLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetMultipleContent()
+        contract = ActivityResultContracts.GetMultipleContents()
     ) { uris: List<Uri> ->
         if (uris.isNotEmpty()) {
             selectedImages = uris

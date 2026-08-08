@@ -162,10 +162,10 @@ fun MetronomeScreen(navHostController: NavHostController) {
                         } else 1f
                         
                         val color = when {
-                            !isPlaying -> MaterialTheme.colorScheme.surfaceContainerest
+                            !isPlaying -> MaterialTheme.colorScheme.surfaceContainerLowest
                             isActiveBeat && isFirstBeat -> MaterialTheme.colorScheme.primary
                             isActiveBeat -> MaterialTheme.colorScheme.secondary
-                            else -> MaterialTheme.colorScheme.surfaceContainerest
+                            else -> MaterialTheme.colorScheme.surfaceContainerLowest
                         }
                         
                         Box(
@@ -381,7 +381,7 @@ fun MetronomeScreen(navHostController: NavHostController) {
                                                         if (index == 0) MaterialTheme.colorScheme.primary
                                                         else MaterialTheme.colorScheme.secondary
                                                     else 
-                                                        MaterialTheme.colorScheme.surfaceContainerest
+                                                        MaterialTheme.colorScheme.surfaceContainerLowest
                                                 )
                                         )
                                     }

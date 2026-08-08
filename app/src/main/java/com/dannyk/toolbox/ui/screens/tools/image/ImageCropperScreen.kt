@@ -89,7 +89,7 @@ fun ImageCropperScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("Image Cropper", navController) }
+        topBar = { ToolTopBar("Image Cropper") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier

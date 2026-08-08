@@ -351,7 +351,7 @@ private fun NoteCard(
                 // Pin icon for pinned notes
                 if (note.isPinned) {
                     Icon(
-                        imageVector = Icons.Default.PushPin,
+                        imageVector = Icons.Default.Star,
                         contentDescription = "Pinned",
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(18.dp)
@@ -391,7 +391,7 @@ private fun NoteCard(
                             text = { 
                                 Row {
                                     Icon(
-                                        if (note.isPinned) Icons.Default.PushPin else Icons.Outlined.PushPin,
+                                        if (note.isPinned) Icons.Default.Star else Icons.Outlined.Star,
                                         null,
                                         modifier = Modifier.size(18.dp)
                                     )

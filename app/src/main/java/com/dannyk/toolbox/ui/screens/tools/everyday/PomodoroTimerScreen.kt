@@ -27,8 +27,8 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import kotlin.math.*
-import androidx.compose.ui.unit.Size
 import androidx.compose.runtime.LaunchedEffect
 
 data class PomodoroSession(
@@ -388,7 +388,7 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
                                               (currentSessionType != SessionType.WORK && index < currentSessionNumber - 1 + 1)) {
                                         Color(0xFFE53935)
                                     } else {
-                                        MaterialTheme.colorScheme.surfaceContainerest
+                                        MaterialTheme.colorScheme.surfaceContainerLowest
                                     }
                                 ),
                             contentAlignment = Alignment.Center

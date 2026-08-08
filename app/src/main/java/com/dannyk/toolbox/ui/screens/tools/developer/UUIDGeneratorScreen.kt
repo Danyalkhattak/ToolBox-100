@@ -321,11 +321,11 @@ fun UUIDGeneratorScreen(navController: NavHostController) {
 
                         // Legend
                         listOf(
-                            Pair("time_low", "32-bit timestamp (random in v4)", MaterialTheme.colorScheme.primaryContainer),
-                            Pair("time_mid", "16-bit timestamp (random in v4)", MaterialTheme.colorScheme.secondaryContainer),
-                            Pair("ver", "4-bit version (always 4)", MaterialTheme.colorScheme.tertiaryContainer),
-                            Pair("variant", "1-3 bit variant + clock seq", MaterialTheme.colorScheme.errorContainer),
-                            Pair("node", "48-bit node ID (random)", MaterialTheme.colorScheme.surfaceVariant)
+                            Triple("time_low", "32-bit timestamp (random in v4)", MaterialTheme.colorScheme.primaryContainer),
+                            Triple("time_mid", "16-bit timestamp (random in v4)", MaterialTheme.colorScheme.secondaryContainer),
+                            Triple("ver", "4-bit version (always 4)", MaterialTheme.colorScheme.tertiaryContainer),
+                            Triple("variant", "1-3 bit variant + clock seq", MaterialTheme.colorScheme.errorContainer),
+                            Triple("node", "48-bit node ID (random)", MaterialTheme.colorScheme.surfaceVariant)
                         ).forEach { (name, desc, color) ->
                             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = 2.dp)) {
                                 Surface(shape = MaterialTheme.shapes.extraSmall, color = color) {

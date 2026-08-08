@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.SwapVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -59,7 +60,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { ToolTopBar("WCAG Contrast Checker", navController) }
+        topBar = { ToolTopBar("WCAG Contrast Checker") { navController.navigateUp() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -321,7 +322,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     Triple("Red/White", Color.RED, Color.WHITE),
                     Triple("Green/White", Color.GREEN, Color.WHITE),
                     Triple("Orange/White", Color.parseColor("#E65100"), Color.WHITE),
-                    Triple("Teal/Dark", Color.TEAL, Color.parseColor("#263238")),
+                    Triple("Teal/Dark", Color.parseColor("#009688"), Color.parseColor("#263238")),
                     Triple("Amber/Black", Color.parseColor("#FFC107"), Color.BLACK),
                 ).forEach { (name, fg, bg) ->
                     Surface(
@@ -470,7 +471,7 @@ private fun RgbMiniInput(
             singleLine = true,
             textStyle = MaterialTheme.typography.bodySmall.copy(
                 fontFamily = FontFamily.Monospace,
-                textAlign = androidx.compose.ui.style.TextAlign.Center
+                textAlign = TextAlign.Center
             ),
             modifier = Modifier.width(70.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -560,15 +561,15 @@ private fun ComplianceCard(
     }
 }
 
-private fun calculateContrastRatio(r1: Int, g1: Int, b1: Int, r2: Int, g2: Int, b2: Int): Float {
+private fun calculateContrastRatio(r1: Int, g1: Int, b1: Int, r2: Int, g2: Int, b2: Int): Double {
     // Get relative luminance for each color
     val l1 = getRelativeLuminance(r1, g1, b1)
     val l2 = getRelativeLuminance(r2, g2, b2)
-    
+
     // Calculate contrast ratio
     val lighter = maxOf(l1, l2)
     val darker = minOf(l1, l2)
-    
+
     return ((lighter + 0.05) / (darker + 0.05))
 }
 

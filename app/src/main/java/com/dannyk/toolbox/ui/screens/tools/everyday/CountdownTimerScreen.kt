@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -333,8 +334,8 @@ fun CountdownTimerScreen(navHostController: NavHostController) {
             ) {
                 items(presets) { (label, duration) ->
                     FilterChip(
-                        selected = totalDuration == duration && 
-                                   inputMinutes == TimeUnit.MILLISECONDS.toMinutes(duration) &&
+                        selected = totalDuration == duration &&
+                                   inputMinutes.toLong() == TimeUnit.MILLISECONDS.toMinutes(duration) &&
                                    inputSeconds == (TimeUnit.MILLISECONDS.toSeconds(duration) % 60).toInt(),
                         onClick = {
                             totalDuration = duration

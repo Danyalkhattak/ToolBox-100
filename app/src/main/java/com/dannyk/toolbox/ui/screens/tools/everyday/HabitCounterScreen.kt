@@ -14,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.border
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -417,7 +418,7 @@ fun HabitCounterScreen(navHostController: NavHostController) {
                                     .clip(RoundedCornerShape(4.dp)),
                                 color = if (isCompleted) MaterialTheme.colorScheme.primary 
                                        else habitColors[habit.colorIndex % habitColors.size],
-                                trackColor = MaterialTheme.colorScheme.surfaceContainerest
+                                trackColor = MaterialTheme.colorScheme.surfaceContainerLowest
                             )
                             
                             Spacer(modifier = Modifier.height(12.dp))
