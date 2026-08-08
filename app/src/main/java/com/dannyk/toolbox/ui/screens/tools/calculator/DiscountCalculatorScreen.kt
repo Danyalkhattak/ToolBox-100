@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import java.text.DecimalFormat
-import java.util.*
 
 @Composable
 fun DiscountCalculatorScreen(navHostController: NavHostController) {
@@ -517,6 +516,6 @@ private fun formatCurrency(amount: String): String {
 
 private fun copyToClipboard(context: Context, text: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    val clip = ClipData.newClipboardItem(ClipData.newPlainText("Discount Result", text))
-    clipboard.setPrimaryClip(clip.clipDescription?.label.toString(), clip)
+    val clip = ClipData.newPlainText("Discount Result", text)
+    clipboard.setPrimaryClip(clip)
 }

@@ -101,7 +101,7 @@ fun QRCodeGeneratorScreen(
                         placeholder = { Text("https://example.com") },
                         singleLine = false,
                         maxLines = 4,
-                        keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
+                        keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text
                         ),
                         leadingIcon = {

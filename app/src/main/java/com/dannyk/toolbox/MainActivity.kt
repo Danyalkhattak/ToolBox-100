@@ -13,6 +13,7 @@ import com.dannyk.toolbox.ui.navigation.ToolBoxNavHost
 import com.dannyk.toolbox.ui.theme.ToolBoxTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {

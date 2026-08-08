@@ -29,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -226,6 +227,8 @@ fun UpdateDialog(
 ) {
     if (!show || info == null) return
     
+    val context = LocalContext.current
+    
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
@@ -322,7 +325,7 @@ fun UpdateDialog(
         },
         confirmButton = {
             if (info.hasUpdate && info.releaseUrl != null) {
-                Button(onClick = { onOpenRelease }) {
+                Button(onClick = { onOpenRelease(it) }) {
                     Text("Download Update")
                 }
             } else {
