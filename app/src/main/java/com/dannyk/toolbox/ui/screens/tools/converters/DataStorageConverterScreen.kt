@@ -23,6 +23,7 @@ import java.math.RoundingMode
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Divider
+import androidx.compose.ui.draw.clip
 
 enum class DataUnit(val displayName: String, val toByteBinary: BigDecimal, val toByteDecimal: BigDecimal) {
     BIT("Bit (b)", BigDecimal("0.125"), BigDecimal("0.125")),

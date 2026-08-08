@@ -21,6 +21,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 
 enum class LengthUnit(val displayName: String, val toMeter: Double) {
     MILLIMETER("Millimeter (mm)", 0.001),

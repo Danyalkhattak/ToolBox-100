@@ -30,6 +30,7 @@ import java.util.Calendar
 import android.content.Context
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.material.icons.filled.Check
 
 data class Habit(
     val id: Int,

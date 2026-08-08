@@ -23,6 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
 import android.content.Context
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.Check
 
 @Composable
 fun PowerCalculatorScreen(navController: NavHostController) {

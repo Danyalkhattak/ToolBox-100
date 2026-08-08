@@ -21,6 +21,7 @@ import com.dannyk.toolbox.ui.components.ResultCard
 import java.text.DecimalFormat
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.draw.clip
 
 @Composable
 fun PercentageCalculatorScreen(navHostController: NavHostController) {

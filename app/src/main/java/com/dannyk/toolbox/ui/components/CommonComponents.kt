@@ -23,6 +23,7 @@ import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.domain.model.Tool
 import androidx.compose.ui.graphics.Color
 import android.content.Context
+import androidx.compose.material.icons.filled.Check
 
 // Icon mapping for tool icons
 @Composable

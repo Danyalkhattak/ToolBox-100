@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Divider
+import androidx.compose.ui.draw.clip
 
 enum class TemperatureUnit(val displayName: String) {
     CELSIUS("Celsius (°C)"),

@@ -21,6 +21,10 @@ import java.nio.charset.StandardCharsets
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.ArrowForward
 
 @Composable
 fun URLEncoderScreen(navController: NavHostController) {

@@ -40,6 +40,7 @@ import android.content.Intent
 import android.content.ClipboardManager
 import android.content.ClipData
 import android.content.Context
+import androidx.compose.ui.draw.clip
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

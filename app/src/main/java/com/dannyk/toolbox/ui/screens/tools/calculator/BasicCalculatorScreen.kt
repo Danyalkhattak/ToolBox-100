@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import java.util.*
+import androidx.compose.ui.draw.clip
 
 @Composable
 fun BasicCalculatorScreen(navHostController: NavHostController) {

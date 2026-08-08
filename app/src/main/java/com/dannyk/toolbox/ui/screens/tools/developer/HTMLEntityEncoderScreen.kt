@@ -19,6 +19,11 @@ import com.dannyk.toolbox.ui.components.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Check
 
 @Composable
 fun HTMLEntityEncoderScreen(navController: NavHostController) {

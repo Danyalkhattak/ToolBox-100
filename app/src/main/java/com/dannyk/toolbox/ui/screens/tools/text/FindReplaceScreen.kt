@@ -24,6 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.Check
+import java.util.regex.Pattern
 
 data class MatchInfo(
     val start: Int,

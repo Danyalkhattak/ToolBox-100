@@ -25,6 +25,8 @@ import kotlin.math.pow
 import kotlin.math.roundToInt
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.Check
 
 @Composable
 fun BMICalculatorScreen(navHostController: NavHostController) {

@@ -25,6 +25,8 @@ import com.dannyk.toolbox.ui.components.ToolScreenLayout
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.ui.draw.clip
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

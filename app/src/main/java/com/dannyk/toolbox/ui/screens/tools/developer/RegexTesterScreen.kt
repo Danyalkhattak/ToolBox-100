@@ -27,6 +27,9 @@ import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.ErrorOutline
 
 @Composable
 fun RegexTesterScreen(navController: NavHostController) {

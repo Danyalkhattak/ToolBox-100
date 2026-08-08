@@ -26,6 +26,13 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 
 @Composable
 fun CountdownTimerScreen(navHostController: NavHostController) {

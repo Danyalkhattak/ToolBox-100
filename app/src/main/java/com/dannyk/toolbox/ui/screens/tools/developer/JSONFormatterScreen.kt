@@ -21,6 +21,11 @@ import org.json.JSONArray
 import org.json.JSONObject
 import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.pushStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.toAnnotatedString
+import androidx.compose.material.icons.filled.ErrorOutline
 
 @Composable
 fun JSONFormatterScreen(navController: NavHostController) {

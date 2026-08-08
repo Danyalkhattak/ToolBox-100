@@ -3,6 +3,7 @@ package com.dannyk.toolbox.tools
 import com.dannyk.toolbox.domain.model.Category
 import com.dannyk.toolbox.domain.model.Tool
 import androidx.compose.ui.graphics.Color
+import androidx.compose.material.icons.filled.Check
 
 object ToolRegistry {
     

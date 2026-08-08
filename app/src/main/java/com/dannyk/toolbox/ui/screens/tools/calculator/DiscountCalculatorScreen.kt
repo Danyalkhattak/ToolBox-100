@@ -22,6 +22,9 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import java.text.DecimalFormat
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.Check
 
 @Composable
 fun DiscountCalculatorScreen(navHostController: NavHostController) {

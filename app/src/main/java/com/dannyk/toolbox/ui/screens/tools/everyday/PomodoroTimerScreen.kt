@@ -26,6 +26,7 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
+import androidx.compose.material.icons.filled.Check
 
 data class PomodoroSession(
     val id: Int,

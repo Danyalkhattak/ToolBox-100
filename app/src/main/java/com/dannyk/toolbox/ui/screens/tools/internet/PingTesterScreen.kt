@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import android.content.Context
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material.icons.filled.Check
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

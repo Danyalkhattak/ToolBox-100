@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.Context
 import androidx.compose.material3.Divider
+import java.util.regex.Pattern
 
 @Composable
 fun JSONValidatorScreen(navController: NavHostController) {

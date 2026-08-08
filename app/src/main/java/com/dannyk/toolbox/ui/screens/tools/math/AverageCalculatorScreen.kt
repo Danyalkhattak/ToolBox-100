@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.ui.draw.clip
 
 @Composable
 fun AverageCalculatorScreen(navController: NavHostController) {

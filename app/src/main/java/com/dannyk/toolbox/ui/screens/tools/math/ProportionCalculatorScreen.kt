@@ -15,6 +15,8 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.ErrorOutline
 
 @Composable
 fun ProportionCalculatorScreen(navController: NavHostController) {

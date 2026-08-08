@@ -33,6 +33,10 @@ import java.io.FileInputStream
 import java.security.MessageDigest
 import android.content.ClipboardManager
 import android.content.ClipData
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.ui.draw.clip
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

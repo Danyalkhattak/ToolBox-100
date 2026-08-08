@@ -27,6 +27,9 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import kotlin.random.Random
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.ui.graphics.graphicsLayer
 
 enum class CoinSide(val displayName: String, val emoji: String) {
     HEADS("Heads", "H"),

@@ -21,6 +21,10 @@ import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Warning
+import java.text.DecimalFormat
 
 @Composable
 fun RandomNumberGeneratorScreen(navController: NavHostController) {
