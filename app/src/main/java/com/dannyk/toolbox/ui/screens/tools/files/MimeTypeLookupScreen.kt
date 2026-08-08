@@ -25,6 +25,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolScreenLayout
+import androidx.compose.ui.graphics.Color
+import android.content.ClipboardManager
+import android.content.ClipData
+import android.content.Context
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

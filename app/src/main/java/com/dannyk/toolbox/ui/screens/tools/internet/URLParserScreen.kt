@@ -22,6 +22,11 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLDecoder
 import java.net.URLEncoder
+import androidx.compose.ui.graphics.Color
+import android.content.ClipboardManager
+import android.content.ClipData
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

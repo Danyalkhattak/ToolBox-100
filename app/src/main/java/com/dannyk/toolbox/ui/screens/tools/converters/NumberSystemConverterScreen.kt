@@ -18,6 +18,9 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.Divider
 
 enum class NumberSystem(val displayName: String, val base: Int, val prefix: String) {
     BINARY("Binary (Base 2)", 2, "0b"),

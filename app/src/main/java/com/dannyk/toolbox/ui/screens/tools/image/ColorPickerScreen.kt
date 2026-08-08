@@ -31,6 +31,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
 import kotlin.math.roundToInt
+import android.content.ClipboardManager
+import android.content.Context
 
 // Material Design color palette data
 private val materialColors = mapOf(

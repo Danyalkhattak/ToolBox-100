@@ -19,6 +19,9 @@ import android.content.Context
 import android.widget.Toast
 import java.math.BigDecimal
 import java.math.RoundingMode
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.Divider
 
 enum class TimeUnit(val displayName: String, val toSecond: BigDecimal) {
     NANOSECOND("Nanosecond (ns)", BigDecimal("0.000000001")),

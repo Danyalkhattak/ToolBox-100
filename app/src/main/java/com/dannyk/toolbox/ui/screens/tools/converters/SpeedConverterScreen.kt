@@ -17,6 +17,9 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.Divider
 
 enum class SpeedUnit(val displayName: String, val toMetersPerSecond: Double) {
     METERS_PER_SECOND("Meters per second (m/s)", 1.0),

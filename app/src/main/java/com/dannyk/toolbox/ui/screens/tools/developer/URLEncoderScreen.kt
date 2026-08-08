@@ -18,6 +18,9 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.*
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.ClipboardManager
 
 @Composable
 fun URLEncoderScreen(navController: NavHostController) {

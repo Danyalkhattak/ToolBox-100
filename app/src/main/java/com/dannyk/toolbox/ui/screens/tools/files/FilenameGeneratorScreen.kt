@@ -23,6 +23,9 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolScreenLayout
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

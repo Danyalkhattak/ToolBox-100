@@ -25,6 +25,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
 import java.security.SecureRandom
+import android.content.ClipboardManager
+import android.content.ClipData
+import android.content.Context
+import androidx.compose.foundation.clickable
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

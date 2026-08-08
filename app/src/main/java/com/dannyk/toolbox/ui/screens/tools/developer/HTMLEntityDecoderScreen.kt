@@ -16,6 +16,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.*
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.ClipboardManager
 
 @Composable
 fun HTMLEntityDecoderScreen(navController: NavHostController) {

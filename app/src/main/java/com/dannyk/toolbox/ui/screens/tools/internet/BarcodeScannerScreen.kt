@@ -38,6 +38,9 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import com.google.zxing.BarcodeFormat
+import androidx.compose.ui.text.font.FontWeight
+import android.content.ClipboardManager
+import android.content.ClipData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

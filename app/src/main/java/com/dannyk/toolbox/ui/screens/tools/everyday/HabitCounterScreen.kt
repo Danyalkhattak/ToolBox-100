@@ -27,6 +27,9 @@ import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.launch
 import java.util.Calendar
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 
 data class Habit(
     val id: Int,

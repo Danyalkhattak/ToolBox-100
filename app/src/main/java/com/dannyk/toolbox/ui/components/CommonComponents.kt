@@ -21,6 +21,8 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.domain.model.Tool
+import androidx.compose.ui.graphics.Color
+import android.content.Context
 
 // Icon mapping for tool icons
 @Composable

@@ -23,6 +23,8 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.clickable
 
 @Composable
 fun BMICalculatorScreen(navHostController: NavHostController) {

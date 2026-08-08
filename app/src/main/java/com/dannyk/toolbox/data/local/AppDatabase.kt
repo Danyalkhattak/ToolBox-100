@@ -3,6 +3,7 @@ package com.dannyk.toolbox.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.dannyk.toolbox.data.local.entity.NoteEntity
+import android.content.Context
 
 @Database(
     entities = [NoteEntity::class],

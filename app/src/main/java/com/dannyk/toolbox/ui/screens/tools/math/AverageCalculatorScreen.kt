@@ -15,6 +15,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.*
 import kotlin.math.sqrt
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.ClipboardManager
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @Composable
 fun AverageCalculatorScreen(navController: NavHostController) {

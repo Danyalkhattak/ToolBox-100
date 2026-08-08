@@ -34,6 +34,8 @@ import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.compose.ui.graphics.Color
+import android.content.Intent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

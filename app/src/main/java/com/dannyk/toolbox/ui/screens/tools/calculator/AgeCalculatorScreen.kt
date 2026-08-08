@@ -18,6 +18,7 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.compose.foundation.clickable
 
 @Composable
 fun AgeCalculatorScreen(navHostController: NavHostController) {

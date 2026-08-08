@@ -30,6 +30,9 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import kotlin.random.Random
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 data class DiceResult(
     val id: Int,

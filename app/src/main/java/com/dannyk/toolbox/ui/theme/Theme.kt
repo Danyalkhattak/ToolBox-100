@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
+import android.content.Context
 
 private val LightColorScheme = lightColorScheme(
     primary = Color(0xFF6750A4),

@@ -33,6 +33,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.Intent
+import android.content.ClipboardManager
+import android.content.ClipData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -20,6 +20,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
 import java.security.MessageDigest
+import android.content.ClipboardManager
+import android.content.ClipData
+import android.content.Context
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

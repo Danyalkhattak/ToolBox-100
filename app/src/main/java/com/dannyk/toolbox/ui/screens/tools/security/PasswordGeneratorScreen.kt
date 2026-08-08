@@ -28,6 +28,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import java.security.SecureRandom
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

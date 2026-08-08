@@ -21,6 +21,9 @@ import com.dannyk.toolbox.domain.model.Category
 import com.dannyk.toolbox.tools.ToolRegistry
 import com.dannyk.toolbox.ui.components.*
 import kotlinx.coroutines.launch
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.Context
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

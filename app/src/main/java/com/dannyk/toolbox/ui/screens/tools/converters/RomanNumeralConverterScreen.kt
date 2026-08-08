@@ -22,6 +22,9 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.Divider
 
 // Roman numeral symbols and their values (sorted by value descending)
 private val ROMAN_VALUES = listOf(

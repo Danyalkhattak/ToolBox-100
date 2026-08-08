@@ -18,6 +18,8 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @Composable
 fun DateDifferenceScreen(navHostController: NavHostController) {

@@ -1,4 +1,5 @@
 package com.dannyk.toolbox.domain.model
+import androidx.compose.ui.graphics.Color
 
 enum class Category(
     val displayName: String,

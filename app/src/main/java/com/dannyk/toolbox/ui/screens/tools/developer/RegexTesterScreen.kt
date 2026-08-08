@@ -25,6 +25,8 @@ import com.dannyk.toolbox.ui.components.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
+import androidx.compose.ui.text.font.FontWeight
+import android.content.ClipboardManager
 
 @Composable
 fun RegexTesterScreen(navController: NavHostController) {

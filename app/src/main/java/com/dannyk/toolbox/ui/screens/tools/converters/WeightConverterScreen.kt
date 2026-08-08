@@ -17,6 +17,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
 
 enum class WeightUnit(val displayName: String, val toKilogram: Double) {
     MILLIGRAM("Milligram (mg)", 0.000001),

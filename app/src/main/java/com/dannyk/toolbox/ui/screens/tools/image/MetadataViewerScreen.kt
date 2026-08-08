@@ -36,6 +36,9 @@ import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.compose.ui.graphics.Color
+import android.content.Intent
+import android.content.ClipboardManager
 
 data class ExifMetadata(
     // Camera info

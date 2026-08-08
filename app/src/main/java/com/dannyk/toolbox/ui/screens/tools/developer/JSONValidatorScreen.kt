@@ -18,6 +18,10 @@ import com.dannyk.toolbox.ui.components.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.Context
+import androidx.compose.material3.Divider
 
 @Composable
 fun JSONValidatorScreen(navController: NavHostController) {

@@ -21,6 +21,10 @@ import com.dannyk.toolbox.ui.components.ToolTopAppBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.ClipboardManager
+import android.content.ClipData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

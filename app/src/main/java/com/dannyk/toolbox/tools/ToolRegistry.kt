@@ -2,6 +2,7 @@ package com.dannyk.toolbox.tools
 
 import com.dannyk.toolbox.domain.model.Category
 import com.dannyk.toolbox.domain.model.Tool
+import androidx.compose.ui.graphics.Color
 
 object ToolRegistry {
     

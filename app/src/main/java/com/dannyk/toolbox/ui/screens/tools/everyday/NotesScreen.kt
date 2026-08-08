@@ -22,6 +22,9 @@ import com.dannyk.toolbox.data.local.entity.NoteEntity
 import com.dannyk.toolbox.ui.components.SearchBar
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.launch
+import androidx.compose.ui.graphics.Color
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun NotesScreen(navHostController: NavHostController) {

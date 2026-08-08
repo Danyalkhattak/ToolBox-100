@@ -39,6 +39,8 @@ import com.dannyk.toolbox.BuildConfig
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import kotlinx.coroutines.launch
+import android.content.Context
+import androidx.compose.material3.Divider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

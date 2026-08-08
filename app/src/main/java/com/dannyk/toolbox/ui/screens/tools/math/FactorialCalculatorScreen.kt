@@ -19,6 +19,12 @@ import java.math.BigDecimal
 import java.math.BigInteger
 import java.math.MathContext
 import java.text.DecimalFormat
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import android.content.ClipboardManager
+import android.content.Context
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 
 @Composable
 fun FactorialCalculatorScreen(navController: NavHostController) {

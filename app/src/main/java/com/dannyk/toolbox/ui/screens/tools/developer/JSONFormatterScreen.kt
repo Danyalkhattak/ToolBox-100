@@ -19,6 +19,8 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.*
 import org.json.JSONArray
 import org.json.JSONObject
+import androidx.compose.ui.text.font.FontWeight
+import android.content.ClipboardManager
 
 @Composable
 fun JSONFormatterScreen(navController: NavHostController) {

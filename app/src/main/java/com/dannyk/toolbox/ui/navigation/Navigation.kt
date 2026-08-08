@@ -27,6 +27,7 @@ import com.dannyk.toolbox.ui.screens.tools.image.*
 import com.dannyk.toolbox.ui.screens.tools.files.*
 // Everyday Tools
 import com.dannyk.toolbox.ui.screens.tools.everyday.*
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun ToolBoxNavHost(
