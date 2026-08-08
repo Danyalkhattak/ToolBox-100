@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import java.text.DecimalFormat
 import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
 @Composable
 fun SquareRootCalculatorScreen(navController: NavHostController) {

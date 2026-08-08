@@ -278,73 +278,73 @@ private fun minifyJson(json: String): String {
 // Simple syntax highlighting for JSON display
 @Composable
 private fun highlightJsonSyntax(json: String): androidx.compose.ui.text.AnnotatedString {
-    val builder = androidx.compose.ui.text.buildAnnotatedString()
+    return buildAnnotatedString
     
     var i = 0
     while (i < json.length) {
         when (json[i]) {
             '{', '}' -> {
-                builder.pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFCE9178)))
-                builder.append(json[i])
-                builder.pop()
+                pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFCE9178)))
+                append(json[i])
+                pop()
             }
             '[', ']' -> {
-                builder.pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFFFD700)))
-                builder.append(json[i])
-                builder.pop()
+                pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFFFD700)))
+                append(json[i])
+                pop()
             }
             ':' -> {
-                builder.pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFFFFFFF)))
-                builder.append(json[i])
-                builder.pop()
+                pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFFFFFFF)))
+                append(json[i])
+                pop()
             }
             ',' -> {
-                builder.pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFFFFFFF)))
-                builder.append(json[i])
-                builder.pop()
+                pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFFFFFFF)))
+                append(json[i])
+                pop()
             }
             '"' -> {
                 // Find the end of the string
-                builder.pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFF6A9955)))
-                builder.append('"')
+                pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFF6A9955)))
+                append('"')
                 i++
                 while (i < json.length && json[i] != '"') {
                     if (json[i] == '\\') {
-                        builder.append(json[i])
+                        append(json[i])
                         i++
                         if (i < json.length) {
-                            builder.append(json[i])
+                            append(json[i])
                         }
                     } else {
-                        builder.append(json[i])
+                        append(json[i])
                     }
                     i++
                 }
                 if (i < json.length) {
-                    builder.append('"')
+                    append('"')
                 }
-                builder.pop()
+                pop()
             }
             in '0'..'9', '-' -> {
-                builder.pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFB5CEA8)))
+                pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFFB5CEA8)))
                 while (i < json.length && (json[i].isDigit() || json[i] == '.' || json[i] == '-' || json[i] == '+' || json[i] == 'e' || json[i] == 'E')) {
-                    builder.append(json[i])
+                    append(json[i])
                     i++
                 }
-                builder.pop()
+                pop()
                 continue
             }
             ' ', '\t', '\n', '\r' -> {
-                builder.pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFF808080)))
-                builder.append(json[i])
-                builder.pop()
+                pushStyle(androidx.compose.ui.text.SpanStyle(color = Color(0xFF808080)))
+                append(json[i])
+                pop()
             }
             else -> {
-                builder.append(json[i])
+                append(json[i])
             }
         }
         i++
     }
     
-    return builder.toAnnotatedString()
+    return toAnnotatedString()
 }

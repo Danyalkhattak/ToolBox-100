@@ -128,6 +128,10 @@ fun CountdownTimerScreen(navHostController: NavHostController) {
             contentAlignment = Alignment.Center
         ) {
             // Progress ring
+                val _errorColor = MaterialTheme.colorScheme.error
+                val _primaryColor = MaterialTheme.colorScheme.primary
+                val _surfacevariantColor = MaterialTheme.colorScheme.surfaceVariant
+                val _tertiaryColor = MaterialTheme.colorScheme.tertiary
             Canvas(modifier = Modifier.size(if (isCompleted) 240.dp * pulseScale else 240.dp)) {
                 val strokeWidth = 12.dp.toPx()
                 val diameter = size.minDimension - strokeWidth
@@ -139,7 +143,7 @@ fun CountdownTimerScreen(navHostController: NavHostController) {
                 
                 // Background arc
                 drawArc(
-                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    color = _surfacevariantColor,
                     startAngle = -90f,
                     sweepAngle = 360f,
                     useCenter = false,
@@ -152,10 +156,10 @@ fun CountdownTimerScreen(navHostController: NavHostController) {
                 if (!isInputMode) {
                     val sweepAngle = -360f * animatedProgress.value
                     val progressColor = when {
-                        isCompleted -> MaterialTheme.colorScheme.error
-                        remainingTime < totalDuration * 0.1f -> MaterialTheme.colorScheme.error
-                        remainingTime < totalDuration * 0.3f -> MaterialTheme.colorScheme.tertiary
-                        else -> MaterialTheme.colorScheme.primary
+                        isCompleted -> _errorColor
+                        remainingTime < totalDuration * 0.1f -> _errorColor
+                        remainingTime < totalDuration * 0.3f -> _tertiaryColor
+                        else -> _primaryColor
                     }
                     
                     drawArc(

@@ -86,9 +86,11 @@ fun StopwatchScreen(navHostController: NavHostController) {
             contentAlignment = Alignment.Center
         ) {
             // Progress ring background
+                val _primaryColor = MaterialTheme.colorScheme.primary
+                val _surfacevariantColor = MaterialTheme.colorScheme.surfaceVariant
             Canvas(modifier = Modifier.size(240.dp)) {
                 drawArc(
-                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    color = _surfacevariantColor,
                     startAngle = -90f,
                     sweepAngle = 360f,
                     useCenter = false,
@@ -98,7 +100,7 @@ fun StopwatchScreen(navHostController: NavHostController) {
                 // Animated progress arc when running
                 if (isRunning) {
                     drawArc(
-                        color = MaterialTheme.colorScheme.primary,
+                        color = _primaryColor,
                         startAngle = -90f,
                         sweepAngle = 360f * animatedProgress,
                         useCenter = false,

@@ -33,6 +33,7 @@ import android.content.ClipboardManager
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Divider
 import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

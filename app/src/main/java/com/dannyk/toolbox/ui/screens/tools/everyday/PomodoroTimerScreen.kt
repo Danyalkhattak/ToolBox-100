@@ -226,13 +226,14 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
             contentAlignment = Alignment.Center
         ) {
             // Progress ring
+                val _surfacevariantColor = MaterialTheme.colorScheme.surfaceVariant
             Canvas(modifier = Modifier.size(220.dp)) {
                 val strokeWidth = 10.dp.toPx()
                 val diameter = size.minDimension - strokeWidth
                 
                 // Background arc
                 drawArc(
-                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    color = _surfacevariantColor,
                     startAngle = -90f,
                     sweepAngle = 360f,
                     useCenter = false,

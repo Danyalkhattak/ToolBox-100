@@ -43,6 +43,7 @@ import android.content.ClipboardManager
 import android.content.ClipData
 import androidx.compose.ui.view.AndroidView
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.horizontalScroll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

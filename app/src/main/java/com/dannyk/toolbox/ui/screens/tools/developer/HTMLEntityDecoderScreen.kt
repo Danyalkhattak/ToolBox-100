@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.text.HtmlCompat
 import androidx.compose.foundation.ScrollState
+import androidx.core.text.HtmlCompat
 
 @Composable
 fun HTMLEntityDecoderScreen(navController: NavHostController) {

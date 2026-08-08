@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import android.content.Context
 import androidx.compose.material.icons.filled.Check
 import com.dannyk.toolbox.ui.components.formatCurrency
+import com.dannyk.toolbox.ui.components.copyToClipboard
 
 // Icon mapping for tool icons
 @Composable
@@ -671,4 +672,13 @@ fun formatCurrency(amount: Double): String {
     } catch (e: Exception) {
         "$0.00"
     }
+}
+
+/**
+ * Copy text to clipboard
+ */
+@Composable
+fun copyToClipboard(context: Context, text: String) {
+    val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+    clipboardManager?.setClip(ClipData.newPlainText("Copied Text", text))
 }
