@@ -29,6 +29,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
 import androidx.compose.runtime.LaunchedEffect
+import android.graphics.Color
 
 enum class PaletteMode(val displayName: String) {
     COMPLEMENTARY("Complementary"),

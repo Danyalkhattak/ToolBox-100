@@ -50,6 +50,7 @@ import kotlin.math.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.text.font.FontFamily
+import android.net.Uri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

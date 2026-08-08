@@ -681,5 +681,5 @@ fun formatCurrency(amount: Double): String {
 @Composable
 fun copyToClipboard(context: Context, text: String) {
     val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
-    clipboardManager?.setClip(ClipData.newPlainText("Copied Text", text))
+    clipboardManager?.setPrimaryClip(ClipData.newPlainText("Copied Text", text))
 }

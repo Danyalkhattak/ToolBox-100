@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Divider
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
+import android.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

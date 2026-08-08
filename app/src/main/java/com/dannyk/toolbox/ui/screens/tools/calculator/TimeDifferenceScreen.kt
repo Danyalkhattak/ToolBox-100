@@ -386,22 +386,22 @@ fun TimeDifferenceScreen(navHostController: NavHostController) {
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     QuickTimeChip(label = "1 Hour") {
-                        setToNowMinusHours(1, ::startHour, ::startMinute, ::startSecond, ::isStartPM)
-                        setToNow(0, ::endHour, ::endMinute, ::endSecond, ::isEndPM)
+                        setToNowMinusHours(1, { startHour = it }, { startMinute = it }, { startSecond = it }, { isStartPM = it })
+                        setToNow(0, { endHour = it }, { endMinute = it }, { endSecond = it }, { isEndPM = it })
                     }
                     
                     QuickTimeChip(label = "8 Hours (Work)") {
-                        setToNowMinusHours(8, ::startHour, ::startMinute, ::startSecond, ::isStartPM)
-                        setToNow(0, ::endHour, ::endMinute, ::endSecond, ::isEndPM)
+                        setToNowMinusHours(8, { startHour = it }, { startMinute = it }, { startSecond = it }, { isStartPM = it })
+                        setToNow(0, { endHour = it }, { endMinute = it }, { endSecond = it }, { isEndPM = it })
                     }
                     
                     QuickTimeChip(label = "24 Hours") {
-                        setToNowMinusHours(24, ::startHour, ::startMinute, ::startSecond, ::isStartPM)
-                        setToNow(0, ::endHour, ::endMinute, ::endSecond, ::isEndPM)
+                        setToNowMinusHours(24, { startHour = it }, { startMinute = it }, { startSecond = it }, { isStartPM = it })
+                        setToNow(0, { endHour = it }, { endMinute = it }, { endSecond = it }, { isEndPM = it })
                     }
                     
                     QuickTimeChip(label = "Now to Midnight") {
-                        setToNow(0, ::startHour, ::startMinute, ::startSecond, ::isStartPM)
+                        setToNow(0, { startHour = it }, { startMinute = it }, { startSecond = it }, { isStartPM = it })
                         endHour = "11"
                         endMinute = "59"
                         endSecond = "59"
@@ -413,7 +413,7 @@ fun TimeDifferenceScreen(navHostController: NavHostController) {
                         startMinute = "00"
                         startSecond = "00"
                         isStartPM = true
-                        setToNow(0, ::endHour, ::endMinute, ::endSecond, ::isEndPM)
+                        setToNow(0, { endHour = it }, { endMinute = it }, { endSecond = it }, { isEndPM = it })
                     }
                 }
             }

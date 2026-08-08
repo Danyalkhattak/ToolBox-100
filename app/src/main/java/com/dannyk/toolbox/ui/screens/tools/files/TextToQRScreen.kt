@@ -38,6 +38,8 @@ import android.content.ClipboardManager
 import androidx.compose.ui.draw.clip
 import android.os.Environment
 import androidx.core.content.FileProvider
+import androidx.compose.foundation.ScrollState
+import android.net.Uri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

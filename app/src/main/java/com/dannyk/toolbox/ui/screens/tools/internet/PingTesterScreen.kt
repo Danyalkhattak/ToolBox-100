@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
 import androidx.compose.foundation.text.KeyboardOptions
+import android.net.Uri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

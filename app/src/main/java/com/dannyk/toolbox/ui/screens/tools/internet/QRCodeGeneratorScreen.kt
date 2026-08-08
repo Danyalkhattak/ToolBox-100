@@ -44,6 +44,7 @@ import androidx.compose.foundation.ScrollState
 import kotlin.math.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.LaunchedEffect
+import android.net.Uri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

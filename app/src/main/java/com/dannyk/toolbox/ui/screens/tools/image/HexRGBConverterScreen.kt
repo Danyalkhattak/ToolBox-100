@@ -30,6 +30,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.LaunchedEffect
+import android.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

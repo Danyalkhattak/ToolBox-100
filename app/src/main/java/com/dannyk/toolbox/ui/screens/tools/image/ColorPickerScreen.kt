@@ -35,6 +35,7 @@ import android.content.Context
 import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.BorderStroke
+import android.graphics.Color
 
 // Material Design color palette data
 private val materialColors = mapOf(
