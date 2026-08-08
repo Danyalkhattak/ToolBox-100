@@ -1,6 +1,5 @@
 package com.dannyk.toolbox.ui.screens.tools.files
 
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
@@ -35,6 +34,7 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
+import android.os.Environment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -37,6 +37,7 @@ import androidx.compose.material.icons.filled.Check
 import java.util.regex.Pattern
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
+import androidx.compose.runtime.LaunchedEffect
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

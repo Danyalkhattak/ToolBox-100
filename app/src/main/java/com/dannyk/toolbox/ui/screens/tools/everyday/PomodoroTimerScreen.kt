@@ -26,10 +26,10 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.ui.geometry.Offset
 import kotlin.math.*
 import androidx.compose.ui.unit.Size
+import androidx.compose.runtime.LaunchedEffect
 
 data class PomodoroSession(
     val id: Int,

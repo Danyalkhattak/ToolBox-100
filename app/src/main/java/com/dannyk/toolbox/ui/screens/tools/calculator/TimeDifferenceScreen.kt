@@ -20,7 +20,6 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.compose.ui.draw.clip
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
 import androidx.compose.foundation.horizontalScroll

@@ -45,6 +45,7 @@ import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
 import android.content.ClipData
 import androidx.compose.ui.view.AndroidView
+import androidx.compose.runtime.LaunchedEffect
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

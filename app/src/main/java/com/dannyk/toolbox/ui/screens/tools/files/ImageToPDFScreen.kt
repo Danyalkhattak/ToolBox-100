@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.ScrollState
+import android.os.Environment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

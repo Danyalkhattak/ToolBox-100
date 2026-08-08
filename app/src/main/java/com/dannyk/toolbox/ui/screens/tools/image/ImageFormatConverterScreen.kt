@@ -38,6 +38,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ScrollState
+import android.os.Environment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -2,7 +2,6 @@ package com.dannyk.toolbox.ui.screens.tools.files
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -36,11 +35,9 @@ import java.io.FileOutputStream
 import androidx.compose.ui.graphics.Color
 import android.content.Intent
 import android.content.ClipboardManager
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.ui.draw.clip
-import androidx.compose.foundation.ScrollState
+import android.os.Environment
+import androidx.core.content.FileProvider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

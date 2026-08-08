@@ -18,6 +18,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material.icons.filled.Check
 import kotlin.math.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GCDLCMScreen(navController: NavHostController) {
     var numberInput by remember { mutableStateOf("") }

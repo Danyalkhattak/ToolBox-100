@@ -21,6 +21,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
+import androidx.compose.foundation.lazy.itemsIndexed
 
 data class SentenceInfo(
     val text: String,

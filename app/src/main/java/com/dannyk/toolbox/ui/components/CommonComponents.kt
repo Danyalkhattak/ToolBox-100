@@ -25,9 +25,10 @@ import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.domain.model.Tool
 import androidx.compose.ui.graphics.Color
 import android.content.Context
-import androidx.compose.material.icons.filled.Check
 import com.dannyk.toolbox.ui.components.formatCurrency
 import com.dannyk.toolbox.ui.components.copyToClipboard
+import android.content.ClipboardManager
+import android.content.ClipData
 
 // Icon mapping for tool icons
 @Composable

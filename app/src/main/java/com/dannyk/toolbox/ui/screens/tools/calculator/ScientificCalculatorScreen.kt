@@ -27,7 +27,6 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlin.math.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 
 @Composable

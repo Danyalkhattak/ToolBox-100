@@ -19,6 +19,7 @@ import androidx.compose.material3.SegmentedButton
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
+import androidx.compose.foundation.layout.RowScope
 
 data class Fraction(val numerator: Long, val denominator: Long)
 

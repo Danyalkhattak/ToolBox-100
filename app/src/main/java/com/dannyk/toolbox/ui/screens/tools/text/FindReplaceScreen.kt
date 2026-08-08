@@ -25,9 +25,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
 import androidx.compose.ui.draw.clip
-import androidx.compose.material.icons.filled.Check
 import java.util.regex.Pattern
 import androidx.compose.foundation.ScrollState
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.runtime.LaunchedEffect
 
 data class MatchInfo(
     val start: Int,

@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import kotlin.math.*
+import androidx.compose.runtime.LaunchedEffect
 
 @Composable
 fun StopwatchScreen(navHostController: NavHostController) {

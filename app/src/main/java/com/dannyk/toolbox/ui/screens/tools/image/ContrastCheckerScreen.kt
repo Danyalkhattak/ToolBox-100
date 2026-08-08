@@ -1,6 +1,5 @@
 package com.dannyk.toolbox.ui.screens.tools.image
 
-import android.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -28,7 +27,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
-import kotlin.math.pow
 import android.content.ClipboardManager
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Divider

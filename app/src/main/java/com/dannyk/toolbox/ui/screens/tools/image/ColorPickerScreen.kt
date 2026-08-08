@@ -1,6 +1,5 @@
 package com.dannyk.toolbox.ui.screens.tools.image
 
-import android.graphics.Color
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -34,6 +33,8 @@ import kotlin.math.roundToInt
 import android.content.ClipboardManager
 import android.content.Context
 import androidx.compose.foundation.ScrollState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.foundation.BorderStroke
 
 // Material Design color palette data
 private val materialColors = mapOf(

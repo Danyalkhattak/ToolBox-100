@@ -41,7 +41,6 @@ import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import kotlinx.coroutines.launch
 import android.content.Context
 import androidx.compose.material3.Divider
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 
 @OptIn(ExperimentalMaterial3Api::class)

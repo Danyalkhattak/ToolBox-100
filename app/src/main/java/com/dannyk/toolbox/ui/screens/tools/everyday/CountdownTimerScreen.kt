@@ -30,11 +30,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
+import androidx.compose.runtime.LaunchedEffect
 
 @Composable
 fun CountdownTimerScreen(navHostController: NavHostController) {

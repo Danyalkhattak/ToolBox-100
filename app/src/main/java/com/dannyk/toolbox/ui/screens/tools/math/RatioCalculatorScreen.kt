@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.SegmentedButton
 import kotlin.math.*
+import androidx.compose.foundation.layout.RowScope
 
 @Composable
 fun RatioCalculatorScreen(navController: NavHostController) {

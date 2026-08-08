@@ -24,12 +24,10 @@ import com.dannyk.toolbox.ui.components.ToolScreenLayout
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.compose.ui.graphics.Color
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import java.util.regex.Pattern
-import androidx.compose.foundation.ScrollState
+import androidx.compose.runtime.LaunchedEffect
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,7 +56,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
     var bulkCount by remember { mutableStateOf("5") }
 
     // Generate filename on state changes
-    LaEffect(baseName, extension, includeTimestamp, timestampFormat, includeRandomString, 
+    LaunchedEffect(baseName, extension, includeTimestamp, timestampFormat, includeRandomString, 
              randomStringLength, includeSequentialNumber, sequentialNumber, useCustomTemplate, customTemplate) {
         generatedFilename = generateFilename(
             baseName = baseName,

@@ -29,6 +29,7 @@ import android.content.ClipboardManager
 import android.content.ClipData
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.ScrollState
+import androidx.compose.runtime.LaunchedEffect
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

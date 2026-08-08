@@ -2,7 +2,6 @@ package com.dannyk.toolbox.ui.screens.tools.internet
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Color
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -49,6 +48,8 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.text.font.FontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

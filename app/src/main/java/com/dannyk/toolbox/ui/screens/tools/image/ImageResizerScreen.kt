@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import android.content.Intent
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
+import android.os.Environment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

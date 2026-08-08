@@ -39,6 +39,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.CornerRadius
 import androidx.compose.foundation.ScrollState
+import androidx.compose.runtime.LaunchedEffect
 
 data class DiceResult(
     val id: Int,

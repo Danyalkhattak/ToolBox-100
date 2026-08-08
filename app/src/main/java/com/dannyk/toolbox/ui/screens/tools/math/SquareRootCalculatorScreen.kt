@@ -15,16 +15,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.*
-import kotlin.math.abs
-import kotlin.math.pow
-import kotlin.math.roundToInt
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
-import androidx.compose.material.icons.filled.Check
 import java.text.DecimalFormat
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*

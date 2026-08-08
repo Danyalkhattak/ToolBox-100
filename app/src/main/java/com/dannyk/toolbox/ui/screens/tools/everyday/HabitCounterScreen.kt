@@ -30,9 +30,9 @@ import java.util.Calendar
 import android.content.Context
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.ui.graphics.CornerRadius
 import kotlin.math.*
+import androidx.compose.runtime.LaunchedEffect
 
 data class Habit(
     val id: Int,

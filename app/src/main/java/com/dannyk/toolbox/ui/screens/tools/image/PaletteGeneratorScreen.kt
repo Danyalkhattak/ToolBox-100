@@ -1,6 +1,5 @@
 package com.dannyk.toolbox.ui.screens.tools.image
 
-import android.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -23,13 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
-import kotlin.math.roundToInt
 import android.content.ClipboardManager
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
+import androidx.compose.runtime.LaunchedEffect
 
 enum class PaletteMode(val displayName: String) {
     COMPLEMENTARY("Complementary"),
