@@ -21,13 +21,18 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import java.security.SecureRandom
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PasswordGeneratorScreen(navController: NavHostController) {
+    val context = LocalContext.current
     var passwordLength by remember { mutableIntStateOf(16) }
     var includeUppercase by remember { mutableStateOf(true) }
     var includeLowercase by remember { mutableStateOf(true) }
@@ -202,11 +207,9 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
                     
                     if (generatedPassword.isNotEmpty()) {
                         IconButton(onClick = {
-                            android.content.ClipData.newPlainText("password", generatedPassword).also { clipData ->
-                                android.app.ActivityManager.getActivity()?.let { activity ->
-                                    (activity.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager)?.setPrimaryClip(clipData)
-                                }
-                            }
+                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                            val clip = ClipData.newPlainText("password", generatedPassword)
+                            clipboard.setPrimaryClip(clip)
                             copiedMessage = true
                         }) {
                             Icon(Icons.Default.ContentCopy, contentDescription = "Copy")
@@ -437,11 +440,9 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
                                 .clip(RoundedCornerShape(8.dp))
                                 .background(MaterialTheme.colorScheme.surfaceVariant)
                                 .clickable {
-                                    android.content.ClipData.newPlainText("password", pwd).also { clipData ->
-                                        android.app.ActivityManager.getActivity()?.let { activity ->
-                                            (activity.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager)?.setPrimaryClip(clipData)
-                                        }
-                                    }
+                                    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                    val clip = ClipData.newPlainText("password", pwd)
+                                    clipboard.setPrimaryClip(clip)
                                     copiedMessage = true
                                 }
                                 .padding(12.dp),
