@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
@@ -95,7 +96,7 @@ fun SlugGeneratorScreen(navController: NavHostController) {
                 value = inputText,
                 onValueChange = { inputText = it },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder { 
+                placeholder = { 
                     Text("Example: How to Create Amazing Android Apps in 2024!") 
                 },
                 textStyle = TextStyle(fontSize = 16.sp),
@@ -222,7 +223,7 @@ fun SlugGeneratorScreen(navController: NavHostController) {
                         },
                         modifier = Modifier.fillMaxWidth(),
                         label { Text("Maximum Length (optional)") },
-                        placeholder { Text("e.g., 50 for max 50 chars") },
+                        placeholder = { Text("e.g., 50 for max 50 chars") },
                         singleLine = true,
                         leadingIcon = {
                             Icon(Icons.Default.Straighten, contentDescription = null)

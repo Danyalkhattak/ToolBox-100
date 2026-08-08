@@ -407,7 +407,7 @@ fun TokenGeneratorScreen(navController: NavHostController) {
                     useCase = "API keys, session IDs"
                 )
 
-                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                 // Base64 info
                 FormatInfoRow(
@@ -417,7 +417,7 @@ fun TokenGeneratorScreen(navController: NavHostController) {
                     useCase = "Data encoding, auth headers"
                 )
 
-                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                 // Base64URL info
                 FormatInfoRow(
@@ -427,7 +427,7 @@ fun TokenGeneratorScreen(navController: NavHostController) {
                     useCase = "JWT tokens, URL parameters"
                 )
 
-                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                 // Alphanumeric info
                 FormatInfoRow(

@@ -322,7 +322,7 @@ fun DiceRollerScreen(navHostController: NavHostController) {
                     }
                 }
                 
-                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 12.dp))
+                Divider(modifier = Modifier.padding(vertical = 12.dp))
                 
                 // Dice type selector
                 Text(

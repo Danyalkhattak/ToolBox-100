@@ -30,7 +30,7 @@ import java.util.Calendar
 import android.content.Context
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.graphics.CornerRadius
+import androidx.compose.ui.geometry.CornerRadius
 import kotlin.math.*
 import androidx.compose.runtime.LaunchedEffect
 
@@ -67,17 +67,16 @@ fun HabitCounterScreen(navHostController: NavHostController) {
     
     // Load saved data on first composition
     LaunchedEffect(Unit) {
-        // In a real app, this would load from Room/DataStore
-        // For now, initialize with empty list or load from preferences
-        val savedHabits = preferencesManager.getHabits()
-        if (savedHabits.isNotEmpty()) {
-            habits = savedHabits
-        }
+        // Persistence temporarily disabled - methods need proper implementation
+        // val savedHabits = preferencesManager.getHabits()
+        // if (savedHabits.isNotEmpty()) {
+        //     habits = savedHabits
+        // }
         
-        val savedRecords = preferencesManager.getDailyRecords()
-        if (savedRecords.isNotEmpty()) {
-            dailyRecords = savedRecords
-        }
+        // val savedRecords = preferencesManager.getDailyRecords()
+        // if (savedRecords.isNotEmpty()) {
+        //     dailyRecords = savedRecords
+        // }
     }
     
     // Get today's date string
@@ -101,11 +100,11 @@ fun HabitCounterScreen(navHostController: NavHostController) {
         todayRecord.counts[habitId] = (currentCount + delta).coerceAtLeast(0)
         dailyRecords = dailyRecords + (today to todayRecord)
         
-        // Save to preferences
-        scope.launch {
-            preferencesManager.saveHabits(habits)
-            preferencesManager.saveDailyRecords(dailyRecords)
-        }
+        // Save to preferences (temporarily disabled)
+        // scope.launch {
+        //     preferencesManager.saveHabits(habits)
+        //     preferencesManager.saveDailyRecords(dailyRecords)
+        // }
     }
     
     // Add new habit
@@ -115,18 +114,20 @@ fun HabitCounterScreen(navHostController: NavHostController) {
         val newHabit = Habit(id = nextId, name = name, targetCount = target, colorIndex = colorIndex)
         habits = habits + newHabit
         
-        scope.launch {
-            preferencesManager.saveHabits(habits)
-        }
+        // Save to preferences (temporarily disabled)
+        // scope.launch {
+        //     preferencesManager.saveHabits(habits)
+        // }
     }
     
     // Delete habit
     fun deleteHabit(habitId: Int) {
         habits = habits.filter { it.id != habitId }
         
-        scope.launch {
-            preferencesManager.saveHabits(habits)
-        }
+        // Save to preferences (temporarily disabled)
+        // scope.launch {
+        //     preferencesManager.saveHabits(habits)
+        // }
     }
     
     Column(

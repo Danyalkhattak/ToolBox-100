@@ -22,26 +22,27 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 
 @OptIn(ExperimentalMaterial3Api::class)
+
+data class HashType(
+    val name: String,
+    val hexLength: Int,
+    val bits: Int,
+    val description: String,
+    val securityStatus: String,
+    val statusColor: Color
+)
+
+data class HashMatch(
+    val hashType: HashType,
+    val confidence: Float, // 0.0 to 1.0
+    val reason: String
+)
+
 @Composable
 fun HashIdentifierScreen(navController: NavHostController) {
     var hashInput by remember { mutableStateOf("") }
     var identificationResults by remember { mutableStateOf(listOf<HashMatch>()) }
     var hasIdentified by remember { mutableStateOf(false) }
-
-    data class HashType(
-        val name: String,
-        val hexLength: Int,
-        val bits: Int,
-        val description: String,
-        val securityStatus: String,
-        val statusColor: Color
-    )
-
-    data class HashMatch(
-        val hashType: HashType,
-        val confidence: Float, // 0.0 to 1.0
-        val reason: String
-    )
 
     // Known hash types with their characteristics
     val knownHashTypes = listOf(

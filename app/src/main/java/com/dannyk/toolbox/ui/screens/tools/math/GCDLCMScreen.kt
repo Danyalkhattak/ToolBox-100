@@ -246,7 +246,7 @@ fun GCDLCMScreen(navController: NavHostController) {
                                     }
                                     
                                     if (number != res.factorizations.keys.last()) {
-                                        Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                                        Divider(modifier = Modifier.padding(vertical = 8.dp))
                                     }
                                 }
                                 

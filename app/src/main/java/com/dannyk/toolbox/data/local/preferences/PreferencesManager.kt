@@ -7,6 +7,8 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -135,5 +137,44 @@ class PreferencesManager(context: Context) {
     
     fun getDailyRecordsData(): Flow<String> = dataStore.data.map { preferences ->
         preferences[DAILY_RECORDS_KEY] ?: ""
+    }
+    
+    // Convenience methods for HabitCounterScreen (using Gson serialization)
+    private val gson = Gson()
+    
+    suspend fun <T> saveList(key: Preferences.Key<String>, items: List<T>) {
+        val json = gson.toJson(items)
+        dataStore.edit { preferences ->
+            preferences[key] = json
+        }
+    }
+    
+    suspend fun <T> getList(key: Preferences.Key<String>, typeToken: TypeToken<List<T>>): List<T> {
+        val json = dataStore.data.map { preferences -> 
+            preferences[key] ?: "" 
+        }.first()
+        return if (json.isEmpty()) emptyList() else try {
+            gson.fromJson(json, typeToken.type) ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+    
+    suspend fun <T> saveMap(key: Preferences.Key<String>, map: Map<String, T>) {
+        val json = gson.toJson(map)
+        dataStore.edit { preferences ->
+            preferences[key] = json
+        }
+    }
+    
+    suspend fun <T> getMap(key: Preferences.Key<String>, typeToken: TypeToken<Map<String, T>>): Map<String, T> {
+        val json = dataStore.data.map { preferences -> 
+            preferences[key] ?: "" 
+        }.first()
+        return if (json.isEmpty()) emptyMap() else try {
+            gson.fromJson(json, typeToken.type) ?: emptyMap()
+        } catch (e: Exception) {
+            emptyMap()
+        }
     }
 }

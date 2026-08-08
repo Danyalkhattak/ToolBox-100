@@ -293,7 +293,7 @@ fun PingTesterScreen(
                             }
                         }
 
-                        Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                        Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                         // Stats Grid
                         Row(modifier = Modifier.fillMaxWidth()) {
@@ -311,7 +311,7 @@ fun PingTesterScreen(
                             }
                         }
 
-                        Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                        Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                         Row(
                             modifier = Modifier.fillMaxWidth(),

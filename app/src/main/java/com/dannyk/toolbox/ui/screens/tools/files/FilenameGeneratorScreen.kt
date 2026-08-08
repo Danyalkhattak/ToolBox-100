@@ -141,7 +141,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
                                 }
                             },
                             label = { Text("Extension") },
-                            placeholder { Text("txt") },
+                            placeholder = { Text("txt") },
                             modifier = Modifier.weight(1f),
                             singleLine = true
                         )
@@ -243,7 +243,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
                         }
                     }
                     
-                    Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                    Divider(modifier = Modifier.padding(vertical = 8.dp))
                     
                     // Random String Option
                     Row(
@@ -293,7 +293,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
                         }
                     }
                     
-                    Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                    Divider(modifier = Modifier.padding(vertical = 8.dp))
                     
                     // Sequential Number Option
                     Row(
@@ -359,7 +359,7 @@ fun FilenameGeneratorScreen(navController: NavHostController) {
                             value = customTemplate,
                             onValueChange = { customTemplate = it },
                             label = { Text("Custom Template") },
-                            placeholder { Text("{base}_{timestamp}_{random}.{ext}") },
+                            placeholder = { Text("{base}_{timestamp}_{random}.{ext}") },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true
                         )
