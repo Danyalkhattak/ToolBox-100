@@ -208,7 +208,7 @@ private fun PercentageChangeMode(
         onValueChange = onOriginalValueChange,
         label = { Text("Original Value (X)") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-        leadingIcon = { Icon(Icons.Default.Start, contentDescription = null) },
+        leadingIcon = { Icon(Icons.Default.PlayArrow, contentDescription = null) },
         singleLine = true,
         modifier = Modifier.fillMaxWidth()
     )
@@ -220,7 +220,7 @@ private fun PercentageChangeMode(
         onValueChange = onNewValueChange,
         label = { Text("New Value (Y)") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-        leadingIcon = { Icon(Icons.Default.Finish, contentDescription = null) },
+        leadingIcon = { Icon(Icons.Default.Flag, contentDescription = null) },
         singleLine = true,
         modifier = Modifier.fillMaxWidth()
     )
@@ -360,7 +360,7 @@ private fun IncreaseDecreaseMode(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = if (isIncrease) Icons.Default.TrendingUp else Icons.Default.TrendingDown,
+                        imageVector = if (isIncrease) Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
                         contentDescription = null,
                         tint = if (isIncrease) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
                     )
@@ -400,7 +400,7 @@ private fun PartOfWholeMode(
         onValueChange = onPartValueChange,
         label = { Text("Part Value (X)") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-        leadingIcon = { Icon(Icons.Default.Fraction, contentDescription = null) },
+        leadingIcon = { Icon(Icons.Default.Calculate, contentDescription = null) },
         singleLine = true,
         modifier = Modifier.fillMaxWidth()
     )
@@ -412,7 +412,7 @@ private fun PartOfWholeMode(
         onValueChange = onWholeValueChange,
         label = { Text("Whole Value (Y)") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-        leadingIcon = { Icon(Icons.Default.DataObject, contentDescription = null) },
+        leadingIcon = { Icon(Icons.Default.DataArray, contentDescription = null) },
         singleLine = true,
         modifier = Modifier.fillMaxWidth()
     )

@@ -456,7 +456,7 @@ fun RandomChoiceScreen(navHostController: NavHostController) {
                                                 item.isEliminated -> MaterialTheme.colorScheme.errorContainer
                                                 item.wasPicked -> MaterialTheme.colorScheme.tertiaryContainer
                                                 isWinner -> MaterialTheme.colorScheme.primary
-                                                else -> MaterialTheme.colorScheme.surfaceContainerHighest
+                                                else -> MaterialTheme.colorScheme.surfaceContainerest
                                             }
                                         ),
                                     contentAlignment = Alignment.Center

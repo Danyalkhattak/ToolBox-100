@@ -326,7 +326,7 @@ private fun CalculatorButton(
         backgroundColor != Color.Unspecified -> backgroundColor
         isEquals -> MaterialTheme.colorScheme.primary
         isOperator -> MaterialTheme.colorScheme.secondaryContainer
-        else -> MaterialTheme.colorScheme.surfaceContainerHigh
+        else -> MaterialTheme.colorScheme.surfaceContainer
     }
     
     val actualContentColor = when {

@@ -136,7 +136,7 @@ fun NotesScreen(navHostController: NavHostController) {
                 .padding(horizontal = 16.dp),
             shape = RoundedCornerShape(14.dp)
         ) {
-            Icon(Icons.Default.NoteAdd, null)
+            Icon(Icons.Default.Add, null)
             Spacer(modifier = Modifier.width(8.dp))
             Text("New Note")
         }
@@ -385,7 +385,7 @@ private fun NoteCard(
                             text = { 
                                 Row {
                                     Icon(
-                                        if (note.isPinned) Icons.Default.PushPin else Icons.Default.OutlinedPushPin,
+                                        if (note.isPinned) Icons.Default.PushPin else Icons.Outlined.PushPin,
                                         null,
                                         modifier = Modifier.size(18.dp)
                                     )

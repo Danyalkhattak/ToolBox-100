@@ -109,7 +109,7 @@ fun SettingsScreen(navController: NavHostController) {
                         )
                         ThemeOption(
                             text = "Light",
-                            icon = Icons.Default.LightMode,
+                            icon = Icons.Default.LightBulb,
                             selected = selectedTheme == PreferencesManager.THEME_LIGHT,
                             onClick = {
                                 scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_LIGHT) }
@@ -119,7 +119,7 @@ fun SettingsScreen(navController: NavHostController) {
                         )
                         ThemeOption(
                             text = "Dark",
-                            icon = Icons.Default.DarkMode,
+                            icon = Icons.Default.NightsStay,
                             selected = selectedTheme == PreferencesManager.THEME_DARK,
                             onClick = {
                                 scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_DARK) }
@@ -139,7 +139,7 @@ fun SettingsScreen(navController: NavHostController) {
                     SettingsItem(
                         title = "Favorites",
                         subtitle = "Manage your favorite tools",
-                        icon = Icons.Default.Favorite,
+                        icon = Icons.Default.Star,
                         onClick = { /* Navigate to favorites */ }
                     )
                     
@@ -173,7 +173,7 @@ fun SettingsScreen(navController: NavHostController) {
                     SettingsItem(
                         title = "Check for Updates",
                         subtitle = "Check if a newer version is available",
-                        icon = Icons.Default.CloudDownload,
+                        icon = Icons.Default.Download,
                         onClick = { /* Check updates */ }
                     )
                 }
@@ -196,7 +196,7 @@ fun SettingsScreen(navController: NavHostController) {
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Construction,
+                                imageVector = Icons.Default.Build,
                                 contentDescription = null,
                                 modifier = Modifier.size(48.dp),
                                 tint = MaterialTheme.colorScheme.primary

@@ -156,10 +156,10 @@ fun MetronomeScreen(navHostController: NavHostController) {
                         } else 1f
                         
                         val color = when {
-                            !isPlaying -> MaterialTheme.colorScheme.surfaceContainerHighest
+                            !isPlaying -> MaterialTheme.colorScheme.surfaceContainerest
                             isActiveBeat && isFirstBeat -> MaterialTheme.colorScheme.primary
                             isActiveBeat -> MaterialTheme.colorScheme.secondary
-                            else -> MaterialTheme.colorScheme.surfaceContainerHighest
+                            else -> MaterialTheme.colorScheme.surfaceContainerest
                         }
                         
                         Box(
@@ -214,7 +214,7 @@ fun MetronomeScreen(navHostController: NavHostController) {
                         modifier = Modifier
                             .size(48.dp)
                             .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                            .background(MaterialTheme.colorScheme.surfaceContainer)
                     ) {
                         Icon(Icons.Default.Remove, contentDescription = "Decrease BPM")
                     }
@@ -240,7 +240,7 @@ fun MetronomeScreen(navHostController: NavHostController) {
                         modifier = Modifier
                             .size(48.dp)
                             .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                            .background(MaterialTheme.colorScheme.surfaceContainer)
                     ) {
                         Icon(Icons.Default.Add, contentDescription = "Increase BPM")
                     }
@@ -375,7 +375,7 @@ fun MetronomeScreen(navHostController: NavHostController) {
                                                         if (index == 0) MaterialTheme.colorScheme.primary
                                                         else MaterialTheme.colorScheme.secondary
                                                     else 
-                                                        MaterialTheme.colorScheme.surfaceContainerHighest
+                                                        MaterialTheme.colorScheme.surfaceContainerest
                                                 )
                                         )
                                     }

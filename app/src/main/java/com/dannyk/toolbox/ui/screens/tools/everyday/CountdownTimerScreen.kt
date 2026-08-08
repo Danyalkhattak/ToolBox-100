@@ -174,7 +174,7 @@ fun CountdownTimerScreen(navHostController: NavHostController) {
                         Card(
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+                                containerColor = MaterialTheme.colorScheme.surfaceContainer
                             )
                         ) {
                             Row(
@@ -230,7 +230,7 @@ fun CountdownTimerScreen(navHostController: NavHostController) {
                         Card(
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+                                containerColor = MaterialTheme.colorScheme.surfaceContainer
                             )
                         ) {
                             Row(

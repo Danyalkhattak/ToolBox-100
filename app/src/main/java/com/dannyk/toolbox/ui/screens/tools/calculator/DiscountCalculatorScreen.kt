@@ -277,7 +277,7 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
-                                Icons.Default.Savings,
+                                Icons.Default.LocalOffer,
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.error,
                                 modifier = Modifier.size(20.dp)

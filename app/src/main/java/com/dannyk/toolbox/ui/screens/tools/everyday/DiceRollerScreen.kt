@@ -127,7 +127,7 @@ fun DiceRollerScreen(navHostController: NavHostController) {
                                 modifier = Modifier
                                     .size(70.dp)
                                     .clip(RoundedCornerShape(12.dp))
-                                    .background(MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.5f)),
+                                    .background(MaterialTheme.colorScheme.surfaceContainerest.copy(alpha = 0.5f)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(

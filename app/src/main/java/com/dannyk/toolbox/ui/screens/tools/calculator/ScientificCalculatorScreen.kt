@@ -350,7 +350,7 @@ private fun SciCalcButton(
         isEquals -> MaterialTheme.colorScheme.primary
         isOperator -> MaterialTheme.colorScheme.secondaryContainer
         isFunction -> MaterialTheme.colorScheme.tertiaryContainer
-        else -> MaterialTheme.colorScheme.surfaceContainerHigh
+        else -> MaterialTheme.colorScheme.surfaceContainer
     }
     
     val contentColor = when {

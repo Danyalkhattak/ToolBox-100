@@ -383,7 +383,7 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
                                               (currentSessionType != SessionType.WORK && index < currentSessionNumber - 1 + 1)) {
                                         Color(0xFFE53935)
                                     } else {
-                                        MaterialTheme.colorScheme.surfaceContainerHighest
+                                        MaterialTheme.colorScheme.surfaceContainerest
                                     }
                                 ),
                             contentAlignment = Alignment.Center

@@ -120,7 +120,7 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
     }
 
     fun calculateStrength(pwd: String): Triple<String, Color, Float> {
-        if (pwd.isEmpty()) return Triple("None", Color.Gray, 0f)
+        if (pwd.isEmpty()) return Triple("None", Color(0xFF9E9E9E), 0f)
         
         var score = 0f
         
@@ -147,7 +147,7 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
         val percentage = (score / maxScore).coerceIn(0f, 1f)
         
         return when {
-            percentage < 0.25f -> Triple("Weak", Color.Red, percentage)
+            percentage < 0.25f -> Triple("Weak", Color(0xFFF44336), percentage)
             percentage < 0.5f -> Triple("Fair", Color(0xFFFF9800), percentage)
             percentage < 0.7f -> Triple("Good", Color(0xFF4CAF50), percentage)
             percentage < 0.9f -> Triple("Strong", Color(0xFF2196F3), percentage)

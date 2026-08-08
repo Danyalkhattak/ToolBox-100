@@ -411,7 +411,7 @@ fun HabitCounterScreen(navHostController: NavHostController) {
                                     .clip(RoundedCornerShape(4.dp)),
                                 color = if (isCompleted) MaterialTheme.colorScheme.primary 
                                        else habitColors[habit.colorIndex % habitColors.size],
-                                trackColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                                trackColor = MaterialTheme.colorScheme.surfaceContainerest
                             )
                             
                             Spacer(modifier = Modifier.height(12.dp))
@@ -435,7 +435,7 @@ fun HabitCounterScreen(navHostController: NavHostController) {
                                 // Count display
                                 Surface(
                                     shape = RoundedCornerShape(12.dp),
-                                    color = MaterialTheme.colorScheme.surfaceContainerHigh
+                                    color = MaterialTheme.colorScheme.surfaceContainer
                                 ) {
                                     Text(
                                         text = "${habit.dailyCount}",

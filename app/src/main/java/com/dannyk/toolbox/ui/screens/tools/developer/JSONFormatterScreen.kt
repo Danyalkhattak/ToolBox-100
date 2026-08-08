@@ -106,7 +106,7 @@ fun JSONFormatterScreen(navController: NavHostController) {
                                 }
                             },
                             enabled = jsonInput.isNotBlank(),
-                            icon = Icons.Default.FormatAlignLeft,
+                            icon = Icons.Default.AlignHorizontalLeft,
                             modifier = Modifier.weight(1f)
                         )
 

@@ -88,7 +88,7 @@ fun HomeScreen(navController: NavHostController) {
                 if (searchResults.isEmpty()) {
                     item {
                         EmptyState(
-                            icon = Icons.Default.SearchOff,
+                            icon = Icons.Default.Search,
                             message = "No matching tools",
                             subMessage = "Try different keywords"
                         )

@@ -11,7 +11,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Download
-import androidx.compose.material.icons.filled.QrCode2
+import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.*
@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.core.content.FileProvider
 import com.dannyk.toolbox.ui.components.ToolTopAppBar
 import com.google.zxing.BarcodeFormat
@@ -36,8 +37,7 @@ import java.io.FileOutputStream
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QRCodeGeneratorScreen(
-    navController: androidx.navigation.NavHostController,
-    modifier: Modifier = Modifier
+    navController: NavHostController
 ) {
     val context = LocalContext.current
     
@@ -105,7 +105,7 @@ fun QRCodeGeneratorScreen(
                             keyboardType = KeyboardType.Text
                         ),
                         leadingIcon = {
-                            Icon(Icons.Default.QrCode2, contentDescription = null)
+                            Icon(Icons.Default.QrCode, contentDescription = null)
                         },
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -251,7 +251,7 @@ fun QRCodeGeneratorScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Icon(
-                            imageVector = Icons.Default.QrCode2,
+                            imageVector = Icons.Default.QrCode,
                             contentDescription = null,
                             modifier = Modifier.size(80.dp),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
