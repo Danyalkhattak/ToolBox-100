@@ -159,13 +159,13 @@ fun BasicCalculatorScreen(navHostController: NavHostController) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 CalculatorButton(text = "7", modifier = Modifier.weight(1f)) {
-                    handleDigit("7", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("7", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(text = "8", modifier = Modifier.weight(1f)) {
-                    handleDigit("8", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("8", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(text = "9", modifier = Modifier.weight(1f)) {
-                    handleDigit("9", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("9", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(
                     text = "×",
@@ -186,13 +186,13 @@ fun BasicCalculatorScreen(navHostController: NavHostController) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 CalculatorButton(text = "4", modifier = Modifier.weight(1f)) {
-                    handleDigit("4", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("4", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(text = "5", modifier = Modifier.weight(1f)) {
-                    handleDigit("5", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("5", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(text = "6", modifier = Modifier.weight(1f)) {
-                    handleDigit("6", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("6", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(
                     text = "-",
@@ -213,13 +213,13 @@ fun BasicCalculatorScreen(navHostController: NavHostController) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 CalculatorButton(text = "1", modifier = Modifier.weight(1f)) {
-                    handleDigit("1", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("1", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(text = "2", modifier = Modifier.weight(1f)) {
-                    handleDigit("2", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("2", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(text = "3", modifier = Modifier.weight(1f)) {
-                    handleDigit("3", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("3", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(
                     text = "+",
@@ -254,7 +254,7 @@ fun BasicCalculatorScreen(navHostController: NavHostController) {
                     }
                 }
                 CalculatorButton(text = "0", modifier = Modifier.weight(1f)) {
-                    handleDigit("0", shouldResetInput) { currentInput = it; shouldResetInput = false }
+                    handleDigit("0", currentInput, shouldResetInput) { currentInput = it; shouldResetInput = false }
                 }
                 CalculatorButton(
                     text = ".",
@@ -358,11 +358,12 @@ private fun CalculatorButton(
 
 private fun handleDigit(
     digit: String,
+    currentInput: String,
     shouldResetInput: Boolean,
     onResult: (String) -> Unit
 ) {
     onResult(if (shouldResetInput) digit else run {
-        val current = currentInput  // Use explicit parameter
+        val current = currentInput
         if (digit == "0" && (current == "0" || current == "-0")) current else "$current$digit"
     })
 }

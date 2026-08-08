@@ -397,7 +397,7 @@ private fun InfoChip(label: String, value: String) {
 }
 
 // Format UUID based on options
-private fun formatUuid(uuid: String, uppercase: Boolean, noDashes: String): String {
+private fun formatUuid(uuid: String, uppercase: Boolean, noDashes: Boolean): String {
     var formatted = uuid
     
     if (uppercase) {

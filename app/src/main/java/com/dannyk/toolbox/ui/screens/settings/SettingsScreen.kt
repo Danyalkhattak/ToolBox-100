@@ -68,7 +68,7 @@ fun SettingsScreen(navController: NavHostController) {
                 title = { Text("Settings", fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(ArrowBack, "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -111,7 +111,7 @@ fun SettingsScreen(navController: NavHostController) {
                         )
                         ThemeOption(
                             text = "Light",
-                            icon = Icons.Default.LightBulb,
+                            icon = Icons.Default.Lightbulb,
                             selected = selectedTheme == PreferencesManager.THEME_LIGHT,
                             onClick = {
                                 scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_LIGHT) }

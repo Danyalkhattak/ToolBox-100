@@ -5,7 +5,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
-import androidx.compose.material.icons.filled.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -24,7 +23,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.ErrorOutline
-import androidx.text.HtmlCompat
 import androidx.compose.foundation.ScrollState
 import androidx.core.text.HtmlCompat
 
@@ -100,7 +98,7 @@ fun HTMLEntityDecoderScreen(navController: NavHostController) {
                             }
                         },
                         enabled = entityInput.isNotEmpty(),
-                        icon = Icons.Default.HtmlCompat.FROM_HTML_MODE_LEGACY
+                        icon = Icons.Default.Code
                     )
 
                     SecondaryButton(

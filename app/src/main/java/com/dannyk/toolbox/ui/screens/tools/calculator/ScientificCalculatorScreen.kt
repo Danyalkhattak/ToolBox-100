@@ -449,16 +449,16 @@ private fun handleCalculatorInput(
             }
         }
         else -> {
-            handleDigit(input, shouldResetInput) { newInput ->
+            handleDigit(input, currentInput, shouldResetInput) { newInput ->
                 onResult(newInput, expression, false)
             }
         }
     }
 }
 
-private fun handleDigit(digit: String, shouldResetInput: Boolean, onResult: (String) -> Unit) {
+private fun handleDigit(digit: String, currentInput: String, shouldResetInput: Boolean, onResult: (String) -> Unit) {
     onResult(if (shouldResetInput) digit else run {
-        val current = currentInput  // Use explicit parameter
+        val current = currentInput
         if (digit == "0" && (current == "0" || current == "-0")) current else "$current$digit"
     })
 }
