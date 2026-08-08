@@ -21,6 +21,7 @@ import java.util.*
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.clip
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AgeCalculatorScreen(navHostController: NavHostController) {
     val context = LocalContext.current

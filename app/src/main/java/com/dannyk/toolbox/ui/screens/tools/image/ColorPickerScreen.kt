@@ -33,6 +33,7 @@ import com.dannyk.toolbox.ui.components.ToolTopBar
 import kotlin.math.roundToInt
 import android.content.ClipboardManager
 import android.content.Context
+import androidx.compose.foundation.ScrollState
 
 // Material Design color palette data
 private val materialColors = mapOf(

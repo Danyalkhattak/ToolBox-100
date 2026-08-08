@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ErrorOutline
 import java.util.regex.Pattern
+import androidx.compose.foundation.ScrollState
 
 @Composable
 fun Base64DecoderScreen(navController: NavHostController) {

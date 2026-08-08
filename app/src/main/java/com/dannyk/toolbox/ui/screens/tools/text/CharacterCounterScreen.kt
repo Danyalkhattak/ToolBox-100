@@ -18,6 +18,7 @@ import java.util.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.ScrollState
 
 data class CharFrequency(val char: String, val count: Int, val percentage: Float)
 

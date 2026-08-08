@@ -35,6 +35,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.Check
 import java.util.regex.Pattern
+import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -346,7 +348,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                                 style = MaterialTheme.typography.displayMedium.copy(
                                     fontFamily = FontFamily.Monospace,
                                     fontWeight = FontWeight.Bold,
-                                    letterSpacing = 8.dp.toSp()
+                                    letterSpacing = 8.dp.sp
                                 ),
                                 textAlign = TextAlign.Center
                             )
@@ -427,7 +429,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                                             style = MaterialTheme.typography.titleLarge.copy(
                                                 fontFamily = FontFamily.Monospace,
                                                 fontWeight = FontWeight.Bold,
-                                                letterSpacing = 2.dp.toSp()
+                                                letterSpacing = 2.dp.sp
                                             )
                                         )
                                         Icon(

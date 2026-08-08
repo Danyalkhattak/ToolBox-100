@@ -24,6 +24,7 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import java.util.Calendar
 import java.util.TimeZone
 import androidx.compose.ui.geometry.Offset
+import kotlin.math.*
 
 data class TimeZoneCity(
     val id: String,

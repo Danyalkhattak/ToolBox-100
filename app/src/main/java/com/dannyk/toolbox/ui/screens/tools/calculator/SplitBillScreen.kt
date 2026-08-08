@@ -27,6 +27,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Warning
+import kotlin.math.*
 
 @Composable
 fun SplitBillScreen(navHostController: NavHostController) {

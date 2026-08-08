@@ -326,7 +326,7 @@ fun UpdateDialog(
         },
         confirmButton = {
             if (info.hasUpdate && info.releaseUrl != null) {
-                Button(onClick = { onOpenRelease(it) }) {
+                Button(onClick = { onOpenRelease(context) }) {
                     Text("Download Update")
                 }
             } else {

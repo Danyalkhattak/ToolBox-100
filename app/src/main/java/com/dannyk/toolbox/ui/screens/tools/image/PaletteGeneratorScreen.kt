@@ -28,6 +28,7 @@ import android.content.ClipboardManager
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.ScrollState
 
 enum class PaletteMode(val displayName: String) {
     COMPLEMENTARY("Complementary"),

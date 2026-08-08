@@ -40,6 +40,8 @@ import androidx.compose.ui.graphics.Color
 import android.content.Intent
 import android.content.ClipboardManager
 import androidx.compose.ui.graphics.Path
+import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
 data class ExifMetadata(
     // Camera info

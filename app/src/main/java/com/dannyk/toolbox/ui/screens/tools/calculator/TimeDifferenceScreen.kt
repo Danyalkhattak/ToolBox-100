@@ -19,10 +19,12 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import java.text.SimpleDateFormat
 import java.util.*
-import androidx.compose.material3.FilterChipGroup
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TimeDifferenceScreen(navHostController: NavHostController) {
     val context = LocalContext.current
@@ -495,7 +497,7 @@ private fun TimeInputCard(
             Spacer(modifier = Modifier.height(8.dp))
             
             // AM/PM toggle
-            FilterChipGroup {
+            Column(modifier = Modifier.horizontalScroll(ScrollState(0))) {
                 FilterChip(
                     selected = !isPM,
                     onClick = { if (isPM) onPeriodToggle() },

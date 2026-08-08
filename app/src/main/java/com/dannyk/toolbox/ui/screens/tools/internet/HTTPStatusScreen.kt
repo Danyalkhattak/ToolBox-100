@@ -30,6 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
 import android.content.ClipData
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

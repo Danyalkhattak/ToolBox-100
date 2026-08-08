@@ -41,8 +41,8 @@ import com.google.zxing.BarcodeFormat
 import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
 import android.content.ClipData
-import androidx.compose.foundation.ScrollableRow
 import androidx.compose.ui.view.AndroidView
+import androidx.compose.foundation.rememberScrollState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -331,7 +331,7 @@ fun BarcodeScannerScreen(
             if (scanHistory.isNotEmpty()) {
                 val uniqueFormats = scanHistory.map { it.format }.distinct().sorted()
                 
-                ScrollableRow(
+                Row(modifier = Modifier.horizontalScroll(rememberScrollState()))
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {

@@ -24,6 +24,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
 
 @Composable
 fun HTMLEntityEncoderScreen(navController: NavHostController) {

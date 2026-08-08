@@ -45,6 +45,7 @@ import java.util.*
 import android.content.Intent
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.CornerRadius
+import androidx.compose.foundation.ScrollState
 
 data class CropRegion(
     val left: Float = 0f,

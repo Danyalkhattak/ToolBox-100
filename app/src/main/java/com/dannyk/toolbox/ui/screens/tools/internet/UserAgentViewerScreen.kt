@@ -27,6 +27,7 @@ import android.content.ClipboardManager
 import android.content.ClipData
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -26,6 +26,7 @@ import androidx.compose.ui.text.pushStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.toAnnotatedString
 import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.foundation.ScrollState
 
 @Composable
 fun JSONFormatterScreen(navController: NavHostController) {

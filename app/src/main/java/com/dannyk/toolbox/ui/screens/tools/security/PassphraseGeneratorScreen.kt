@@ -30,6 +30,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -508,7 +509,7 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
                                 text = generatedPassphrase,
                                 style = MaterialTheme.typography.headlineSmall.copy(
                                     fontWeight = FontWeight.Medium,
-                                    letterSpacing = 0.5.dp.toSp()
+                                    letterSpacing = 0.5.dp.sp
                                 ),
                                 modifier = Modifier.padding(20.dp),
                                 textAlign = TextAlign.Center

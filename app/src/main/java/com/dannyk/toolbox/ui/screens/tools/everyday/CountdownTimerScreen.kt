@@ -33,6 +33,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
 @Composable
 fun CountdownTimerScreen(navHostController: NavHostController) {

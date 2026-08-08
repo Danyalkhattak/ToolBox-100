@@ -17,6 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
 @Composable
 fun ProportionCalculatorScreen(navController: NavHostController) {

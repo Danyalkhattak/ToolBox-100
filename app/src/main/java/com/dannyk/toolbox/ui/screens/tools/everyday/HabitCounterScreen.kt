@@ -32,6 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.ui.graphics.CornerRadius
+import kotlin.math.*
 
 data class Habit(
     val id: Int,

@@ -26,6 +26,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
 
 @Composable
 fun UUIDGeneratorScreen(navController: NavHostController) {

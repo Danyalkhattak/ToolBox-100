@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import kotlin.math.*
 
 @Composable
 fun StopwatchScreen(navHostController: NavHostController) {

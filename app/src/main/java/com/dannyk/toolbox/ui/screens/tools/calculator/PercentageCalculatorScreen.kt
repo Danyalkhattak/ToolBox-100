@@ -22,6 +22,7 @@ import java.text.DecimalFormat
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.clip
+import kotlin.math.*
 
 @Composable
 fun PercentageCalculatorScreen(navHostController: NavHostController) {

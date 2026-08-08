@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Divider
 import androidx.compose.ui.draw.clip
 import java.util.regex.Pattern
+import androidx.compose.foundation.ScrollState
 
 enum class NumberSystem(val displayName: String, val base: Int, val prefix: String) {
     BINARY("Binary (Base 2)", 2, "0b"),

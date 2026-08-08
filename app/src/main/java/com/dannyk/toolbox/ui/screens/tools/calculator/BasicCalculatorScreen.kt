@@ -361,8 +361,9 @@ private fun handleDigit(
     shouldResetInput: Boolean,
     onResult: (String) -> Unit
 ) {
-    onResult(if (shouldResetInput) digit else {
-        if (digit == "0" && (it == "0" || it == "-0")) it else "$it$digit"
+    onResult(if (shouldResetInput) digit else run {
+        val current = currentInput  // Use explicit parameter
+        if (digit == "0" && (current == "0" || current == "-0")) current else "$current$digit"
     })
 }
 

@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Warning
 import java.text.DecimalFormat
+import kotlin.math.*
 
 @Composable
 fun RandomNumberGeneratorScreen(navController: NavHostController) {

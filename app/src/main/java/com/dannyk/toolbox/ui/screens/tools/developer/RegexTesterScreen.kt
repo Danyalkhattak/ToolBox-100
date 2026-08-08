@@ -30,6 +30,7 @@ import android.content.ClipboardManager
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.foundation.ScrollState
 
 @Composable
 fun RegexTesterScreen(navController: NavHostController) {

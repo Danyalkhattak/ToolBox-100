@@ -1,5 +1,7 @@
 package com.dannyk.toolbox.ui.components
 
+import java.text.DecimalFormat
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -24,6 +26,7 @@ import com.dannyk.toolbox.domain.model.Tool
 import androidx.compose.ui.graphics.Color
 import android.content.Context
 import androidx.compose.material.icons.filled.Check
+import com.dannyk.toolbox.ui.components.formatCurrency
 
 // Icon mapping for tool icons
 @Composable
@@ -655,5 +658,17 @@ fun SecondaryButton(
             Spacer(modifier = Modifier.width(8.dp))
         }
         Text(text)
+    }
+}
+
+
+/**
+ * Format a number as currency string
+ */
+fun formatCurrency(amount: Double): String {
+    return try {
+        DecimalFormat("$#,##0.00").format(amount)
+    } catch (e: Exception) {
+        "$0.00"
     }
 }

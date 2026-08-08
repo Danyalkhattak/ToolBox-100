@@ -30,6 +30,9 @@ import android.content.Context
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
+import kotlin.math.*
+import androidx.compose.foundation.text.KeyboardOptions
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

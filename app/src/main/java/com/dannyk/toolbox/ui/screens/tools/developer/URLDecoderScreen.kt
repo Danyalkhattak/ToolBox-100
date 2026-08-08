@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.foundation.ScrollState
 
 @Composable
 fun URLDecoderScreen(navController: NavHostController) {

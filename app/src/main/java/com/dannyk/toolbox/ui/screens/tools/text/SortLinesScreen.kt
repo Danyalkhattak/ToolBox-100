@@ -24,6 +24,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.foundation.ScrollState
 
 enum class SortOrder {
     ASCENDING, DESCENDING

@@ -13,6 +13,7 @@ import com.dannyk.toolbox.ui.components.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.SegmentedButton
+import kotlin.math.*
 
 @Composable
 fun RatioCalculatorScreen(navController: NavHostController) {

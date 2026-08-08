@@ -27,6 +27,7 @@ import com.dannyk.toolbox.ui.components.ToolTopBar
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import java.util.regex.Pattern
+import androidx.compose.foundation.ScrollState
 
 data class MatchInfo(
     val start: Int,

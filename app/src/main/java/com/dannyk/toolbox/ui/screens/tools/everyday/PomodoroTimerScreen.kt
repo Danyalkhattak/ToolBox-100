@@ -28,6 +28,8 @@ import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.ui.geometry.Offset
+import kotlin.math.*
+import androidx.compose.ui.unit.Size
 
 data class PomodoroSession(
     val id: Int,

@@ -30,6 +30,8 @@ import kotlin.random.Random
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.foundation.ScrollState
+import kotlin.math.*
 
 enum class CoinSide(val displayName: String, val emoji: String) {
     HEADS("Heads", "H"),
