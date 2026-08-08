@@ -30,7 +30,6 @@ import java.util.Calendar
 import android.content.Context
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.geometry.CornerRadius
 import kotlin.math.*
 import androidx.compose.runtime.LaunchedEffect
 

@@ -276,7 +276,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                             singleLine = true,
                             textStyle = MaterialTheme.typography.bodyMedium.copy(
                                 fontFamily = FontFamily.Monospace,
-                                textAlign = androidx.compose.ui.style.TextAlign.Center
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth(),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -313,7 +313,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                             singleLine = true,
                             textStyle = MaterialTheme.typography.bodyMedium.copy(
                                 fontFamily = FontFamily.Monospace,
-                                textAlign = androidx.compose.ui.style.TextAlign.Center
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth(),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -350,7 +350,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                             singleLine = true,
                             textStyle = MaterialTheme.typography.bodyMedium.copy(
                                 fontFamily = FontFamily.Monospace,
-                                textAlign = androidx.compose.ui.style.TextAlign.Center
+                                textAlign = TextAlign.Center
                             ),
                             modifier = Modifier.fillMaxWidth(),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -518,7 +518,7 @@ private fun ColorChannelInput(
             singleLine = true,
             textStyle = MaterialTheme.typography.bodyMedium.copy(
                 fontFamily = FontFamily.Monospace,
-                textAlign = androidx.compose.ui.style.TextAlign.Center
+                textAlign = TextAlign.Center
             ),
             modifier = modifier,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
