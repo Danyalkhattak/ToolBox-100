@@ -3,6 +3,7 @@ package com.dannyk.toolbox.ui.screens.tools.calculator
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -24,7 +25,7 @@ import androidx.compose.foundation.ScrollState
 import kotlin.math.*
 import androidx.compose.foundation.horizontalScroll
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun TimeDifferenceScreen(navHostController: NavHostController) {
     val context = LocalContext.current

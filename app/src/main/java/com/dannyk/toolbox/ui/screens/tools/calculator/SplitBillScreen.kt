@@ -365,7 +365,7 @@ fun SplitBillScreen(navHostController: NavHostController) {
                             )
                             
                             if (index < res.people.lastIndex) {
-                                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 8.dp))
+                                Divider(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp))
                             }
                         }
                     }

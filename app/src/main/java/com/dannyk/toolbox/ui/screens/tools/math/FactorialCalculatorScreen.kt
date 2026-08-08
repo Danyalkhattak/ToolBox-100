@@ -421,7 +421,7 @@ private fun stirlingApproximation(n: Int): Pair<String, Double> {
     val e = kotlin.math.E
     
     val sqrtPart = kotlin.math.sqrt(2.0 * pi * n)
-    val powerPart = kotlin.math.pow(n.toDouble() / e, n.toDouble())
+    val powerPart = (n.toDouble() / e).pow(n.toDouble())
     val approximation = sqrtPart * powerPart
     
     // Calculate actual for comparison (using log for large numbers)

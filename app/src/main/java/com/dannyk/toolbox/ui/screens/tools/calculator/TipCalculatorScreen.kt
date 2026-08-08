@@ -293,7 +293,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                                 color = MaterialTheme.colorScheme.primary,
                                 fontWeight = FontWeight.Medium
                             )
-                            IconButton(onClick = { copyToClipboard_TipCalculatorScreen(context, res.totalPerPerson) }) {
+                            IconButton(onClick = { copyToClipboard_TipCalculatorScreen(context, formatCurrency_TipCalculatorScreen(res.totalPerPerson)) }) {
                                 Icon(
                                     Icons.Default.ContentCopy,
                                     contentDescription = "Copy",
@@ -408,7 +408,7 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                                 )
                             }
                             Spacer(modifier = Modifier.weight(1f))
-                            TextButton(onClick = { copyToClipboard_TipCalculatorScreen(context, res.totalPerPerson) }) {
+                            TextButton(onClick = { copyToClipboard_TipCalculatorScreen(context, formatCurrency_TipCalculatorScreen(res.totalPerPerson)) }) {
                                 Text("Share")
                             }
                         }

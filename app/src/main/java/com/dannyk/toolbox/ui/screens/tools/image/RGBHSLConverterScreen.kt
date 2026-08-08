@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
 import android.content.ClipboardManager
@@ -181,7 +182,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                                 if (it.isEmpty() || (it.toIntOrNull() != null && it.toInt() in 0..255)) redInput = it 
                             },
                             color = ComposeColor.Red,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.fillMaxWidth()
                         )
                         
                         ColorChannelInput(
@@ -191,7 +192,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                                 if (it.isEmpty() || (it.toIntOrNull() != null && it.toInt() in 0..255)) greenInput = it 
                             },
                             color = ComposeColor.Green,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.fillMaxWidth()
                         )
                         
                         ColorChannelInput(
@@ -201,7 +202,7 @@ fun RGBHSLConverterScreen(navController: NavHostController) {
                                 if (it.isEmpty() || (it.toIntOrNull() != null && it.toInt() in 0..255)) blueInput = it 
                             },
                             color = ComposeColor.Blue,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
 
@@ -530,7 +531,7 @@ private fun ColorChannelInput(
 private fun HslOutputCard(label: String, value: String, range: String, color: ComposeColor) {
     Card(
         colors = CardDefaults.cardColors(containerColor = color.copy(alpha = 0.15f)),
-        modifier = Modifier.weight(1f)
+        modifier = Modifier.fillMaxWidth()
     ) {
         Column(
             modifier = Modifier.padding(10.dp),
@@ -559,7 +560,7 @@ private fun HslOutputCard(label: String, value: String, range: String, color: Co
 private fun RgbOutputCard(label: String, value: String, range: String, color: ComposeColor) {
     Card(
         colors = CardDefaults.cardColors(containerColor = color.copy(alpha = 0.15f)),
-        modifier = Modifier.weight(1f)
+        modifier = Modifier.fillMaxWidth()
     ) {
         Column(
             modifier = Modifier.padding(10.dp),

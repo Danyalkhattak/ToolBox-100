@@ -191,10 +191,10 @@ fun FileExtensionInfoScreen(navController: NavHostController) {
             
             // Right Panel - Details
             if (selectedExtension != null) {
-                Divider(modifier = Modifier.fillMaxWidth(), 
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .width(1.dp)
+                Divider(modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .width(1.dp)
                 )
                 
                 Column(

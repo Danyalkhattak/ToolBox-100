@@ -1,5 +1,6 @@
 package com.dannyk.toolbox.ui.screens.tools.math
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,7 @@ import android.content.ClipboardManager
 import androidx.compose.ui.draw.clip
 import kotlin.math.*
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun AverageCalculatorScreen(navController: NavHostController) {
     var numberInput by remember { mutableStateOf("") }

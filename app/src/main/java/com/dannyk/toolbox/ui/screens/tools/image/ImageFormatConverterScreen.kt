@@ -270,7 +270,6 @@ fun ImageFormatConverterScreen(navController: NavHostController) {
                     ) {
                         Column(
                             modifier = Modifier.padding(12.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Image(

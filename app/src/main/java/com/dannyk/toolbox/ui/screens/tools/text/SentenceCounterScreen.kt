@@ -374,7 +374,7 @@ private fun ComplexityRow(label: String, count: Int, total: Int, color: Color) {
         Text(
             text = "$count ($percentage%)",
             style = MaterialTheme.typography.bodyMedium,
-            minWidth = 70.dp
+            modifier = Modifier.width(70.dp)
         )
     }
 }

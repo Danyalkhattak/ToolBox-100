@@ -509,8 +509,8 @@ private suspend fun performDNSLookup(
                 }
             } else {
                 // Sort results: A, AAAA first, then CNAME, MX, NS, TXT
-                val sortedResults = results.sortedWith(compareBy<String> { 
-                    when (it) {
+                val sortedResults = results.sortedWith(compareBy<DNSRecord> { 
+                    when (it.type) {
                         "A" -> 0
                         "AAAA" -> 1
                         "CNAME" -> 2
@@ -519,7 +519,7 @@ private suspend fun performDNSLookup(
                         "TXT" -> 5
                         else -> 6
                     }
-                }.thenBy { it })
+                }.thenBy { it.type })
                 
                 onLoading(false)
                 withContext(Dispatchers.Main) {

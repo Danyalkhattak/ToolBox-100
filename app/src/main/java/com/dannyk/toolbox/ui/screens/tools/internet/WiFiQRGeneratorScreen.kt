@@ -38,7 +38,8 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color as ComposeColor
+import android.graphics.Color as AndroidColor
 import android.content.Intent
 import android.content.ClipboardManager
 import android.content.ClipData
@@ -539,7 +540,7 @@ private suspend fun generateQRCode(content: String): Bitmap? {
             
             for (x in 0 until width) {
                 for (y in 0 until height) {
-                    bitmap.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else Color.WHITE)
+                    bitmap.setPixel(x, y, if (bitMatrix[x, y]) AndroidColor.BLACK else AndroidColor.WHITE)
                 }
             }
             

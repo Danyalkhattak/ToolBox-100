@@ -1,5 +1,6 @@
 package com.dannyk.toolbox.ui.screens.tools.files
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -34,7 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.ScrollState
 import android.widget.Toast
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun MimeTypeLookupScreen(navController: NavHostController) {
     val context = LocalContext.current
@@ -191,10 +192,10 @@ fun MimeTypeLookupScreen(navController: NavHostController) {
             
             // Right Panel - Details
             if (selectedMimeType != null) {
-                Divider(modifier = Modifier.fillMaxWidth(), 
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .width(1.dp)
+                Divider(modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .width(1.dp)
                 )
                 
                 Column(

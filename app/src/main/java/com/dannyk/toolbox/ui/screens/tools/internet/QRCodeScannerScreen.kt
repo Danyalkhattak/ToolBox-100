@@ -44,7 +44,6 @@ import java.util.concurrent.Executors
 import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
 import android.content.ClipData
-import androidx.compose.ui.view.AndroidView
 import androidx.compose.runtime.LaunchedEffect
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -130,7 +129,7 @@ fun QRCodeScannerScreen(
                                                 isScanning = false
                                                 
                                                 // Add to history
-                                                val newItem = ScanHistoryItem(
+                                                val newItem = QRScanHistoryItem(
                                                     content = res.text,
                                                     format = res.barcodeFormat?.name ?: "QR_CODE",
                                                     timestamp = System.currentTimeMillis()
@@ -565,7 +564,7 @@ private fun HistoryItemCard(
     }
 }
 
-data class ScanHistoryItem(
+data class QRScanHistoryItem(
     val content: String,
     val format: String,
     val timestamp: Long

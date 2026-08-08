@@ -235,7 +235,7 @@ fun CharacterCounterScreen(navController: NavHostController) {
                                 Text(
                                     text = "$count (${(count * 100 / totalChars)}%)",
                                     style = MaterialTheme.typography.bodySmall,
-                                    minWidth = 80.dp
+                                    modifier = Modifier.width(80.dp)
                                 )
                             }
                         }

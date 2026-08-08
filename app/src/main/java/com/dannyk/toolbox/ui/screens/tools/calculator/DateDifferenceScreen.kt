@@ -3,6 +3,7 @@ package com.dannyk.toolbox.ui.screens.tools.calculator
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -21,7 +22,7 @@ import java.util.*
 import androidx.compose.ui.draw.clip
 import kotlin.math.*
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun DateDifferenceScreen(navHostController: NavHostController) {
     val context = LocalContext.current

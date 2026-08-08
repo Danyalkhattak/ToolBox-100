@@ -204,7 +204,7 @@ fun MetadataViewerScreen(navController: NavHostController) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.Start
+                            verticalAlignment = Alignment.Top
                         ) {
                             // Thumbnail
                             Image(
@@ -605,8 +605,8 @@ private fun extractExifMetadata(file: File, fileSize: Long, mimeType: String?): 
             pixelYDimension = exif.getAttribute(ExifInterface.TAG_PIXEL_Y_DIMENSION),
             latitude = if (hasGps) latLong[0].toDouble() else null,
             longitude = if (hasGps) latLong[1].toDouble() else null,
-            altitude = exif.getAttribute(ExifInterface.TAG_ALTITUDE),
-            gpsDateStamp = exif.getAttribute(ExifInterface.TAG_GPS_DATE_STAMP),
+            altitude = exif.getAttribute("GPSAltitude"),
+            gpsDateStamp = exif.getAttribute("GPSDateStamp"),
             gpsTimeStamp = exif.getAttribute(ExifInterface.TAG_GPS_TIMESTAMP),
             iso = exif.getAttribute(ExifInterface.TAG_ISO_SPEED_RATINGS),
             aperture = exif.getAttribute(ExifInterface.TAG_F_NUMBER)?.let { "f/$it" },

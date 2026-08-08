@@ -345,9 +345,7 @@ fun StopwatchScreen(navHostController: NavHostController) {
                             }
                             
                             if (lapNumber > 1) {
-                                Divider(modifier = Modifier.fillMaxWidth(), 
-                                    modifier = Modifier.padding(horizontal = 8.dp)
-                                )
+                                Divider(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp))
                             }
                         }
                     }

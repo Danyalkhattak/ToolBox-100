@@ -154,7 +154,7 @@ fun validateRomanNumeral(roman: String): Pair<Boolean, String?> {
     // Check for invalid characters
     val invalidChars = upperRoman.filter { it !in VALID_ROMAN_CHARS }
     if (invalidChars.isNotEmpty()) {
-        return false to "Invalid character(s): ${invalidChars.joinToString(", ")}"
+        return false to "Invalid character(s): ${invalidChars.map { it.toString() }.joinToString(", ")}"
     }
     
     // Check for invalid repetitions

@@ -568,7 +568,7 @@ private fun QueryParamCard(
             
             // Show decoded values if different from encoded
             if (decodedKey != key || decodedValue != value) {
-                Divider(modifier = Modifier.fillMaxWidth(), modifier = Modifier.padding(vertical = 6.dp))
+                Divider(modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = "Decoded:",

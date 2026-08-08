@@ -75,8 +75,8 @@ fun FractionCalculatorScreen(navController: NavHostController) {
                             modifier = Modifier.width(100.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Divider(modifier = Modifier.fillMaxWidth(), 
-                            modifier = Modifier.width(80.dp),
+                        Divider(modifier = Modifier.fillMaxWidth().width(80.dp),
+                            
                             thickness = 2.dp,
                             color = MaterialTheme.colorScheme.onSurface
                         )
@@ -133,8 +133,8 @@ fun FractionCalculatorScreen(navController: NavHostController) {
                             modifier = Modifier.width(100.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Divider(modifier = Modifier.fillMaxWidth(), 
-                            modifier = Modifier.width(80.dp),
+                        Divider(modifier = Modifier.fillMaxWidth().width(80.dp),
+                            
                             thickness = 2.dp,
                             color = MaterialTheme.colorScheme.onSurface
                         )
