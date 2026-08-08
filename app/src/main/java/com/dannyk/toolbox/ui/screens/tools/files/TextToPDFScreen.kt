@@ -103,7 +103,7 @@ fun TextToPDFScreen(navController: NavHostController) {
                             .fillMaxWidth()
                             .heightIn(min = 150.dp, max = 300.dp),
                         textStyle = androidx.compose.ui.text.TextStyle(
-                            fontSize = sp(14)
+                            fontSize = androidx.compose.ui.unit.sp(14)
                         )
                     )
                     

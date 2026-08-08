@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
@@ -33,6 +34,7 @@ import androidx.compose.runtime.LaunchedEffect
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HMACGeneratorScreen(navController: NavHostController) {
+    val context = LocalContext.current
     var message by remember { mutableStateOf("") }
     var secretKey by remember { mutableStateOf("") }
     var selectedAlgorithm by remember { mutableStateOf("HmacSHA256") }
@@ -317,11 +319,8 @@ fun HMACGeneratorScreen(navController: NavHostController) {
                     ) {
                         OutlinedButton(
                             onClick = {
-                                android.content.ClipData.newPlainText("hmac_result", hmacResult).also { clipData ->
-                                    android.app.ActivityManager.getActivity()?.let { activity ->
-                                        (activity.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager)?.setPrimaryClip(clipData)
-                                    }
-                                }
+                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                                clipboard?.setPrimaryClip(ClipData.newPlainText("hmac_result", hmacResult))
                                 showCopiedMessage = true
                             }
                         ) {
@@ -411,7 +410,7 @@ fun HMACGeneratorScreen(navController: NavHostController) {
             }
         }
 
-        Spacer(modifier = Modifier.height(20.md))
+        Spacer(modifier = Modifier.height(20.dp))
 
         // Technical Details Card
         Card(
@@ -425,7 +424,7 @@ fun HMACGeneratorScreen(navController: NavHostController) {
                     fontWeight = FontWeight.Bold
                 )
 
-                Spacer(modifier = Modifier.height(12.dm))
+                Spacer(modifier = Modifier.height(12.dp))
 
                 // HMAC Formula
                 Surface(

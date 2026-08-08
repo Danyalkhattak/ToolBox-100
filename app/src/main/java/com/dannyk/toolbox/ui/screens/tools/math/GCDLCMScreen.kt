@@ -1,5 +1,6 @@
 package com.dannyk.toolbox.ui.screens.tools.math
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.material.icons.filled.Check
 import kotlin.math.*
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun GCDLCMScreen(navController: NavHostController) {
     var numberInput by remember { mutableStateOf("") }
@@ -406,11 +407,11 @@ private fun formatExponentForm(factors: List<Long>): String {
     return counts.entries
         .sortedBy { it.key }
         .joinToString(" × ") { (prime, count) ->
-            if (count > 1) "$prime$superscript(count)" else "$prime"
+            if (count > 1) "${prime}${superscriptGCD(count)}" else "$prime"
         }
 }
 
-private fun superscript(n: Int): String {
+private fun superscriptGCD(n: Int): String {
     return n.toString().map {
         when (it) {
             '0' -> '⁰'

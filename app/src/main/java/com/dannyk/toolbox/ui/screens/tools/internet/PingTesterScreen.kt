@@ -21,7 +21,9 @@ import com.dannyk.toolbox.ui.components.ToolTopAppBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.compose.runtime.rememberCoroutineScope
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.net.Socket
@@ -46,6 +48,7 @@ fun PingTesterScreen(
     var pingSummary by remember { mutableStateOf<PingSummary?>(null) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var currentPing by remember { mutableStateOf<Int?>(null) }
+    val coroutineScope = rememberCoroutineScope()
 
     // Cancel pinging when leaving screen
     DisposableEffect(Unit) {
@@ -139,25 +142,27 @@ fun PingTesterScreen(
                     Button(
                         onClick = {
                             if (hostInput.isNotBlank()) {
-                                startPing(
-                                    host = hostInput.trim(),
-                                    count = pingCount,
-                                    onPingingChanged = { 
-                                        isPinging = it
-                                        if (!it) currentPing = null
-                                    },
-                                    onCurrentPing = { currentPing = it },
-                                    onResults = { results, summary ->
-                                        pingResults = results
-                                        pingSummary = summary
-                                        errorMessage = null
-                                    },
-                                    onError = { message ->
-                                        errorMessage = message
-                                        pingResults = emptyList()
-                                        pingSummary = null
-                                    }
-                                )
+                                coroutineScope.launch {
+                                    startPing(
+                                        host = hostInput.trim(),
+                                        count = pingCount,
+                                        onPingingChanged = { 
+                                            isPinging = it
+                                            if (!it) currentPing = null
+                                        },
+                                        onCurrentPing = { currentPing = it },
+                                        onResults = { results, summary ->
+                                            pingResults = results
+                                            pingSummary = summary
+                                            errorMessage = null
+                                        },
+                                        onError = { message ->
+                                            errorMessage = message
+                                            pingResults = emptyList()
+                                            pingSummary = null
+                                        }
+                                    )
+                                }
                             }
                         },
                         enabled = hostInput.isNotBlank() && !isPinging,
@@ -403,11 +408,11 @@ fun PingTesterScreen(
                     Spacer(modifier = Modifier.height(12.dp))
                     
                     listOf(
-                        "< 20ms" to "Excellent - Local/LAN" to Color.Green,
-                        "20-50ms" to "Very Good - Same region" to Color(0xFF4CAF50),
-                        "50-100ms" to "Good - Different region" to Color(0xFFFFC107),
-                        "100-200ms" to "Acceptable - International" to Color(0xFFFF9800),
-                        "> 200ms" to "Poor - High latency" to Color.Red
+                        Triple("< 20ms", "Excellent - Local/LAN", Color.Green),
+                        Triple("20-50ms", "Very Good - Same region", Color(0xFF4CAF50)),
+                        Triple("50-100ms", "Good - Different region", Color(0xFFFFC107)),
+                        Triple("100-200ms", "Acceptable - International", Color(0xFFFF9800)),
+                        Triple("> 200ms", "Poor - High latency", Color.Red)
                     ).forEach { (range, desc, color) ->
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -508,7 +513,7 @@ private fun PingResultCard(
                     Box(
                         modifier = Modifier
                             .fillMaxHeight()
-                            .fillMaxFraction(barWidth)
+                            .fillMaxWidth(barWidth)
                             .background(
                                 when {
                                     result.time <= 20 -> Color.Green
@@ -547,7 +552,7 @@ data class PingSummary(
     val avgTime: Long
 )
 
-private fun startPing(
+private suspend fun startPing(
     host: String,
     count: Int,
     onPingingChanged: (Boolean) -> Unit,
@@ -557,7 +562,7 @@ private fun startPing(
 ) {
     onPingingChanged(true)
     
-    kotlinx.coroutines.GlobalScope.launch(Dispatchers.IO) {
+    withContext(Dispatchers.IO) {
         try {
             val results = mutableListOf<PingResult>()
             val times = mutableListOf<Long>()
@@ -570,7 +575,7 @@ private fun startPing(
                     onPingingChanged(false)
                     onError("Failed to resolve host '$host': ${e.message}")
                 }
-                return@launch
+                return@withContext
             }
             
             val hostAddress = address.hostAddress ?: host

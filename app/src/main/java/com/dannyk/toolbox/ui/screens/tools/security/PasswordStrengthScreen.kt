@@ -260,12 +260,11 @@ fun PasswordStrengthScreen(navController: NavHostController) {
                     modifier = Modifier.size(140.dp)
                 ) {
                     CircularProgressIndicator(
-                        progress = { if (password.isNotEmpty()) strengthScore / 100f else 0f },
+                        progress = if (password.isNotEmpty()) strengthScore / 100f else 0f,
                         modifier = Modifier.size(140.dp),
                         color = animatedColor,
                         trackColor = MaterialTheme.colorScheme.surfaceVariant,
-                        strokeWidth = 12.dp,
-                        shape = CircleShape
+                        strokeWidth = 12.dp
                     )
                     
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {

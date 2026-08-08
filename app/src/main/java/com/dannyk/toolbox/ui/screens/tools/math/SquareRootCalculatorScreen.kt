@@ -1,5 +1,6 @@
 package com.dannyk.toolbox.ui.screens.tools.math
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,6 +24,7 @@ import java.text.DecimalFormat
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SquareRootCalculatorScreen(navController: NavHostController) {
     var numberInput by remember { mutableStateOf("") }
@@ -670,11 +672,11 @@ private fun getExponentSymbol(n: Int): String {
         3 -> "³"
         4 -> "⁴"
         5 -> "⁵"
-        else -> superscript(n)
+        else -> superscriptSqrt(n)
     }
 }
 
-private fun superscript(n: Int): String {
+private fun superscriptSqrt(n: Int): String {
     return n.toString().map {
         when (it) {
             '0' -> '⁰'

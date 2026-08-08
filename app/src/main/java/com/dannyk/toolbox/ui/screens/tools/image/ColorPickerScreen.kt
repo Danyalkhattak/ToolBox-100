@@ -2,6 +2,7 @@ package com.dannyk.toolbox.ui.screens.tools.image
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -59,7 +60,7 @@ private val materialColors = mapOf(
     "Grey" to listOf(0xF5F5F5, 0x9E9E9E, 0x757575, 0x616161, 0x212121),
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun ColorPickerScreen(navController: NavHostController) {
     var selectedColor by remember { mutableIntStateOf(Color.RED) }

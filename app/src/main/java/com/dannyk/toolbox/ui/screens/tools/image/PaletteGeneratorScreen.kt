@@ -2,6 +2,7 @@ package com.dannyk.toolbox.ui.screens.tools.image
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -37,7 +38,7 @@ enum class PaletteMode(val displayName: String) {
     MONOCHROMATIC("Monochromatic")
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun PaletteGeneratorScreen(navController: NavHostController) {
     val clipboardManager = LocalClipboardManager.current

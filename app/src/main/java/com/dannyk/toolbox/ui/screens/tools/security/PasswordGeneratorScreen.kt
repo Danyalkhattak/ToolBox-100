@@ -243,7 +243,7 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.height(16.dp))
                     
                     LinearProgressIndicator(
-                        progress = { strengthValue },
+                        progress = strengthValue,
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(8.dp)
@@ -357,25 +357,25 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
                 ) {
                     FilterChip(
                         selected = includeUppercase,
-                        onClick = { includeUppercase = it },
+                        onClick = { includeUppercase = !includeUppercase },
                         label = { Text("ABC") },
                         leadingIcon = if (includeUppercase) {{ Icon(Icons.Default.Check, contentDescription = null) }} else null
                     )
                     FilterChip(
                         selected = includeLowercase,
-                        onClick = { includeLowercase = it },
+                        onClick = { includeLowercase = !includeLowercase },
                         label = { Text("abc") },
                         leadingIcon = if (includeLowercase) {{ Icon(Icons.Default.Check, contentDescription = null) }} else null
                     )
                     FilterChip(
                         selected = includeNumbers,
-                        onClick = { includeNumbers = it },
+                        onClick = { includeNumbers = !includeNumbers },
                         label = { Text("123") },
                         leadingIcon = if (includeNumbers) {{ Icon(Icons.Default.Check, contentDescription = null) }} else null
                     )
                     FilterChip(
                         selected = includeSpecialChars,
-                        onClick = { includeSpecialChars = it },
+                        onClick = { includeSpecialChars = !includeSpecialChars },
                         label = { Text("@#\$") },
                         leadingIcon = if (includeSpecialChars) {{ Icon(Icons.Default.Check, contentDescription = null) }} else null
                     )

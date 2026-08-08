@@ -26,6 +26,7 @@ import android.content.ClipData
 import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
@@ -34,6 +35,7 @@ import androidx.compose.runtime.LaunchedEffect
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PassphraseGeneratorScreen(navController: NavHostController) {
+    val context = LocalContext.current
     var wordCount by remember { mutableIntStateOf(6) }
     var selectedSeparator by remember { mutableStateOf("space") }
     var selectedCase by remember { mutableStateOf("lowercase") }
@@ -508,7 +510,7 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
                                 text = generatedPassphrase,
                                 style = MaterialTheme.typography.headlineSmall.copy(
                                     fontWeight = FontWeight.Medium,
-                                    letterSpacing = 0.5.dp.sp
+                                    letterSpacing = 0.5.sp
                                 ),
                                 modifier = Modifier.padding(20.dp),
                                 textAlign = TextAlign.Center
@@ -521,11 +523,8 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
                     // Copy button with message
                     OutlinedButton(
                         onClick = {
-                            android.content.ClipData.newPlainText("passphrase", generatedPassphrase).also { clipData ->
-                                android.app.ActivityManager.getActivity()?.let { activity ->
-                                    (activity.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager)?.setPrimaryClip(clipData)
-                                }
-                            }
+                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                            clipboard?.setPrimaryClip(ClipData.newPlainText("passphrase", generatedPassphrase))
                             showCopiedMessage = true
                         }
                     ) {
@@ -591,7 +590,7 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        StatItem(label = "Words", value = "$wordCount${if (includeNumber) "+1#"}")
+                        StatItem(label = "Words", value = "$wordCount${if (includeNumber) "+1#" else ""}")
                         StatItem(label="Characters", value = "${generatedPassphrase.length}")
                         StatItem(label="Word List", value = "${wordList.size}")
                     }
@@ -645,7 +644,7 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
                     fontWeight = FontWeight.Medium
                 )
                 
-                Spacer(modropy = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 
                 EntropyGuideItem(words = 4, entropy = "~51 bits", usage = "Low security")
                 EntropyGuideItem(words = 5, entropy = "~64 bits", usage = "Minimum recommended")

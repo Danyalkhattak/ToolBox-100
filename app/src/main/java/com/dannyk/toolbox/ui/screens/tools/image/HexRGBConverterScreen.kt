@@ -1,6 +1,7 @@
 package com.dannyk.toolbox.ui.screens.tools.image
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -30,7 +31,7 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.LaunchedEffect
 import android.graphics.Color
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun HexRGBConverterScreen(navController: NavHostController) {
     val clipboardManager = LocalClipboardManager.current
@@ -307,7 +308,7 @@ fun HexRGBConverterScreen(navController: NavHostController) {
                             )
                         }
 
-                        Spacer(modifier = Modifier.height(8))
+                        Spacer(modifier = Modifier.height(8.dp))
 
                         // HEX Output Card
                         Card(
@@ -542,7 +543,7 @@ private fun RgbInputField(
             singleLine = true,
             textStyle = MaterialTheme.typography.bodyMedium.copy(
                 fontFamily = FontFamily.Monospace,
-                textAlign = androidx.compose.ui.style.TextAlign.Center
+                textAlign = TextAlign.Center
             ),
             modifier = modifier,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)

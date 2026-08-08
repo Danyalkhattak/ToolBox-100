@@ -181,7 +181,9 @@ fun BarcodeScannerScreen(
                             Surface(
                                 color = Color.Black.copy(alpha = 0.6f),
                                 modifier = Modifier.matchParentSize()
-                            )
+                            ) {
+                                // Overlay content
+                            }
                         }
                     }
                 } else {
@@ -558,6 +560,10 @@ private fun ResultCard(
 
             Spacer(modifier = Modifier.height(12.dp))
 
+            // Determine if content is a URL for button visibility
+            val isUrl = content.startsWith("http://") || content.startsWith("https://") ||
+                       content.startsWith("www.") || format.contains("QR", ignoreCase = true)
+
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -572,9 +578,6 @@ private fun ResultCard(
                 }
 
                 // Open URL button if it's a URL or looks like one
-                val isUrl = content.startsWith("http://") || content.startsWith("https://") ||
-                           content.startsWith("www.") || format.contains("QR", ignoreCase = true)
-                
                 if (isUrl && (content.startsWith("http") || content.startsWith("www"))) {
                     Button(
                         onClick = onOpenUrl,
@@ -614,7 +617,7 @@ private fun BarcodeHistoryItemCard(
     item: ScanHistoryItem,
     context: Context,
     onCopy: () -> Unit,
-    onDelete: () -> Void?
+    onDelete: () -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),

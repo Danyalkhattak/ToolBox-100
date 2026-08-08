@@ -484,11 +484,11 @@ private fun formatPrimeFactorization(factors: List<Long>): String {
     return counts.entries
         .sortedBy { it.key }
         .joinToString(" × ") { (prime, count) ->
-            if (count > 1) "$prime$superscript(count)" else "$prime"
+            if (count > 1) "${prime}${superscriptPrime(count)}" else "$prime"
         }
 }
 
-private fun superscript(n: Int): String {
+private fun superscriptPrime(n: Int): String {
     return n.toString().map {
         when (it) {
             '0' -> '⁰'

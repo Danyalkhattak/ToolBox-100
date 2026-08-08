@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
@@ -30,6 +31,7 @@ import androidx.compose.runtime.LaunchedEffect
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SHA1HashScreen(navController: NavHostController) {
+    val context = LocalContext.current
     var inputText by remember { mutableStateOf("") }
     var hashResult by remember { mutableStateOf("") }
     var isHashing by remember { mutableStateOf(false) }
@@ -225,11 +227,8 @@ fun SHA1HashScreen(navController: NavHostController) {
                     ) {
                         OutlinedButton(
                             onClick = {
-                                android.content.ClipData.newPlainText("sha1_hash", hashResult).also { clipData ->
-                                    android.app.ActivityManager.getActivity()?.let { activity ->
-                                        (activity.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager)?.setPrimaryClip(clipData)
-                                    }
-                                }
+                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                                clipboard?.setPrimaryClip(ClipData.newPlainText("sha1_hash", hashResult))
                                 showCopiedMessage = true
                             }
                         ) {

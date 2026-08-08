@@ -30,6 +30,7 @@ import android.content.ClipData
 import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.Check
 import java.util.regex.Pattern
@@ -40,6 +41,7 @@ import androidx.compose.runtime.LaunchedEffect
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PINGeneratorScreen(navController: NavHostController) {
+    val context = LocalContext.current
     var pinLength by remember { mutableIntStateOf(4) }
     var avoidPatterns by remember { mutableStateOf(true) }
     var generateMultiple by remember { mutableStateOf(false) }
@@ -347,7 +349,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                                 style = MaterialTheme.typography.displayMedium.copy(
                                     fontFamily = FontFamily.Monospace,
                                     fontWeight = FontWeight.Bold,
-                                    letterSpacing = 8.dp.sp
+                                    letterSpacing = 8.sp
                                 ),
                                 textAlign = TextAlign.Center
                             )
@@ -358,11 +360,8 @@ fun PINGeneratorScreen(navController: NavHostController) {
                         // Copy button for single PIN
                         OutlinedButton(
                             onClick = {
-                                android.content.ClipData.newPlainText("pin", generatedPins.first()).also { clipData ->
-                                    android.app.ActivityManager.getActivity()?.let { activity ->
-                                        (activity.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager)?.setPrimaryClip(clipData)
-                                    }
-                                }
+                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                                clipboard?.setPrimaryClip(ClipData.newPlainText("pin", generatedPins.first()))
                                 showCopiedMessage = generatedPins.first()
                             }
                         ) {
@@ -408,11 +407,8 @@ fun PINGeneratorScreen(navController: NavHostController) {
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .clickable {
-                                            android.content.ClipData.newPlainText("pin", pin).also { clipData ->
-                                                android.app.ActivityManager.getActivity()?.let { activity ->
-                                                    (activity.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager)?.setPrimaryClip(clipData)
-                                                }
-                                            }
+                                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                                            clipboard?.setPrimaryClip(ClipData.newPlainText("pin", pin))
                                             showCopiedMessage = pin
                                         },
                                     shape = RoundedCornerShape(12.dp),
@@ -428,7 +424,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                                             style = MaterialTheme.typography.titleLarge.copy(
                                                 fontFamily = FontFamily.Monospace,
                                                 fontWeight = FontWeight.Bold,
-                                                letterSpacing = 2.dp.sp
+                                                letterSpacing = 2.sp
                                             )
                                         )
                                         Icon(

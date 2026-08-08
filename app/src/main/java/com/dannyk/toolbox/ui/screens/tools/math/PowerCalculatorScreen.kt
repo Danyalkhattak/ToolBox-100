@@ -319,7 +319,7 @@ fun PowerCalculatorScreen(navController: NavHostController) {
                         Text("Related Calculations", style = MaterialTheme.typography.titleSmall)
                         Spacer(modifier = Modifier.height(8.dp))
                         
-                        val expInt = res.exponent.toIntOrNull()
+                        val expInt = if (res.exponent == res.exponent.toLong().toDouble()) res.exponent.toInt() else null
                         if (expInt != null) {
                             RelatedCalcRow("${res.base}^${expInt + 1}", 
                                 calculateQuickPower(res.base, expInt + 1))
