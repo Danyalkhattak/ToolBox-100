@@ -637,11 +637,13 @@ fun PrimaryButton(
 fun SecondaryButton(
     text: String,
     onClick: () -> Unit,
+    enabled: Boolean = true,
     icon: ImageVector? = null,
     modifier: Modifier = Modifier
 ) {
     OutlinedButton(
         onClick = onClick,
+        enabled = enabled,
         modifier = modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large
     ) {

@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -95,7 +96,7 @@ fun TextDiffScreen(navController: NavHostController) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(min = 80.dp, max = 150.dp),
-                        placeholder { Text("Paste original text...") },
+                        placeholder = { Text("Paste original text...") },
                         textStyle = TextStyle(fontSize = 13.sp, fontFamily = FontFamily.Monospace),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = MaterialTheme.colorScheme.primary,
@@ -118,7 +119,7 @@ fun TextDiffScreen(navController: NavHostController) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(min = 80.dp, max = 150.dp),
-                        placeholder { Text("Paste modified text...") },
+                        placeholder = { Text("Paste modified text...") },
                         textStyle = TextStyle(fontSize = 13.sp, fontFamily = FontFamily.Monospace),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = MaterialTheme.colorScheme.secondary,

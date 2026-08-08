@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
@@ -121,7 +122,7 @@ fun FindReplaceScreen(navController: NavHostController) {
                         onValueChange = { findText = it },
                         modifier = Modifier.fillMaxWidth(),
                         label = { Text("Find") },
-                        placeholder { Text("Enter text to find...") },
+                        placeholder = { Text("Enter text to find...") },
                         singleLine = true,
                         leadingIcon = {
                             Icon(Icons.Default.Search, contentDescription = "Find")
@@ -141,7 +142,7 @@ fun FindReplaceScreen(navController: NavHostController) {
                         onValueChange = { replaceText = it },
                         modifier = Modifier.fillMaxWidth(),
                         label = { Text("Replace with") },
-                        placeholder { Text("Enter replacement text...") },
+                        placeholder = { Text("Enter replacement text...") },
                         singleLine = true,
                         leadingIcon = {
                             Icon(Icons.Default.SwapHoriz, contentDescription = "Replace")

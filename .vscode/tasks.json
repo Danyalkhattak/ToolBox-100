@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "assembleDebug",
+			"type": "shell",
+			"command": "cmd /c set ANDROID_HOME=C:/Sdk && set ANDROID_SDK_ROOT=C:/Sdk && gradlew.bat assembleDebug",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			]
+		}
+	]
+}
