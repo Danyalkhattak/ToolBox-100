@@ -28,9 +28,6 @@ import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
 import android.content.ClipData
 import android.content.Context
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState

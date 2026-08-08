@@ -23,8 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolScreenLayout
 import androidx.compose.ui.graphics.Color
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.ScrollState

@@ -29,8 +29,6 @@ import com.dannyk.toolbox.ui.components.ToolHeader
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import kotlin.math.*
 import androidx.compose.runtime.LaunchedEffect
 

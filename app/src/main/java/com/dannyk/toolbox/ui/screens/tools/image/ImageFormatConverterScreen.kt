@@ -34,7 +34,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.compose.ui.graphics.Color
 import android.content.Intent
-import androidx.compose.material3.Divider
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ScrollState

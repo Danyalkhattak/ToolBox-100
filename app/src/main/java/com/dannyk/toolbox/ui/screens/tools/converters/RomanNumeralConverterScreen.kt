@@ -24,7 +24,6 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
-import androidx.compose.material3.Divider
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Warning

@@ -27,8 +27,6 @@ import java.net.InetSocketAddress
 import java.net.Socket
 import androidx.compose.ui.text.font.FontWeight
 import android.content.Context
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*

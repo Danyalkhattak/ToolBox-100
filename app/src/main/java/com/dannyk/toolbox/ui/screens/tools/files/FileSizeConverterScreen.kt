@@ -20,11 +20,6 @@ import com.dannyk.toolbox.ui.components.ToolScreenLayout
 import java.text.DecimalFormat
 import java.util.Locale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.ScrollState
 import android.widget.Toast

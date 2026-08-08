@@ -23,8 +23,6 @@ import java.security.MessageDigest
 import android.content.ClipboardManager
 import android.content.ClipData
 import android.content.Context
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.LaunchedEffect

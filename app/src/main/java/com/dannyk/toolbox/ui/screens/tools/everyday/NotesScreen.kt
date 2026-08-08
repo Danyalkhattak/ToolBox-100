@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.runtime.LaunchedEffect
 import java.util.Calendar
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotesScreen(navHostController: NavHostController) {
     val context = androidx.compose.ui.platform.LocalContext.current

@@ -26,8 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolTopBar
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*

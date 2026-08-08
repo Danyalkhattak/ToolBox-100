@@ -70,6 +70,7 @@ val availableTimeZones = listOf(
     TimeZoneCity("lagos", "Lagos", "Nigeria", "Africa/Lagos")
 )
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorldClockScreen(navHostController: NavHostController) {
     var addedClocks by remember { 

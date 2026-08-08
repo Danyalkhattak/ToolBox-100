@@ -22,8 +22,6 @@ import java.text.DecimalFormat
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import kotlin.math.*
 import androidx.compose.runtime.LaunchedEffect

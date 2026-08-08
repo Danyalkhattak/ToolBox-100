@@ -20,8 +20,6 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.ui.components.ToolHeader
 import java.text.DecimalFormat
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.clip
 import kotlin.math.*
 

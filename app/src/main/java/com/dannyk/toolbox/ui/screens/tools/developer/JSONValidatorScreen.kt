@@ -21,7 +21,6 @@ import org.json.JSONObject
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.Context
-import androidx.compose.material3.Divider
 import java.util.regex.Pattern
 import androidx.compose.foundation.ScrollState
 import kotlin.math.*
