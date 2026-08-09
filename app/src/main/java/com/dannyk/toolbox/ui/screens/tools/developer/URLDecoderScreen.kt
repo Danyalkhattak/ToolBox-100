@@ -340,20 +340,31 @@ fun URLDecoderScreen(navController: NavHostController) {
                         "%7E" to "~"
                     )
 
-                    // Display in a grid-like format
+                    // Display in a compact grid format
                     referenceTable.chunked(4).forEach { row ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             row.forEach { (encoded, char) ->
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
-                                        Surface(shape = MaterialTheme.shapes.extraSmall, color = MaterialTheme.colorScheme.primaryContainer) {
-                                            Text(encoded, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.labelSmall, modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp))
-                                        }
-                                        Text("→$char", style = MaterialTheme.typography.labelSmall)
+                                Surface(
+                                    modifier = Modifier.weight(1f),
+                                    shape = MaterialTheme.shapes.small,
+                                    color = MaterialTheme.colorScheme.surfaceVariant
+                                ) {
+                                    Column(
+                                        modifier = Modifier.padding(5.dp),
+                                        horizontalAlignment = Alignment.CenterHorizontally
+                                    ) {
+                                        Text(char, style = MaterialTheme.typography.labelMedium)
+                                        Text(encoded, fontFamily = FontFamily.Monospace, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelSmall)
                                     }
+                                }
+                            }
+                            // Fill remaining space if row is incomplete
+                            if (row.size < 4) {
+                                repeat(4 - row.size) {
+                                    Spacer(modifier = Modifier.weight(1f))
                                 }
                             }
                         }

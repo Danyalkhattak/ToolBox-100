@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -279,72 +280,97 @@ fun SettingsScreen(navController: NavHostController) {
                 }
             }
             
-            // About Section - Centered
+            // About Section - Fully Centered
             item {
                 Divider()
-                SettingsSection(title = "About", icon = Icons.Default.Info) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Section header centered
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(bottom = 16.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Info,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "About",
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    
+                    // App info card - Centered
+                    Card(
+                        modifier = Modifier.width(max(300.dp, LocalConfiguration.current.screenWidthDp.dp - 64.dp)),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                        )
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(24.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            // App Icon - larger, no background
+                            Image(
+                                painter = painterResource(id = R.mipmap.ic_launcher),
+                                contentDescription = "ToolBox-100 Icon",
+                                modifier = Modifier.size(96.dp),
+                                contentScale = ContentScale.Crop
+                            )
+                            
+                            Spacer(modifier = Modifier.height(12.dp))
+                            
+                            Text(
+                                text = "ToolBox-100",
+                                style = MaterialTheme.typography.headlineSmall,
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            
+                            Text(
+                                text = "Version ${BuildConfig.VERSION_NAME}",
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                textAlign = TextAlign.Center
+                            )
+                            
+                            Text(
+                                text = "100+ tools in one powerful app",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                textAlign = TextAlign.Center
+                            )
+                            
+                            Spacer(modifier = Modifier.height(8.dp))
+                            
+                            Text(
+                                text = "Built with ❤️ using Jetpack Compose",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.primary,
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                    }
+                    
+                    Spacer(modifier = Modifier.height(16.dp))
+                    
+                    // Links - centered with max width
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(12.dp),
-                        modifier = Modifier.padding(vertical = 16.dp)
+                        modifier = Modifier.width(max(300.dp, LocalConfiguration.current.screenWidthDp.dp - 64.dp)),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        // App info card - Centered
-                        Card(
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-                            )
-                        ) {
-                            Column(
-                                modifier = Modifier.padding(24.dp),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                // App Icon - larger, no background
-                                Image(
-                                    painter = painterResource(id = R.mipmap.ic_launcher),
-                                    contentDescription = "ToolBox-100 Icon",
-                                    modifier = Modifier.size(96.dp),
-                                    contentScale = ContentScale.Crop
-                                )
-                                
-                                Spacer(modifier = Modifier.height(12.dp))
-                                
-                                Text(
-                                    text = "ToolBox-100",
-                                    style = MaterialTheme.typography.headlineSmall,
-                                    fontWeight = FontWeight.Bold,
-                                    textAlign = TextAlign.Center
-                                )
-                                
-                                Text(
-                                    text = "Version ${BuildConfig.VERSION_NAME}",
-                                    style = MaterialTheme.typography.titleMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    textAlign = TextAlign.Center
-                                )
-                                
-                                Text(
-                                    text = "100+ tools in one powerful app",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    textAlign = TextAlign.Center
-                                )
-                                
-                                Spacer(modifier = Modifier.height(8.dp))
-                                
-                                Text(
-                                    text = "Built with ❤️ using Jetpack Compose",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.primary,
-                                    textAlign = TextAlign.Center
-                                )
-                            }
-                        }
-                        
-                        // Links - also centered
                         SettingsItem(
                             title = "GitHub Repository",
-                            subtitle = "View source code, report issues & contribute",
+                            subtitle = "View source code & contribute",
                             icon = Icons.Default.Code,
                             onClick = {
                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100"))
@@ -354,21 +380,21 @@ fun SettingsScreen(navController: NavHostController) {
                         
                         SettingsItem(
                             title = "Open Source Licenses",
-                            subtitle = "Third-party libraries used",
+                            subtitle = "Third-party libraries",
                             icon = Icons.Default.Description,
-                            onClick = { /* Show licenses dialog */ }
+                            onClick = { /* Show licenses */ }
                         )
                         
                         SettingsItem(
                             title = "Privacy Policy",
-                            subtitle = "No data is collected or shared",
+                            subtitle = "No data collected",
                             icon = Icons.Default.Security,
-                            onClick = { /* Show privacy policy */ }
+                            onClick = { /* Privacy */ }
                         )
                         
                         SettingsItem(
                             title = "Rate App",
-                            subtitle = "Support development with a review",
+                            subtitle = "Support development",
                             icon = Icons.Default.Star,
                             onClick = {
                                 try {

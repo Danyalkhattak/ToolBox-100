@@ -247,44 +247,52 @@ fun URLEncoderScreen(navController: NavHostController) {
 
                     val commonEncodings = listOf(
                         Triple("Space", " ", "%20"),
-                        Triple("Less than", "<", "%3C"),
-                        Triple("Greater than", ">", "%3E"),
-                        Triple("Hash/Pound", "#", "%23"),
-                        Triple("Percent", "%", "%25"),
-                        Triple("{", "{", "%7B"),
-                        Triple("}", "}", "%7D"),
-                        Triple("|", "|", "%7C"),
-                        Triple("\\", "\\", "%5C"),
-                        Triple("^", "^", "%5E"),
-                        Triple("[", "[", "%5B"),
-                        Triple("]", "]", "%5D"),
-                        Triple("`", "`", "%60"),
-                        Triple("Quotation mark", "\"", "%22"),
-                        Triple("Ampersand", "&", "%26"),
-                        Triple("Plus sign", "+", "%2B"),
-                        Triple("Equals", "=", "%3D"),
-                        Triple("Question mark", "?", "%3F"),
-                        Triple("Slash /", "/", "%2F")
+                        Triple("<", "<", "%3C"),
+                        Triple(">", ">", "%3E"),
+                        Triple("Hash", "#", "%23"),
+                        Triple("Pct", "%", "%25"),
+                        Triple("LBrace", "{", "%7B"),
+                        Triple("RBrace", "}", "%7D"),
+                        Triple("Pipe", "|", "%7C"),
+                        Triple("BkSlsh", "\\", "%5C"),
+                        Triple("Caret", "^", "%5E"),
+                        Triple("LBrkt", "[", "%5B"),
+                        Triple("RBrkt", "]", "%5D"),
+                        Triple("Grave", "`", "%60"),
+                        Triple("Quote", "\"", "%22"),
+                        Triple("Amp", "&", "%26"),
+                        Triple("Plus", "+", "%2B"),
+                        Triple("Eqls", "=", "%3D"),
+                        Triple("QMark", "?", "%3F"),
+                        Triple("Slash", "/", "%2F")
                     )
 
-                    // Display in a grid-like format
-                    commonEncodings.chunked(2).forEach { row ->
+                    // Display in a compact grid format
+                    commonEncodings.chunked(3).forEach { row ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             row.forEach { (name, char, encoded) ->
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
-                                        Text("$name: ", style = MaterialTheme.typography.labelSmall)
-                                        Surface(shape = MaterialTheme.shapes.extraSmall, color = MaterialTheme.colorScheme.surfaceVariant) {
-                                            Text(char, fontFamily = FontFamily.Monospace, modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp))
-                                        }
-                                        Text(" → ", style = MaterialTheme.typography.labelSmall)
-                                        Surface(shape = MaterialTheme.shapes.extraSmall, color = MaterialTheme.colorScheme.primaryContainer) {
-                                            Text(encoded, fontFamily = FontFamily.Monospace, modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp))
-                                        }
+                                Surface(
+                                    modifier = Modifier.weight(1f),
+                                    shape = MaterialTheme.shapes.small,
+                                    color = MaterialTheme.colorScheme.surfaceVariant
+                                ) {
+                                    Column(
+                                        modifier = Modifier.padding(6.dp),
+                                        horizontalAlignment = Alignment.CenterHorizontally
+                                    ) {
+                                        Text(char, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.labelMedium)
+                                        Text(encoded, fontFamily = FontFamily.Monospace, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelSmall)
+                                        Text(name, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
                                     }
+                                }
+                            }
+                            // Fill remaining space if row is incomplete
+                            if (row.size < 3) {
+                                repeat(3 - row.size) {
+                                    Spacer(modifier = Modifier.weight(1f))
                                 }
                             }
                         }
