@@ -366,7 +366,7 @@ fun MD5HashScreen(navController: NavHostController) {
             }
         }
 
-        Spacer(modifier = Modifier.height(20.md))
+        Spacer(modifier = Modifier.height(20.dp))
 
         // Acceptable Use Cases Only
         Card(
@@ -467,7 +467,7 @@ private fun AttackTimelineItem(year: String, event: String) {
             style = MaterialTheme.typography.bodySmall,
             fontWeight = FontWeight.Bold,
             color = Color(0xFFD32F2F),
-            minWidth = 50.dp
+            modifier = Modifier.width(50.dp)
         )
         Text(
             text = event,

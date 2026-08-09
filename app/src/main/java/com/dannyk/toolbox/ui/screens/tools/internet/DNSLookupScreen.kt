@@ -21,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.InetAddress
+import java.net.URL
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.ClipboardManager
@@ -465,7 +466,7 @@ private suspend fun performDNSLookup(
                                 val answer = answers.getJSONObject(i)
                                 val type = answer.getInt("type")
                                 val data = answer.getString("data")
-                                val ttl = answer.optInt("TTL", null)
+                                val ttl = answer.optInt("TTL", 0)
                                 
                                 when (type) {
                                     1 -> { // A

@@ -220,7 +220,7 @@ fun PowerCalculatorScreen(navController: NavHostController) {
                         }
                         
                         if (res.isInteger) {
-                            val intVal = res.result.toLongOrNull()
+                            val intVal = if (res.result == res.result.toLong().toDouble()) res.result.toLong() else null
                             if (intVal != null) {
                                 InfoRow("Is Even", if (intVal % 2L == 0L) "Yes" else "No")
                                 InfoRow("Is Perfect Square", isPerfectSquare(intVal).let { if (it) "Yes (${sqrtLong(intVal)}²)" else "No" })
@@ -354,7 +354,7 @@ data class PowerResult(
 )
 
 private fun calculatePower(base: Double, exponent: Double, includeSteps: Boolean): PowerResult {
-    val result = kotlin.math.pow(base, exponent)
+    val result = base.pow(exponent)
     
     // Check for special cases
     val specialNote = getSpecialCase(base, exponent)
@@ -445,7 +445,7 @@ private fun isExactPower(base: Double, exponent: Double): Boolean {
     var result = 1.0
     repeat(expInt) { result *= base }
     
-    return result == kotlin.math.pow(base, exponent)
+    return result == base.pow(exponent)
 }
 
 private fun generateSteps(base: Double, exponent: Double, result: Double, includeSteps: Boolean): List<String> {
@@ -557,7 +557,7 @@ private fun getDenominator(d: Double): Int {
 
 private fun calculateQuickPower(base: Double, exponent: Int): String {
     return try {
-        val result = kotlin.math.pow(base, exponent.toDouble())
+        val result = base.pow(exponent.toDouble())
         formatFinalValue(result)
     } catch (e: Exception) {
         "Error"

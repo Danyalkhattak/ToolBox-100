@@ -2,6 +2,7 @@ package com.dannyk.toolbox.ui.screens.tools.image
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

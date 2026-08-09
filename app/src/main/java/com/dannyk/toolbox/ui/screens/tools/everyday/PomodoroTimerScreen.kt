@@ -243,7 +243,7 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
                 )
                 
                 // Progress arc
-                val sweepAngle = -360f * animatedProgress.value
+                val sweepAngle = -360f * animatedProgress
                 drawArc(
                     color = currentSessionType.color(),
                     startAngle = -90f,
@@ -267,7 +267,7 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
                         text = currentSessionType.displayName(),
                         style = MaterialTheme.typography.labelLarge,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White,
+                        color = ComposeColor.White,
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
                     )
                 }
@@ -326,7 +326,7 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
                 shape = RoundedCornerShape(14.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = currentSessionType.color(),
-                    contentColor = Color.White
+                    contentColor = ComposeColor.White
                 )
             ) {
                 Icon(
@@ -380,13 +380,13 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
                                     if (index < todaySessions % sessionsBeforeLongBreak || 
                                         (todaySessions > 0 && index < (todaySessions - 1) % sessionsBeforeLongBreak + 1)) {
                                         if ((index + 1) == sessionsBeforeLongBreak && todaySessions >= sessionsBeforeLongBreak) {
-                                            Color(0xFFFF9800) // Gold for completed set
+                                            ComposeColor(0xFFFF9800) // Gold for completed set
                                         } else {
-                                            Color(0xFFE53935) // Red for tomato
+                                            ComposeColor(0xFFE53935) // Red for tomato
                                         }
                                     } else if (index < currentSessionNumber - 1 || 
                                               (currentSessionType != SessionType.WORK && index < currentSessionNumber - 1 + 1)) {
-                                        Color(0xFFE53935)
+                                        ComposeColor(0xFFE53935)
                                     } else {
                                         MaterialTheme.colorScheme.surfaceContainerLowest
                                     }
@@ -398,7 +398,7 @@ fun PomodoroTimerScreen(navHostController: NavHostController) {
                                 Icon(
                                     imageVector = Icons.Default.Eco,
                                     contentDescription = null,
-                                    tint = Color.White,
+                                    tint = ComposeColor.White,
                                     modifier = Modifier.size(18.dp)
                                 )
                             } else {

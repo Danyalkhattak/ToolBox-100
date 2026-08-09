@@ -425,7 +425,7 @@ private fun stirlingApproximation(n: Int): Pair<String, Double> {
     val approximation = sqrtPart * powerPart
     
     // Calculate actual for comparison (using log for large numbers)
-    val actualLog = logFactorial(n)
+    val actualLog = logFactorial(n.toDouble())
     val approxLog = kotlin.math.log(approximation)
     val errorPercent = kotlin.math.abs((approxLog - actualLog) / actualLog) * 100
     
@@ -489,9 +489,21 @@ private fun getInterestingFact(n: Int): String? {
         n == 69 -> "69! - nice!"
         n == 420 -> "420! - nice!"
         n % 100 == 0 -> "${n}! ends with ${countTrailingZeros(n)} zeros"
-        isPrime(n.toLong()) -> "$n is prime, so n! is divisible by all numbers from 1 to $n"
+        isPrimeLocal(n.toLong()) -> "$n is prime, so n! is divisible by all numbers from 1 to $n"
         n == 52 -> "52! = number of ways to shuffle a deck of cards"
         n == 64 -> "64! exceeds the number of atoms in the observable universe (~10^80)"
         else -> null
     }
+}
+
+// Local helper function to check if a number is prime
+private fun isPrimeLocal(n: Long): Boolean {
+    if (n < 2) return false
+    if (n == 2L) return true
+    if (n % 2L == 0L) return false
+    val sqrt = kotlin.math.sqrt(n.toDouble()).toLong()
+    for (i in 3..sqrt step 2) {
+        if (n % i == 0L) return false
+    }
+    return true
 }

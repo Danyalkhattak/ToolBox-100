@@ -202,7 +202,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     level = "AA",
                     textType = "Normal Text (<18px or <14px bold)",
                     requiredRatio = "4.5:1",
-                    actualRatio = contrastRatio,
+                    actualRatio = contrastRatio.toFloat(),
                     passes = contrastRatio >= 4.5
                 )
 
@@ -211,7 +211,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     level = "AA",
                     textType = "Large Text (≥18px or ≥14px bold)",
                     requiredRatio = "3:1",
-                    actualRatio = contrastRatio,
+                    actualRatio = contrastRatio.toFloat(),
                     passes = contrastRatio >= 3.0
                 )
 
@@ -220,7 +220,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     level = "AAA",
                     textType = "Normal Text (<18px or <14px bold)",
                     requiredRatio = "7:1",
-                    actualRatio = contrastRatio,
+                    actualRatio = contrastRatio.toFloat(),
                     passes = contrastRatio >= 7.0
                 )
 
@@ -229,7 +229,7 @@ fun ContrastCheckerScreen(navController: NavHostController) {
                     level = "AAA",
                     textType = "Large Text (≥18px or ≥14px bold)",
                     requiredRatio = "4.5:1",
-                    actualRatio = contrastRatio,
+                    actualRatio = contrastRatio.toFloat(),
                     passes = contrastRatio >= 4.5
                 )
             }

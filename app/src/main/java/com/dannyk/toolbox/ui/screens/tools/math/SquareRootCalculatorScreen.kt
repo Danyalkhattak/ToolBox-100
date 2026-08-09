@@ -542,7 +542,7 @@ private fun calculateRoot(number: Double, rootDegree: Int, precision: Int): Root
     
     // Get exact root if perfect power
     val exactRoot = if (isPerfectPower) {
-        roundToLong(finalX).toDouble()
+        kotlin.math.round(finalX).toLong().toDouble()
     } else finalX
     
     // Check if result is exact integer
@@ -597,7 +597,7 @@ private fun checkPerfectPower(number: Double, degree: Int): Boolean {
     val longNum = number.toLong()
     val root = nthRootLong(longNum, degree)
     
-    return root.pow(degree) == longNum
+    return root.toDouble().pow(degree) == longNum.toDouble()
 }
 
 private fun nthRootLong(n: Long, degree: Int): Long {

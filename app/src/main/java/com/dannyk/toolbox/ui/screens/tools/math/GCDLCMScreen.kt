@@ -450,7 +450,7 @@ private fun explainGCDFromFactors(factorizations: Map<Long, List<Long>>): String
     if (commonFactors.isEmpty()) return "No common prime factors → GCD = 1"
     
     val factorString = commonFactors.joinToString(" × ") { (prime, count) ->
-        if (count > 1) "$prime$superscript(count)" else "$prime"
+        if (count > 1) "$prime${superscriptGCD(count)}" else "$prime"
     }
     
     return "Take minimum power of each common prime: $factorString"
@@ -473,7 +473,7 @@ private fun explainLCMFromFactors(factorizations: Map<Long, List<Long>>): String
     }
     
     val factorString = maxFactors.joinToString(" × ") { (prime, count) ->
-        if (count > 1) "$prime$superscript(count)" else "$prime"
+        if (count > 1) "$prime${superscriptGCD(count)}" else "$prime"
     }
     
     return "Take maximum power of each prime: $factorString"

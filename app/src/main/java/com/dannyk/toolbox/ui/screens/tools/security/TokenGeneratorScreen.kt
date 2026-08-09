@@ -158,7 +158,7 @@ fun TokenGeneratorScreen(navController: NavHostController) {
             }
         }
 
-        Spacer(modifier = Modifier.height(20.md))
+        Spacer(modifier = Modifier.height(20.dp))
 
         // Options Card
         Card(
@@ -396,7 +396,7 @@ fun TokenGeneratorScreen(navController: NavHostController) {
                     fontWeight = FontWeight.Bold
                 )
 
-                Spacer(modifier = Modifier.height(12.dm))
+                Spacer(modifier = Modifier.height(12.dp))
 
                 // Hex info
                 FormatInfoRow(

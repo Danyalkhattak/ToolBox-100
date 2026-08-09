@@ -232,7 +232,7 @@ fun WiFiQRGeneratorScreen(
             if (qrBitmap != null && wifiString != null) {
                 Card(
                     colors = CardDefaults.cardColors(
-                        containerColor = Color.White
+                        containerColor = ComposeColor.White
                     ),
                     shape = RoundedCornerShape(16.dp)
                 ) {

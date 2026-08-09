@@ -50,7 +50,8 @@ import android.net.Uri
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QRCodeGeneratorScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
     
@@ -159,7 +160,7 @@ fun QRCodeGeneratorScreen(
             if (qrBitmap != null) {
                 Card(
                     colors = CardDefaults.cardColors(
-                        containerColor = Color.White
+                        containerColor = ComposeColor.White
                     ),
                     shape = RoundedCornerShape(16.dp)
                 ) {

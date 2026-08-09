@@ -581,7 +581,7 @@ private suspend fun startPing(
             val hostAddress = address.hostAddress ?: host
             
             for (i in 1..count) {
-                if (!kotlinx.coroutines.coroutineContext.isActive) break
+                if (!coroutineContext.isActive) break
                 
                 val startTime = System.currentTimeMillis()
                 

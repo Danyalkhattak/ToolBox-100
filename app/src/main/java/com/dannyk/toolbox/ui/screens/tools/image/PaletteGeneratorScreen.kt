@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -382,7 +383,7 @@ private fun RgbInputCompact(label: String, value: Int, onValueChange: (Int) -> U
         singleLine = true,
         textStyle = MaterialTheme.typography.bodyMedium.copy(
             fontFamily = FontFamily.Monospace,
-            textAlign = androidx.compose.ui.style.TextAlign.Center
+            textAlign = TextAlign.Center
         ),
         modifier = Modifier.weight(1f)
     )

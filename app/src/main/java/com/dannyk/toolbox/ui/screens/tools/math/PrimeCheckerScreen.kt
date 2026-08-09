@@ -1,6 +1,7 @@
 package com.dannyk.toolbox.ui.screens.tools.math
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -17,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import kotlin.math.*
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PrimeCheckerScreen(navController: NavHostController) {
     var numberInput by remember { mutableStateOf("") }

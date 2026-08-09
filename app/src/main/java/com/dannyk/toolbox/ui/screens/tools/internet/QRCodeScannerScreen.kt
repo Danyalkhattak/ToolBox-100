@@ -129,7 +129,7 @@ fun QRCodeScannerScreen(
                                                 isScanning = false
                                                 
                                                 // Add to history
-                                                val newItem = QRScanHistoryItem(
+                                                val newItem = ScanHistoryItem(
                                                     content = res.text,
                                                     format = res.barcodeFormat?.name ?: "QR_CODE",
                                                     timestamp = System.currentTimeMillis()
@@ -158,7 +158,9 @@ fun QRCodeScannerScreen(
                             Surface(
                                 color = Color.Black.copy(alpha = 0.7f),
                                 modifier = Modifier.matchParentSize()
-                            )
+                            ) {
+                                // Success overlay content
+                            }
                         }
                     }
                 } else {
@@ -564,7 +566,7 @@ private fun HistoryItemCard(
     }
 }
 
-data class QRScanHistoryItem(
+data class ScanHistoryItem(
     val content: String,
     val format: String,
     val timestamp: Long

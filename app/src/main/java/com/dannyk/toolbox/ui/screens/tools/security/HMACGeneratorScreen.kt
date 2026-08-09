@@ -514,7 +514,7 @@ private fun HmacExplanationItem(symbol: String, description: String) {
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold
             ),
-            minWidth = 40.dp,
+            modifier = Modifier.width(40.dp),
             color = MaterialTheme.colorScheme.primary
         )
         Text(
