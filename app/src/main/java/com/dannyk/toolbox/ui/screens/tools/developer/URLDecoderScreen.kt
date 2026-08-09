@@ -339,7 +339,7 @@ fun URLDecoderScreen(navController: NavHostController) {
                         "%7E" to "~"
                     )
 
-                    // Display in a compact grid format
+                    // Display in a compact grid format (no weight() to avoid crash in scrollable)
                     referenceTable.chunked(4).forEach { row ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -347,7 +347,7 @@ fun URLDecoderScreen(navController: NavHostController) {
                         ) {
                             row.forEach { (encoded, char) ->
                                 Surface(
-                                    modifier = Modifier.weight(1f),
+                                    modifier = Modifier.fillMaxWidth(),
                                     shape = MaterialTheme.shapes.small,
                                     color = MaterialTheme.colorScheme.surfaceVariant
                                 ) {
@@ -363,7 +363,7 @@ fun URLDecoderScreen(navController: NavHostController) {
                             // Fill remaining space if row is incomplete
                             if (row.size < 4) {
                                 repeat(4 - row.size) {
-                                    Spacer(modifier = Modifier.weight(1f))
+                                    Spacer(modifier = Modifier.fillMaxWidth())
                                 }
                             }
                         }

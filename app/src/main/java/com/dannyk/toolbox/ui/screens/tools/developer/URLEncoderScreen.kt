@@ -266,7 +266,7 @@ fun URLEncoderScreen(navController: NavHostController) {
                         Triple("Slash", "/", "%2F")
                     )
 
-                    // Display in a compact grid format using Columns with equal sizing
+                    // Display in a compact grid format using Columns (no weight() to avoid crash in scrollable)
                     commonEncodings.chunked(3).forEach { row ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -276,7 +276,7 @@ fun URLEncoderScreen(navController: NavHostController) {
                                 Surface(
                                     shape = MaterialTheme.shapes.small,
                                     color = MaterialTheme.colorScheme.surfaceVariant,
-                                    modifier = Modifier.weight(1f)
+                                    modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Column(
                                         modifier = Modifier.padding(6.dp),
@@ -291,7 +291,7 @@ fun URLEncoderScreen(navController: NavHostController) {
                             // Fill remaining space if row is incomplete
                             if (row.size < 3) {
                                 repeat(3 - row.size) {
-                                    Spacer(modifier = Modifier.weight(1f))
+                                    Spacer(modifier = Modifier.fillMaxWidth())
                                 }
                             }
                         }

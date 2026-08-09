@@ -121,6 +121,8 @@ fun BarcodeScannerScreen(
             ) {
                 if (hasCameraPermission) {
                     // ZXing Barcode Scanner View - Multiple formats
+                    var barcodeViewRef by remember { mutableStateOf<DecoratedBarcodeView?>(null) }
+                    
                     AndroidView(
                         factory = { ctx ->
                             DecoratedBarcodeView(ctx).apply {
@@ -168,10 +170,36 @@ fun BarcodeScannerScreen(
                                         // Optional: Show scanning animation points
                                     }
                                 })
+                                
+                                barcodeViewRef = this
+                            }
+                        },
+                        update = { view ->
+                            // Resume scanning when view is updated
+                            if (hasCameraPermission && isScanning) {
+                                try {
+                                    view.resume()
+                                } catch (e: Exception) {
+                                    // Ignore resume errors
+                                }
                             }
                         },
                         modifier = Modifier.fillMaxSize()
                     )
+                    
+                    // Start scanning when permission is granted
+                    LaunchedEffect(hasCameraPermission) {
+                        if (hasCameraPermission) {
+                            kotlinx.coroutines.delay(500) // Small delay to ensure view is ready
+                            barcodeViewRef?.let { view ->
+                                try {
+                                    view.resume()
+                                } catch (e: Exception) {
+                                    // Ignore errors
+                                }
+                            }
+                        }
+                    }
                     
                     // Scanning overlay
                     Box(modifier = Modifier.matchParentSize()) {
@@ -455,7 +483,7 @@ fun BarcodeScannerScreen(
                             horizontalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
                             row.forEach { (format, desc) ->
-                                Column(modifier = Modifier.weight(1f)) {
+                                Column(modifier = Modifier.fillMaxWidth()) {
                                     Text(
                                         text = format,
                                         style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Medium)
@@ -469,7 +497,7 @@ fun BarcodeScannerScreen(
                             }
                             // Fill remaining space if odd number of items
                             if (row.size == 1) {
-                                Spacer(modifier = Modifier.weight(1f))
+                                Spacer(modifier = Modifier.fillMaxWidth())
                             }
                         }
                         if (row != formats.lastOrNull()?.let { listOf(it) }) {
@@ -570,7 +598,7 @@ private fun ResultCard(
             ) {
                 OutlinedButton(
                     onClick = onCopy,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Icon(Icons.Default.ContentCopy, contentDescription = null)
                     Spacer(modifier = Modifier.width(4.dp))
@@ -581,7 +609,7 @@ private fun ResultCard(
                 if (isUrl && (content.startsWith("http") || content.startsWith("www"))) {
                     Button(
                         onClick = onOpenUrl,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     ) {
                         Icon(Icons.Default.QrCode2, contentDescription = null)
                         Spacer(modifier = Modifier.width(4.dp))
@@ -590,7 +618,7 @@ private fun ResultCard(
                 } else {
                     OutlinedButton(
                         onClick = onScanAgain,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     ) {
                         Icon(Icons.Default.QrCodeScanner, contentDescription = null)
                         Spacer(modifier = Modifier.width(4.dp))
@@ -646,7 +674,7 @@ private fun BarcodeHistoryItemCard(
             
             Spacer(modifier = Modifier.width(12.dp))
             
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = item.content.take(35) + if (item.content.length > 35) "..." else "",
                     style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
