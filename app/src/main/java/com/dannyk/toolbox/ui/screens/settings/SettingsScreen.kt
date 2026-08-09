@@ -13,9 +13,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -31,6 +30,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -39,6 +39,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.BuildConfig
@@ -48,8 +49,6 @@ import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.tools.ToolRegistry
 import com.dannyk.toolbox.ui.components.ToolCard
 import kotlinx.coroutines.launch
-import android.content.Context
-import androidx.compose.foundation.ScrollState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,33 +56,30 @@ fun SettingsScreen(navController: NavHostController) {
     val context = LocalContext.current
     val preferencesManager = (context.applicationContext as ToolBoxApplication).preferencesManager
     val scope = rememberCoroutineScope()
-    
+
     var showClearHistoryDialog by remember { mutableStateOf(false) }
-    
-    // Theme state
-    var selectedTheme by remember { 
+
+    var selectedTheme by remember {
         mutableStateOf(PreferencesManager.THEME_SYSTEM)
     }
-    
-    // Recent tools for display
+
     val recentTools by preferencesManager.recentTools.collectAsState(initial = emptyList())
     val recentToolIds = recentTools.map { it.first }.take(10)
     val recentToolsList = recentToolIds.mapNotNull { id -> ToolRegistry.getToolById(id) }
-    
-    // Favorites for display
+
     val favoriteIds by preferencesManager.favoriteIds.collectAsState(initial = emptySet())
     val favoriteTools = ToolRegistry.allTools.filter { it.id in favoriteIds }
-    
+
     LaunchedEffect(Unit) {
         preferencesManager.themeMode.collect { theme ->
             selectedTheme = theme
         }
     }
-    
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { 
+                title = {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
                             imageVector = Icons.Default.Settings,
@@ -92,7 +88,7 @@ fun SettingsScreen(navController: NavHostController) {
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Settings", fontWeight = FontWeight.Bold) 
+                        Text("Settings", fontWeight = FontWeight.Bold)
                     }
                 },
                 navigationIcon = {
@@ -122,8 +118,7 @@ fun SettingsScreen(navController: NavHostController) {
                             style = MaterialTheme.typography.titleSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
-                    
-                        // Theme options - horizontal row with equal width
+
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -162,10 +157,10 @@ fun SettingsScreen(navController: NavHostController) {
                     }
                 }
             }
-            
+
             // Favorites Section
             item {
-                Divider()
+                Divider(modifier = Modifier.padding(vertical = 12.dp))
                 SettingsSection(title = "Favorites", icon = Icons.Default.Star) {
                     if (favoriteTools.isEmpty()) {
                         Text(
@@ -179,9 +174,7 @@ fun SettingsScreen(navController: NavHostController) {
                             favoriteTools.take(5).forEach { tool ->
                                 ToolCard(
                                     tool = tool,
-                                    onClick = {
-                                        navController.navigate(tool.route)
-                                    },
+                                    onClick = { navController.navigate(tool.route) },
                                     onFavoriteClick = {
                                         scope.launch {
                                             if (tool.id in favoriteIds) {
@@ -205,10 +198,10 @@ fun SettingsScreen(navController: NavHostController) {
                     }
                 }
             }
-            
+
             // Recently Used Section
             item {
-                Divider()
+                Divider(modifier = Modifier.padding(vertical = 12.dp))
                 SettingsSection(title = "Recently Used", icon = Icons.Default.History) {
                     if (recentToolsList.isEmpty()) {
                         Text(
@@ -222,18 +215,14 @@ fun SettingsScreen(navController: NavHostController) {
                             recentToolsList.forEach { tool: com.dannyk.toolbox.domain.model.Tool ->
                                 ToolCard(
                                     tool = tool,
-                                    onClick = {
-                                        navController.navigate(tool.route)
-                                    }
+                                    onClick = { navController.navigate(tool.route) }
                                 )
                             }
-                            
+
                             Spacer(modifier = Modifier.height(8.dp))
-                            
+
                             OutlinedButton(
-                                onClick = {
-                                    showClearHistoryDialog = true
-                                },
+                                onClick = { showClearHistoryDialog = true },
                                 modifier = Modifier.fillMaxWidth(),
                                 colors = ButtonDefaults.outlinedButtonColors(
                                     contentColor = MaterialTheme.colorScheme.error
@@ -247,10 +236,10 @@ fun SettingsScreen(navController: NavHostController) {
                     }
                 }
             }
-            
+
             // Updates Section
             item {
-                Divider()
+                Divider(modifier = Modifier.padding(vertical = 12.dp))
                 SettingsSection(title = "Updates", icon = Icons.Default.CloudDownload) {
                     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         SettingsItem(
@@ -258,7 +247,7 @@ fun SettingsScreen(navController: NavHostController) {
                             subtitle = BuildConfig.VERSION_NAME + " (Build ${BuildConfig.VERSION_CODE})",
                             icon = Icons.Default.Info
                         )
-                        
+
                         SettingsItem(
                             title = "Check for Updates",
                             subtitle = "Check GitHub for latest version",
@@ -269,7 +258,6 @@ fun SettingsScreen(navController: NavHostController) {
                                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100/releases/latest"))
                                         context.startActivity(intent)
                                     } catch (e: Exception) {
-                                        // Fallback: open main repo
                                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100"))
                                         context.startActivity(intent)
                                     }
@@ -279,20 +267,20 @@ fun SettingsScreen(navController: NavHostController) {
                     }
                 }
             }
-            
-            // About Section - Fully Centered
+
+            // About Section – Simplified & Centered, NO "Made by Danyal Khattak"
             item {
-                Divider()
+                Divider(modifier = Modifier.padding(vertical = 12.dp))
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // Section header centered
+                    // Section header with extra spacing
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.padding(bottom = 16.dp)
+                        modifier = Modifier.padding(bottom = 24.dp)   // increased from 16.dp
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
@@ -306,96 +294,57 @@ fun SettingsScreen(navController: NavHostController) {
                             fontWeight = FontWeight.Bold
                         )
                     }
-                    
-                    // App info card - Centered
-                    Card(
-                        modifier = Modifier.width(maxOf(300.dp, (LocalConfiguration.current.screenWidthDp.dp - 64.dp))),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-                        )
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(24.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            // App Icon - larger, no background
-                            Image(
-                                painter = painterResource(id = R.mipmap.ic_launcher),
-                                contentDescription = "ToolBox-100 Icon",
-                                modifier = Modifier.size(96.dp),
-                                contentScale = ContentScale.Crop
-                            )
-                            
-                            Spacer(modifier = Modifier.height(12.dp))
-                            
-                            Text(
-                                text = "ToolBox-100",
-                                style = MaterialTheme.typography.headlineSmall,
-                                fontWeight = FontWeight.Bold,
-                                textAlign = TextAlign.Center
-                            )
-                            
-                            Text(
-                                text = "Version ${BuildConfig.VERSION_NAME}",
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                textAlign = TextAlign.Center
-                            )
-                            
-                            Text(
-                                text = "100+ tools in one powerful app",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                textAlign = TextAlign.Center
-                            )
-                            
-                            Spacer(modifier = Modifier.height(8.dp))
-                            
-                            Text(
-                                text = "Built with passion using Jetpack Compose",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.primary,
-                                textAlign = TextAlign.Center
-                            )
-                        }
-                    }
-                    
+
+                    // App icon with rounded corners
+                    Image(
+                        painter = painterResource(id = R.mipmap.ic_launcher),
+                        contentDescription = "ToolBox-100 Icon",
+                        modifier = Modifier
+                            .size(80.dp)
+                            .clip(RoundedCornerShape(16.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = "ToolBox-100",
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(4.dp))
+
+                    Text(
+                        text = "Version ${BuildConfig.VERSION_NAME}",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center
+                    )
+
                     Spacer(modifier = Modifier.height(16.dp))
-                    
-                    // Links - centered with max width
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.width(maxOf(300.dp, (LocalConfiguration.current.screenWidthDp.dp - 64.dp))),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+
+                    // GitHub link – centered
+                    TextButton(
+                        onClick = {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100"))
+                            context.startActivity(intent)
+                        },
+                        modifier = Modifier.wrapContentWidth()
                     ) {
-                        SettingsItem(
-                            title = "GitHub Repository",
-                            subtitle = "View source code & contribute",
-                            icon = Icons.Default.Code,
-                            onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100"))
-                                context.startActivity(intent)
-                            }
+                        Icon(
+                            imageVector = Icons.Default.Code,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp)
                         )
-                        
-                        SettingsItem(
-                            title = "Open Source Licenses",
-                            subtitle = "Third-party libraries",
-                            icon = Icons.Default.Description,
-                            onClick = { /* Show licenses */ }
-                        )
-                        
-                        SettingsItem(
-                            title = "Privacy Policy",
-                            subtitle = "No data collected",
-                            icon = Icons.Default.Security,
-                            onClick = { /* Privacy */ }
-                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text("GitHub Repository")
                     }
                 }
             }
-            
-            // Copyright - Centered
+
+            // Copyright – only copyright line, no "Made by..."
             item {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -404,23 +353,16 @@ fun SettingsScreen(navController: NavHostController) {
                         .padding(top = 24.dp, bottom = 32.dp)
                 ) {
                     Text(
-                        text = "\u00A9 2024 ToolBox-100. All rights reserved.",
+                        text = "\u00A9 2025 ToolBox-100. All rights reserved.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Center
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Crafted by Danny K",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.primary,
                         textAlign = TextAlign.Center
                     )
                 }
             }
         }
     }
-    
+
     // Clear history confirmation dialog
     if (showClearHistoryDialog) {
         AlertDialog(
@@ -538,7 +480,12 @@ private fun ThemeOption(
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
             Icon(imageVector = icon, contentDescription = null, modifier = Modifier.size(18.dp))
             Spacer(modifier = Modifier.width(6.dp))
-            Text(text, style = MaterialTheme.typography.labelMedium)
+            Text(
+                text = text,
+                style = MaterialTheme.typography.labelMedium,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
         }
     }
 }
