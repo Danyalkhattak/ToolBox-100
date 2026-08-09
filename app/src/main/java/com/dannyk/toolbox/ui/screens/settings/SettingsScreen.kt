@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -121,7 +122,7 @@ fun SettingsScreen(navController: NavHostController) {
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     
-                        // Theme options
+                        // Theme options - horizontal row with equal width
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -134,7 +135,7 @@ fun SettingsScreen(navController: NavHostController) {
                                     scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_SYSTEM) }
                                     selectedTheme = PreferencesManager.THEME_SYSTEM
                                 },
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.weight(1f)
                             )
                             ThemeOption(
                                 text = "Light",
@@ -144,7 +145,7 @@ fun SettingsScreen(navController: NavHostController) {
                                     scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_LIGHT) }
                                     selectedTheme = PreferencesManager.THEME_LIGHT
                                 },
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.weight(1f)
                             )
                             ThemeOption(
                                 text = "Dark",
@@ -154,7 +155,7 @@ fun SettingsScreen(navController: NavHostController) {
                                     scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_DARK) }
                                     selectedTheme = PreferencesManager.THEME_DARK
                                 },
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.weight(1f)
                             )
                         }
                     }
@@ -298,11 +299,12 @@ fun SettingsScreen(navController: NavHostController) {
                                 modifier = Modifier.padding(24.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                // App Icon
+                                // App Icon - larger, no background
                                 Image(
                                     painter = painterResource(id = R.mipmap.ic_launcher),
                                     contentDescription = "ToolBox-100 Icon",
-                                    modifier = Modifier.size(72.dp)
+                                    modifier = Modifier.size(96.dp),
+                                    contentScale = ContentScale.Crop
                                 )
                                 
                                 Spacer(modifier = Modifier.height(12.dp))
@@ -522,10 +524,10 @@ private fun ThemeOption(
             contentColor = if (selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
         )
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(imageVector = icon, contentDescription = null, modifier = Modifier.size(20.dp))
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(text, style = MaterialTheme.typography.labelSmall)
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            Icon(imageVector = icon, contentDescription = null, modifier = Modifier.size(18.dp))
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(text, style = MaterialTheme.typography.labelMedium)
         }
     }
 }
