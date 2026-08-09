@@ -253,7 +253,7 @@ fun HexRGBConverterScreen(navController: NavHostController) {
                                 }
                             },
                             color = ComposeColor.Red,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1.0f)
                         )
                         
                         RgbInputField(
@@ -265,7 +265,7 @@ fun HexRGBConverterScreen(navController: NavHostController) {
                                 }
                             },
                             color = ComposeColor.Green,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1.0f)
                         )
                         
                         RgbInputField(
@@ -277,7 +277,7 @@ fun HexRGBConverterScreen(navController: NavHostController) {
                                 }
                             },
                             color = ComposeColor.Blue,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1.0f)
                         )
                     }
 
@@ -496,7 +496,7 @@ private fun generateHexFromRgb(rStr: String, gStr: String, bStr: String,
 private fun RgbValueCard(label: String, value: String, color: ComposeColor) {
     Card(
         colors = CardDefaults.cardColors(containerColor = color.copy(alpha = 0.15f)),
-        modifier = Modifier.weight(1f)
+        modifier = Modifier.weight(1.0f)
     ) {
         Column(
             modifier = Modifier.padding(12.dp),

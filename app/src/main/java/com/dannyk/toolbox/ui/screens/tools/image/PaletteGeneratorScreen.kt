@@ -242,7 +242,7 @@ fun PaletteGeneratorScreen(navController: NavHostController) {
                                 }
                                 clipboardManager.setText(AnnotatedString("[$hexList]"))
                             },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1.0f)
                         ) {
                             Icon(Icons.Default.ContentCopy, contentDescription = null, 
                                  modifier = Modifier.size(18.dp))
@@ -260,7 +260,7 @@ fun PaletteGeneratorScreen(navController: NavHostController) {
                                 }
                                 clipboardManager.setText(AnnotatedString("[$rgbList]"))
                             },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1.0f)
                         ) {
                             Icon(Icons.Default.ContentCopy, contentDescription = null, 
                                  modifier = Modifier.size(18.dp))
@@ -348,7 +348,7 @@ private fun PaletteColorRow(number: Int, color: Int) {
             Spacer(modifier = Modifier.width(16.dp))
             
             // Color info
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(1.0f)) {
                 Text(hex, style = MaterialTheme.typography.bodyMedium, 
                      fontFamily = FontFamily.Monospace, fontWeight = FontWeight.Medium)
                 Text("RGB($r, $g, $b)", style = MaterialTheme.typography.bodySmall,
@@ -384,7 +384,7 @@ private fun RgbInputCompact(label: String, value: Int, onValueChange: (Int) -> U
             fontFamily = FontFamily.Monospace,
             textAlign = TextAlign.Center
         ),
-        modifier = Modifier.weight(1f)
+        modifier = Modifier.weight(1.0f)
     )
 }
 

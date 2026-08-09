@@ -41,7 +41,7 @@ import com.google.zxing.BarcodeFormat
 import androidx.compose.ui.text.font.FontWeight
 import android.content.ClipboardManager
 import android.content.ClipData
-import androidx.compose.ui.platform.AndroidView
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.ScrollState
