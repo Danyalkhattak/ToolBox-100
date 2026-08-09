@@ -375,8 +375,16 @@ fun MD5HashScreen(navController: NavHostController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF8E1))
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = "⚠️ Limited Acceptable Uses",
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.Warning,
+                        contentDescription = null,
+                        tint = Color(0xFFE65100),
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Limited Acceptable Uses",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFFE65100)
@@ -402,8 +410,16 @@ fun MD5HashScreen(navController: NavHostController) {
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 
-                Text(
-                    text = "✓ For security, use SHA-256 or better",
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.CheckCircle,
+                        contentDescription = null,
+                        tint = Color(0xFF2E7D32),
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "For security, use SHA-256 or better",
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Medium,
                     color = Color(0xFF2E7D32)
@@ -483,10 +499,13 @@ private fun AcceptableUseItem(text: String) {
         modifier = Modifier.padding(vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = "✓ ",
-            color = Color(0xFFE65100)
+        Icon(
+            imageVector = Icons.Default.Check,
+            contentDescription = null,
+            tint = Color(0xFFE65100),
+            modifier = Modifier.size(16.dp)
         )
+        Spacer(modifier = Modifier.width(6.dp))
         Text(
             text = text,
             style = MaterialTheme.typography.bodySmall,

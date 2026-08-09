@@ -352,7 +352,7 @@ fun SettingsScreen(navController: NavHostController) {
                             Spacer(modifier = Modifier.height(8.dp))
                             
                             Text(
-                                text = "Built with ❤️ using Jetpack Compose",
+                                text = "Built with passion using Jetpack Compose",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.primary,
                                 textAlign = TextAlign.Center
@@ -411,7 +411,7 @@ fun SettingsScreen(navController: NavHostController) {
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "Made with ❤️ by Danny K",
+                        text = "Crafted by Danny K",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.primary,
                         textAlign = TextAlign.Center

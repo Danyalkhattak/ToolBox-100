@@ -360,9 +360,9 @@ fun HMACGeneratorScreen(navController: NavHostController) {
 
                     // Security indicator based on algorithm
                     val securityStatus = when (selectedAlgorithm) {
-                        "HmacSHA256" -> "✓ Secure" to Color(0xFF4CAF50)
-                        "HmacSHA1" -> "⚠ Deprecated" to Color(0xFFFF9800)
-                        "HmacMD5" -> "🚫 Insecure" to Color(0xFFFF5252)
+                        "HmacSHA256" -> "Secure" to Color(0xFF4CAF50)
+                        "HmacSHA1" -> "Deprecated" to Color(0xFFFF9800)
+                        "HmacMD5" -> "Insecure" to Color(0xFFFF5252)
                         else -> "" to Color.Gray
                     }
                     

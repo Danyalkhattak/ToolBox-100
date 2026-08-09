@@ -191,7 +191,7 @@ fun WiFiQRGeneratorScreen(
                                 onClick = { selectedSecurity = security },
                                 label = { Text(security.displayName) },
                                 leadingIcon = if (selectedSecurity == security) {
-                                    { Text("✓") }
+                                    { Icon(Icons.Default.Check, contentDescription = null) }
                                 } else null
                             )
                         }
@@ -462,12 +462,21 @@ fun WiFiQRGeneratorScreen(
                 Column(
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    Text(
-                        text = "⚠️ Security Notice",
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onErrorContainer
-                    )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.Warning,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onErrorContainer,
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Security Notice",
+                            style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onErrorContainer
+                        )
+                    }
                     
                     Spacer(modifier = Modifier.height(8.dp))
                     

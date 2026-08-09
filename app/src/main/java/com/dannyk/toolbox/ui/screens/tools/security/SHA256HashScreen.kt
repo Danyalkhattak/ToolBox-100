@@ -264,9 +264,11 @@ fun SHA256HashScreen(navController: NavHostController) {
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "✓ ",
-                                color = Color(0xFF4CAF50)
+                            Icon(
+                                imageVector = Icons.Default.Check,
+                                contentDescription = null,
+                                tint = Color(0xFF4CAF50),
+                                modifier = Modifier.size(16.dp)
                             )
                             Text(
                                 text = "Valid SHA-256: Always 64 hex chars (256 bits)",

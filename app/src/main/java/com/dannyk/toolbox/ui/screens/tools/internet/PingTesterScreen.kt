@@ -474,11 +474,21 @@ private fun PingResultCard(
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = if (isSuccess) "✓" else "✗",
-                    color = Color.White,
-                    style = MaterialTheme.typography.labelSmall
-                )
+                if (isSuccess) {
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = "Success",
+                        tint = Color.White,
+                        modifier = Modifier.size(16.dp)
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Default.Close,
+                        contentDescription = "Failed",
+                        tint = Color.White,
+                        modifier = Modifier.size(16.dp)
+                    )
+                }
             }
             
             Spacer(modifier = Modifier.width(12.dp))

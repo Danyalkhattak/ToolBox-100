@@ -492,8 +492,15 @@ fun PINGeneratorScreen(navController: NavHostController) {
             shape = RoundedCornerShape(16.dp)
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = "🔒 PIN Security Tips",
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "PIN Security Tips",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
@@ -590,11 +597,13 @@ private fun SecurityTipItem(tip: String, reason: String) {
         modifier = Modifier.padding(vertical = 4.dp),
         verticalAlignment = Alignment.Top
     ) {
-        Text(
-            text = "✓ ",
-            color = Color(0xFF4CAF50),
-            fontWeight = FontWeight.Bold
+        Icon(
+            imageVector = Icons.Default.Check,
+            contentDescription = null,
+            tint = Color(0xFF4CAF50),
+            modifier = Modifier.size(18.dp)
         )
+        Spacer(modifier = Modifier.width(6.dp))
         Column {
             Text(
                 text = tip,

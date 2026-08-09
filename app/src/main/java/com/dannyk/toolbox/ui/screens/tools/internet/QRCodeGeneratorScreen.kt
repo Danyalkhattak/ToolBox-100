@@ -146,7 +146,7 @@ fun QRCodeGeneratorScreen(
                                     Text(size.displayName) 
                                 },
                                 leadingIcon = if (selectedSize == size) {
-                                    { Text("✓") }
+                                    { Icon(Icons.Default.Check, contentDescription = null) }
                                 } else null
                             )
                         }

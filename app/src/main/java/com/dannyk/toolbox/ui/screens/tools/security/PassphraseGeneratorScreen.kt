@@ -568,10 +568,10 @@ fun PassphraseGeneratorScreen(navController: NavHostController) {
 
                             // Security assessment
                             val assessment = when {
-                                entropy >= 78 -> Pair("✓ Excellent - Suitable for high-security applications", Color(0xFF4CAF50))
-                                entropy >= 64 -> Pair("✓ Strong - Good security margin", Color(0xFF4CAF50))
-                                entropy >= 52 -> Pair("○ Adequate - Minimum recommended", Color(0xFFFF9800))
-                                else -> Pair("⚠ Consider using more words", Color(0xFFFF9800))
+                                entropy >= 78 -> Pair("Excellent - Suitable for high-security applications", Color(0xFF4CAF50))
+                                entropy >= 64 -> Pair("Strong - Good security margin", Color(0xFF4CAF50))
+                                entropy >= 52 -> Pair("Adequate - Minimum recommended", Color(0xFFFF9800))
+                                else -> Pair("Consider using more words", Color(0xFFFF9800))
                             }
                             
                             Text(

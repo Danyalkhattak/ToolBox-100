@@ -77,8 +77,16 @@ fun SHA1HashScreen(navController: NavHostController) {
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Column {
-                        Text(
-                            text = "⚠️ Security Warning",
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Default.Warning,
+                                contentDescription = null,
+                                tint = Color(0xFFE65100),
+                                modifier = Modifier.size(20.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Security Warning",
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFFE65100)
@@ -362,8 +370,16 @@ fun SHA1HashScreen(navController: NavHostController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9))
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = "✓ Recommended Alternatives",
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.CheckCircle,
+                        contentDescription = null,
+                        tint = Color(0xFF2E7D32),
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Recommended Alternatives",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF2E7D32)

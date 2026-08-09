@@ -8,6 +8,7 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,6 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.R
 import com.dannyk.toolbox.ToolBoxApplication
@@ -26,9 +28,6 @@ import com.dannyk.toolbox.tools.ToolRegistry
 import com.dannyk.toolbox.ui.components.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.first
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.graphics.Color
-import android.content.Context
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -176,8 +175,9 @@ fun HomeScreen(navController: NavHostController) {
                 if (favoriteTools.isNotEmpty()) {
                     item {
                         SectionHeader(
-                            title = "⭐ Favorites (${favoriteTools.size})",
+                            title = "Favorites (${favoriteTools.size})",
                             actionText = "See All",
+                            leadingIcon = Icons.Default.Favorite,
                             onActionClick = { /* Navigate to favorites */ }
                         )
                     }
@@ -204,8 +204,9 @@ fun HomeScreen(navController: NavHostController) {
                     item {
                         Spacer(modifier = Modifier.height(8.dp))
                         SectionHeader(
-                            title = "🕐 Recently Used",
+                            title = "Recently Used",
                             actionText = "Clear History",
+                            leadingIcon = Icons.Outlined.History,
                             onActionClick = {
                                 coroutineScope.launch {
                                     preferencesManager.clearRecentHistory()
@@ -324,33 +325,39 @@ private fun WideToolCard(
     val favoriteIds by preferencesManager.favoriteIds.collectAsState(initial = emptySet())
     val isFavorite = tool.id in favoriteIds
     
+    // Enhanced card with better elevation and shape
     Card(
         modifier = Modifier
             .fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp,
+            pressedElevation = 4.dp
+        ),
+        shape = MaterialTheme.shapes.extraLarge,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+            containerColor = MaterialTheme.colorScheme.surface
         ),
         onClick = onClick
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp),
+                .padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Icon
+            // Enhanced icon with better styling
             Surface(
-                shape = MaterialTheme.shapes.medium,
-                color = MaterialTheme.colorScheme.primaryContainer,
-                modifier = Modifier.size(44.dp)
+                shape = MaterialTheme.shapes.large,
+                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.7f),
+                tonalElevation = 2.dp,
+                modifier = Modifier.size(48.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = getToolIcon(tool.iconResName),
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.size(22.dp)
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(24.dp)
                     )
                 }
             }
@@ -359,7 +366,7 @@ private fun WideToolCard(
             
             // Text content - full width available
             Column(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.weight(1f)
             ) {
                 Text(
                     text = tool.name,
@@ -368,7 +375,7 @@ private fun WideToolCard(
                     maxLines = 1,
                     overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(2.dp))
+                Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = tool.description,
                     style = MaterialTheme.typography.bodySmall,
@@ -397,8 +404,8 @@ private fun WideToolCard(
             Icon(
                 imageVector = Icons.Default.KeyboardArrowRight,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
-                modifier = Modifier.size(20.dp)
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                modifier = Modifier.size(22.dp)
             )
         }
     }

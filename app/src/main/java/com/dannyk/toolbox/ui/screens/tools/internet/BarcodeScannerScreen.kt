@@ -549,7 +549,7 @@ private fun ResultCard(
                 Spacer(modifier = Modifier.width(8.dp))
                 
                 Text(
-                    text = "✓ Scanned Successfully",
+                    text = "Scanned Successfully",
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onPrimaryContainer

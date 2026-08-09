@@ -135,7 +135,7 @@ fun URLParserScreen(
                                 shape = MaterialTheme.shapes.small
                             ) {
                                 Text(
-                                    text = "✓ Valid URL",
+                                    text = "Valid URL",
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                                     modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
@@ -186,14 +186,14 @@ fun URLParserScreen(
                 URLComponentCard(
                     label = "Protocol / Scheme",
                     value = url.protocol,
-                    icon = "🔒",
+                    icon = Icons.Default.Lock,
                     context = context
                 )
 
                 URLComponentCard(
                     label = "Host / Domain",
                     value = url.host,
-                    icon = "🌐",
+                    icon = Icons.Default.Language,
                     context = context
                 )
 
@@ -201,7 +201,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Port",
                         value = "${url.port}",
-                        icon = "🚪",
+                        icon = Icons.Default.SettingsEthernet,
                         context = context
                     )
                 }
@@ -210,7 +210,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "User Info",
                         value = url.userInfo,
-                        icon = "👤",
+                        icon = Icons.Default.Person,
                         isSensitive = true,
                         context = context
                     )
@@ -241,7 +241,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Path",
                         value = url.path,
-                        icon = "📁",
+                        icon = Icons.Default.FolderOpen,
                         context = context
                     )
                 }
@@ -277,7 +277,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Fragment / Hash",
                         value = "#${url.fragment}",
-                        icon = "🔗",
+                        icon = Icons.Default.Link,
                         context = context
                     )
                 }
@@ -438,7 +438,7 @@ fun URLParserScreen(
 private fun URLComponentCard(
     label: String,
     value: String?,
-    icon: String,
+    icon: ImageVector? = null,
     isSensitive: Boolean = false,
     context: Context,
     modifier: Modifier = Modifier
@@ -457,8 +457,21 @@ private fun URLComponentCard(
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            if (icon.isNotBlank()) {
-                Text(text = icon, modifier = Modifier.width(32.dp))
+            icon?.let { 
+                Surface(
+                    shape = MaterialTheme.shapes.small,
+                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f),
+                    modifier = Modifier.size(32.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = it,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(18.dp)
+                        )
+                    }
+                }
             }
             
             Text(

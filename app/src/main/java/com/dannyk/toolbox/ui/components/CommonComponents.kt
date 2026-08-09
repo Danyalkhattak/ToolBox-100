@@ -142,13 +142,18 @@ fun ToolCard(
     val favoriteIds by preferencesManager.favoriteIds.collectAsState(initial = emptySet())
     val isFavorite = tool.id in favoriteIds
     
+    // Enhanced card with better elevation and shape
     Card(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp,
+            pressedElevation = 4.dp
+        ),
+        shape = MaterialTheme.shapes.extraLarge,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+            containerColor = MaterialTheme.colorScheme.surface
         )
     ) {
         Row(
@@ -157,27 +162,28 @@ fun ToolCard(
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Icon
+            // Enhanced icon with gradient-like background
             Surface(
-                shape = MaterialTheme.shapes.medium,
+                shape = MaterialTheme.shapes.large,
                 color = MaterialTheme.colorScheme.primaryContainer,
-                modifier = Modifier.size(48.dp)
+                tonalElevation = 4.dp,
+                modifier = Modifier.size(52.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = getToolIcon(tool.iconResName),
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.size(24.dp)
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(26.dp)
                     )
                 }
             }
             
             Spacer(modifier = Modifier.width(16.dp))
             
-            // Text content
+            // Text content with better hierarchy
             Column(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.weight(1f)
             ) {
                 Text(
                     text = tool.name,
@@ -189,7 +195,7 @@ fun ToolCard(
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = tool.description,
-                    style = MaterialTheme.typography.bodySmall,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
@@ -203,7 +209,7 @@ fun ToolCard(
                         imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                         contentDescription = if (isFavorite) "Unfavorite" else "Favorite",
                         tint = if (isFavorite) MaterialTheme.colorScheme.error 
-                               else MaterialTheme.colorScheme.onSurfaceVariant
+                               else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
                     )
                 }
             }
@@ -223,7 +229,11 @@ fun CategoryCard(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
+        shape = MaterialTheme.shapes.extraLarge,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        )
     ) {
         Row(
             modifier = Modifier
@@ -231,32 +241,35 @@ fun CategoryCard(
                 .padding(20.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // Enhanced category icon
             Surface(
-                shape = MaterialTheme.shapes.large,
+                shape = MaterialTheme.shapes.extraLarge,
                 color = MaterialTheme.colorScheme.secondaryContainer,
-                modifier = Modifier.size(56.dp)
+                tonalElevation = 6.dp,
+                modifier = Modifier.size(60.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = icon,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
-                        modifier = Modifier.size(28.dp)
+                        tint = MaterialTheme.colorScheme.secondary,
+                        modifier = Modifier.size(30.dp)
                     )
                 }
             }
             
             Spacer(modifier = Modifier.width(20.dp))
             
-            Column(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = name,
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
+                Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "$toolCount tools",
-                    style = MaterialTheme.typography.bodySmall,
+                    text = "$toolCount tools available",
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -264,7 +277,7 @@ fun CategoryCard(
             Icon(
                 imageVector = Icons.Default.KeyboardArrowRight,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
             )
         }
     }
@@ -280,12 +293,17 @@ fun SearchBar(
     OutlinedTextField(
         value = query,
         onValueChange = onQueryChange,
-        placeholder = { Text(placeholder, color = MaterialTheme.colorScheme.onSurfaceVariant) },
+        placeholder = { 
+            Text(
+                placeholder, 
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+            ) 
+        },
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
                 contentDescription = "Search",
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
             )
         },
         trailingIcon = if (query.isNotEmpty()) {
@@ -300,11 +318,13 @@ fun SearchBar(
             }
         } else null,
         singleLine = true,
-        shape = MaterialTheme.shapes.large,
+        shape = MaterialTheme.shapes.extraLarge,
         modifier = modifier.fillMaxWidth(),
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = MaterialTheme.colorScheme.primary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
+            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface
         )
     )
 }
@@ -314,6 +334,7 @@ fun SectionHeader(
     title: String,
     actionText: String? = null,
     onActionClick: (() -> Unit)? = null,
+    leadingIcon: ImageVector? = null,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -321,18 +342,30 @@ fun SectionHeader(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            leadingIcon?.let { icon ->
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+            }
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold
+            )
+        }
         
         if (actionText != null && onActionClick != null) {
             TextButton(onClick = onActionClick) {
                 Text(
                     text = actionText,
                     style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
         }
@@ -349,21 +382,23 @@ fun ResultCard(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        shape = MaterialTheme.shapes.extraLarge,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
         )
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(20.dp)
         ) {
             title?.let {
                 Text(
                     text = it,
-                    style = MaterialTheme.typography.labelMedium,
+                    style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.Medium
+                    fontWeight = FontWeight.SemiBold
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(12.dp))
             }
             
             Row(
@@ -373,25 +408,25 @@ fun ResultCard(
                     text = result,
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Medium,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.weight(1f)
                 )
                 
                 if (onCopy != null) {
-                    IconButton(onClick = onCopy, modifier = Modifier.size(36.dp)) {
+                    IconButton(onClick = onCopy, modifier = Modifier.size(40.dp)) {
                         Icon(
                             imageVector = Icons.Default.ContentCopy,
                             contentDescription = "Copy",
-                            modifier = Modifier.size(18.dp)
+                            modifier = Modifier.size(20.dp)
                         )
                     }
                 }
                 
                 if (onShare != null) {
-                    IconButton(onClick = onShare, modifier = Modifier.size(36.dp)) {
+                    IconButton(onClick = onShare, modifier = Modifier.size(40.dp)) {
                         Icon(
                             imageVector = Icons.Default.Share,
                             contentDescription = "Share",
-                            modifier = Modifier.size(18.dp)
+                            modifier = Modifier.size(20.dp)
                         )
                     }
                 }
@@ -410,26 +445,35 @@ fun EmptyState(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(32.dp),
+            .padding(48.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-        )
-        Spacer(modifier = Modifier.height(16.dp))
+        Surface(
+            shape = MaterialTheme.shapes.extraLarge,
+            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+            modifier = Modifier.size(96.dp)
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    modifier = Modifier.size(44.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(20.dp))
         Text(
             text = message,
             style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         subMessage?.let {
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = it,
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
             )
         }
@@ -445,24 +489,38 @@ fun ErrorState(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(32.dp),
+            .padding(48.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(
-            imageVector = Icons.Default.Error,
-            contentDescription = null,
-            modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.error
-        )
-        Spacer(modifier = Modifier.height(16.dp))
+        Surface(
+            shape = MaterialTheme.shapes.extraLarge,
+            color = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.5f),
+            modifier = Modifier.size(96.dp)
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Icon(
+                    imageVector = Icons.Default.ErrorOutline,
+                    contentDescription = null,
+                    modifier = Modifier.size(44.dp),
+                    tint = MaterialTheme.colorScheme.error
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(20.dp))
         Text(
             text = message,
             style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.error
         )
         if (onRetry != null) {
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(onClick = onRetry) {
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                onClick = onRetry,
+                shape = MaterialTheme.shapes.large
+            ) {
+                Icon(Icons.Default.Refresh, contentDescription = null, modifier = Modifier.size(18.dp))
+                Spacer(modifier = Modifier.width(8.dp))
                 Text("Try Again")
             }
         }
@@ -476,17 +534,19 @@ fun LoadingState(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(32.dp),
+            .padding(48.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CircularProgressIndicator(
-            modifier = Modifier.size(48.dp),
+            modifier = Modifier.size(52.dp),
+            strokeWidth = 4.dp,
             color = MaterialTheme.colorScheme.primary
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         Text(
             text = "Loading...",
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
@@ -502,46 +562,71 @@ fun ToolHeader(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
-        // Top bar
+        // Enhanced top bar with better spacing
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .statusBarsPadding()
-                .padding(horizontal = 8.dp, vertical = 8.dp),
+                .padding(horizontal = 12.dp, vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = onBack) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Back"
-                )
+            Surface(
+                shape = MaterialTheme.shapes.large,
+                color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                onClick = onBack
+            ) {
+                Box(
+                    modifier = Modifier.size(42.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Back",
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
             }
+            
+            Spacer(modifier = Modifier.width(14.dp))
             
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.weight(1f)
             )
             
             if (onFavorite != null) {
-                IconButton(onClick = { onFavorite(!isFavorite) }) {
-                    Icon(
-                        imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                        contentDescription = if (isFavorite) "Remove from favorites" else "Add to favorites",
-                        tint = if (isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
-                    )
+                Surface(
+                    shape = MaterialTheme.shapes.large,
+                    color = if (isFavorite) 
+                        MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.5f) 
+                    else 
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                    onClick = { onFavorite(!isFavorite) }
+                ) {
+                    Box(
+                        modifier = Modifier.size(42.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            contentDescription = if (isFavorite) "Remove from favorites" else "Add to favorites",
+                            tint = if (isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(22.dp)
+                        )
+                    }
                 }
             }
         }
         
-        // Subtitle
+        // Subtitle with better styling
         subtitle?.let {
             Text(
                 text = it,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                modifier = Modifier.padding(start = 18.dp, end = 18.dp, bottom = 18.dp)
             )
         }
     }
@@ -559,7 +644,12 @@ fun ToolTopBar(
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
-        title = { Text(text = title) },
+        title = { 
+            Text(
+                text = title,
+                fontWeight = FontWeight.SemiBold
+            ) 
+        },
         navigationIcon = {
             IconButton(onClick = onBackClick) {
                 Icon(
@@ -568,7 +658,10 @@ fun ToolTopBar(
                 )
             }
         },
-        modifier = modifier
+        modifier = modifier,
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.background
+        )
     )
 }
 
@@ -584,7 +677,12 @@ fun ToolTopAppBar(
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
-        title = { Text(text = title) },
+        title = { 
+            Text(
+                text = title,
+                fontWeight = FontWeight.SemiBold
+            ) 
+        },
         navigationIcon = {
             IconButton(onClick = { navController.navigateUp() }) {
                 Icon(
@@ -593,7 +691,10 @@ fun ToolTopAppBar(
                 )
             }
         },
-        modifier = modifier
+        modifier = modifier,
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.background
+        )
     )
 }
 
@@ -611,7 +712,8 @@ fun ToolScreenLayout(
 ) {
     Scaffold(
         modifier = modifier,
-        topBar = { ToolTopAppBar(title = title, navController = navController) }
+        topBar = { ToolTopAppBar(title = title, navController = navController) },
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             content()
@@ -631,13 +733,22 @@ fun PrimaryButton(
         onClick = onClick,
         enabled = enabled,
         modifier = modifier.fillMaxWidth(),
-        shape = MaterialTheme.shapes.large
+        shape = MaterialTheme.shapes.large,
+        contentPadding = PaddingValues(horizontal = 24.dp, vertical = 14.dp),
+        elevation = ButtonDefaults.buttonElevation(
+            defaultElevation = 2.dp,
+            pressedElevation = 4.dp
+        )
     ) {
         icon?.let {
-            Icon(imageVector = it, contentDescription = null)
-            Spacer(modifier = Modifier.width(8.dp))
+            Icon(imageVector = it, contentDescription = null, modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.width(10.dp))
         }
-        Text(text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelLarge,
+            fontWeight = FontWeight.SemiBold
+        )
     }
 }
 
@@ -653,13 +764,24 @@ fun SecondaryButton(
         onClick = onClick,
         enabled = enabled,
         modifier = modifier.fillMaxWidth(),
-        shape = MaterialTheme.shapes.large
+        shape = MaterialTheme.shapes.large,
+        contentPadding = PaddingValues(horizontal = 24.dp, vertical = 14.dp),
+        border = OutlinedTextFieldDefaults.borderStroke(
+            enabled = enabled,
+            isError = false,
+            focusedColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+            unfocusedColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+        )
     ) {
         icon?.let {
             Icon(imageVector = it, contentDescription = null, modifier = Modifier.size(18.dp))
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(10.dp))
         }
-        Text(text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelLarge,
+            fontWeight = FontWeight.Medium
+        )
     }
 }
 

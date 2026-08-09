@@ -237,7 +237,7 @@ fun ProportionCalculatorScreen(navController: NavHostController) {
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
-                                    if (isEqual) "✓ Cross-products are equal" else "✗ Values don't match",
+                                    if (isEqual) "Cross-products are equal" else "Values don't match",
                                     color = if (isEqual) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
                                     style = MaterialTheme.typography.bodyMedium
                                 )

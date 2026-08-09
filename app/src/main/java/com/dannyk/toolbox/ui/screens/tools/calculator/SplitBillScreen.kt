@@ -396,7 +396,7 @@ fun SplitBillScreen(navHostController: NavHostController) {
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
                             Text(
-                                text = if (res.isBalanced) "Balanced ✓" else "Unbalanced ⚠",
+                                text = if (res.isBalanced) "Balanced" else "Unbalanced",
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold,
                                 color = if (res.isBalanced) 

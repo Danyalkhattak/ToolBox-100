@@ -494,8 +494,16 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
                 
                 Divider(modifier = Modifier.padding(vertical = 8.dp))
                 
-                Text(
-                    text = "⚠️ Passwords stored in memory only. Cleared when app closes.",
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.Info,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "Passwords stored in memory only. Cleared when app closes.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
