@@ -372,7 +372,7 @@ private fun calculatePower(base: Double, exponent: Double, includeSteps: Boolean
     val scientificNotation = formatScientific(result)
     
     // Logarithms (only for positive results)
-    val naturalLog = if (result > 0) String.format("%.10f", kotlin.math.log(result)).removeSuffix("000000000").removeSuffix(".") else null
+    val naturalLog = if (result > 0) String.format("%.10f", kotlin.math.ln(result)).removeSuffix("000000000").removeSuffix(".") else null
     val log10 = if (result > 0) String.format("%.10f", kotlin.math.log10(result)).removeSuffix("000000000").removeSuffix(".") else null
     
     // Digit count for integers

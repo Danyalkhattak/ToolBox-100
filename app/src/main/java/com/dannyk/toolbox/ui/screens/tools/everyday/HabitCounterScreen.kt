@@ -669,7 +669,7 @@ private fun HeatmapCalendar(
                                 )
                                 .then(
                                     if (isToday) Modifier.then(
-                                        border(
+                                        Modifier.border(
                                             width = 2.dp,
                                             color = MaterialTheme.colorScheme.primary,
                                             shape = RoundedCornerShape(4.dp)

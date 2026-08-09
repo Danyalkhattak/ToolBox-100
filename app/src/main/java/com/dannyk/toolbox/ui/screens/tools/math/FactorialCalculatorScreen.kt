@@ -426,7 +426,7 @@ private fun stirlingApproximation(n: Int): Pair<String, Double> {
     
     // Calculate actual for comparison (using log for large numbers)
     val actualLog = logFactorial(n.toDouble())
-    val approxLog = kotlin.math.log(approximation)
+    val approxLog = kotlin.math.ln(approximation)
     val errorPercent = kotlin.math.abs((approxLog - actualLog) / actualLog) * 100
     
     val formatted = when {
@@ -442,7 +442,7 @@ private fun stirlingApproximation(n: Int): Pair<String, Double> {
 private fun logFactorial(n: Double): Double {
     var sum = 0.0
     for (i in 1..n.toInt()) {
-        sum += kotlin.math.log(i.toDouble())
+        sum += kotlin.math.ln(i.toDouble())
     }
     return sum
 }

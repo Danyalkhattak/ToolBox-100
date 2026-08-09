@@ -172,7 +172,11 @@ fun PasswordStrengthScreen(navController: NavHostController) {
         }
         
         // Check for repeating characters
-        if (password.windowed(3).all { window -> window.distinct().size == 1 }) {
+        if (password.length >= 3 && password.zipWithNext().zipWithNext().all { (a, b) -> 
+            val (first, second) = a
+            val (_, third) = b
+            first == second && second == third
+        }) {
             suggestions.add("Avoid repeating characters like 'aaa'")
         }
         

@@ -70,7 +70,7 @@ fun QRCodeScannerScreen(
     var scannedFormat by remember { mutableStateOf<String?>(null) }
     var isScanning by remember { mutableStateOf(true) }
     var showCopiedMessage by remember { mutableStateOf(false) }
-    var scanHistory by remember { mutableStateOf<List<ScanHistoryItem>>(emptyList()) }
+    var scanHistory by remember { mutableStateOf<List<QRScanHistoryItem>>(emptyList()) }
     
     // Permission launcher
     val permissionLauncher = rememberLauncherForActivityResult(
@@ -129,7 +129,7 @@ fun QRCodeScannerScreen(
                                                 isScanning = false
                                                 
                                                 // Add to history
-                                                val newItem = ScanHistoryItem(
+                                                val newItem = QRScanHistoryItem(
                                                     content = res.text,
                                                     format = res.barcodeFormat?.name ?: "QR_CODE",
                                                     timestamp = System.currentTimeMillis()
@@ -524,7 +524,7 @@ private fun ScanOverlay(
 
 @Composable
 private fun HistoryItemCard(
-    item: ScanHistoryItem,
+    item: QRScanHistoryItem,
     context: Context
 ) {
     Card(
@@ -566,7 +566,7 @@ private fun HistoryItemCard(
     }
 }
 
-data class ScanHistoryItem(
+data class QRScanHistoryItem(
     val content: String,
     val format: String,
     val timestamp: Long
