@@ -504,6 +504,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
+                }
 
                 Spacer(modifier = Modifier.height(12.dp))
 

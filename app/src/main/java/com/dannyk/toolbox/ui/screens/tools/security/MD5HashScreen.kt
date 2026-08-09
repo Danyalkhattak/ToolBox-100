@@ -385,10 +385,11 @@ fun MD5HashScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "Limited Acceptable Uses",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFFE65100)
-                )
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFFE65100)
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(12.dp))
                 
@@ -412,7 +413,7 @@ fun MD5HashScreen(navController: NavHostController) {
                 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        imageVector = Icons.Default.CheckCircle,
+                        imageVector = Icons.Default.Check,
                         contentDescription = null,
                         tint = Color(0xFF2E7D32),
                         modifier = Modifier.size(18.dp)

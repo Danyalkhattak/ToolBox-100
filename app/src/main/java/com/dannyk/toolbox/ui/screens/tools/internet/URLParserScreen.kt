@@ -201,7 +201,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Port",
                         value = "${url.port}",
-                        icon = Icons.Default.SettingsEthernet,
+                        icon = Icons.Default.Settings,
                         context = context
                     )
                 }
@@ -241,7 +241,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Path",
                         value = url.path,
-                        icon = Icons.Default.FolderOpen,
+                        icon = Icons.Default.Folder,
                         context = context
                     )
                 }
