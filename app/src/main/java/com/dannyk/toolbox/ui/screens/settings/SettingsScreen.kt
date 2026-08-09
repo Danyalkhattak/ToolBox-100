@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -216,7 +217,7 @@ fun SettingsScreen(navController: NavHostController) {
                         )
                     } else {
                         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            recentToolsList.forEach { tool ->
+                            recentToolsList.forEach { tool: com.dannyk.toolbox.domain.model.Tool ->
                                 ToolCard(
                                     tool = tool,
                                     onClick = {

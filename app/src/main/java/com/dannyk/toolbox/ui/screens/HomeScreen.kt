@@ -20,9 +20,11 @@ import com.dannyk.toolbox.R
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.domain.model.Category
+import com.dannyk.toolbox.domain.model.Tool
 import com.dannyk.toolbox.tools.ToolRegistry
 import com.dannyk.toolbox.ui.components.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.first
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import android.content.Context
@@ -393,7 +395,7 @@ private suspend fun toggleFavorite(
     toolId: Int,
     preferencesManager: PreferencesManager
 ) {
-    val currentFavorites = preferencesManager.favoriteIds.value
+    val currentFavorites = preferencesManager.favoriteIds.first()
     if (toolId in currentFavorites) {
         preferencesManager.removeFavorite(toolId)
     } else {
