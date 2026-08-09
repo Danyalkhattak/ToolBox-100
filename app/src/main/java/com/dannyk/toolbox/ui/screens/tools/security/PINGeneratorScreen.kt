@@ -494,7 +494,7 @@ fun PINGeneratorScreen(navController: NavHostController) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        imageVector = Icons.Default.Lock,
+                        imageVector = Icons.Default.LockClock,
                         contentDescription = null,
                         modifier = Modifier.size(20.dp)
                     )

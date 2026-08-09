@@ -28,6 +28,7 @@ import android.content.ClipData
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.LaunchedEffect
@@ -186,7 +187,7 @@ fun URLParserScreen(
                 URLComponentCard(
                     label = "Protocol / Scheme",
                     value = url.protocol,
-                    icon = Icons.Default.Lock,
+                    icon = Icons.Default.Https,
                     context = context
                 )
 
@@ -201,7 +202,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Port",
                         value = "${url.port}",
-                        icon = Icons.Default.Settings,
+                        icon = Icons.Default.SettingsInputComponent,
                         context = context
                     )
                 }
@@ -210,7 +211,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "User Info",
                         value = url.userInfo,
-                        icon = Icons.Default.Person,
+                        icon = Icons.Default.AccountCircle,
                         isSensitive = true,
                         context = context
                     )
@@ -241,7 +242,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Path",
                         value = url.path,
-                        icon = Icons.Default.Folder,
+                        icon = Icons.Default.FolderOpen,
                         context = context
                     )
                 }

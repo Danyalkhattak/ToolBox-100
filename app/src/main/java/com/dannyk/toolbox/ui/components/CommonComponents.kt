@@ -2,6 +2,7 @@ package com.dannyk.toolbox.ui.components
 
 import java.text.DecimalFormat
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -766,11 +767,10 @@ fun SecondaryButton(
         modifier = modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 14.dp),
-        border = OutlinedTextFieldDefaults.borderStroke(
-            enabled = enabled,
-            isError = false,
-            focusedColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-            unfocusedColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+        border = BorderStroke(
+            width = 1.dp,
+            color = if (enabled) MaterialTheme.colorScheme.outline.copy(alpha = 0.5f) 
+                    else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
         )
     ) {
         icon?.let {
