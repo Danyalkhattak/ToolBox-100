@@ -87,10 +87,11 @@ fun SHA1HashScreen(navController: NavHostController) {
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
                                 text = "Security Warning",
-                            style = MaterialTheme.typography.titleSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFFE65100)
-                        )
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFFE65100)
+                            )
+                        }
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
                             text = "SHA-1 is cryptographically broken and should NOT be used for security purposes. Collision attacks are practical (SHAttered attack, 2017). Use SHA-256 or SHA-3 instead.",
