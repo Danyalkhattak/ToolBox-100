@@ -265,7 +265,7 @@ fun SHA256HashScreen(navController: NavHostController) {
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Done,
+                                imageVector = Icons.Default.Check,
                                 contentDescription = null,
                                 tint = Color(0xFF4CAF50),
                                 modifier = Modifier.size(16.dp)

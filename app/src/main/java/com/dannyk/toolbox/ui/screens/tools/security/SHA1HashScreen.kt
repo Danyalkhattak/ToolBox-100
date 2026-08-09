@@ -373,7 +373,7 @@ fun SHA1HashScreen(navController: NavHostController) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        imageVector = Icons.Default.Done,
+                        imageVector = Icons.Default.Check,
                         contentDescription = null,
                         tint = Color(0xFF2E7D32),
                         modifier = Modifier.size(20.dp)

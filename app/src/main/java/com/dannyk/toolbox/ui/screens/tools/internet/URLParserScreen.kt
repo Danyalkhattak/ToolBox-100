@@ -187,7 +187,7 @@ fun URLParserScreen(
                 URLComponentCard(
                     label = "Protocol / Scheme",
                     value = url.protocol,
-                    icon = Icons.Default.Https,
+                    icon = Icons.Default.Language,
                     context = context
                 )
 
@@ -202,7 +202,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Port",
                         value = "${url.port}",
-                        icon = Icons.Default.SettingsInputComponent,
+                        icon = Icons.Default.Settings,
                         context = context
                     )
                 }
@@ -211,7 +211,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "User Info",
                         value = url.userInfo,
-                        icon = Icons.Default.AccountCircle,
+                        icon = Icons.Default.Person,
                         isSensitive = true,
                         context = context
                     )
@@ -222,7 +222,7 @@ fun URLParserScreen(
                         URLComponentCard(
                             label = "  Username",
                             value = parts[0],
-                            icon = "",
+                            icon = null,
                             isSensitive = true,
                             context = context
                         )
@@ -231,7 +231,7 @@ fun URLParserScreen(
                         URLComponentCard(
                             label = "  Password",
                             value = "*".repeat(parts[1].length),
-                            icon = "",
+                            icon = null,
                             isSensitive = true,
                             context = context
                         )
@@ -242,7 +242,7 @@ fun URLParserScreen(
                     URLComponentCard(
                         label = "Path",
                         value = url.path,
-                        icon = Icons.Default.FolderOpen,
+                        icon = Icons.Default.Folder,
                         context = context
                     )
                 }

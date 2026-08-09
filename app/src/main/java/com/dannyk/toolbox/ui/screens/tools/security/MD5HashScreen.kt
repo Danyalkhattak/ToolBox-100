@@ -413,7 +413,7 @@ fun MD5HashScreen(navController: NavHostController) {
                 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        imageVector = Icons.Default.CheckCircle,
+                        imageVector = Icons.Default.Check,
                         contentDescription = null,
                         tint = Color(0xFF2E7D32),
                         modifier = Modifier.size(18.dp)
@@ -502,7 +502,7 @@ private fun AcceptableUseItem(text: String) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            imageVector = Icons.Default.Done,
+            imageVector = Icons.Default.Check,
             contentDescription = null,
             tint = Color(0xFFE65100),
             modifier = Modifier.size(16.dp)
