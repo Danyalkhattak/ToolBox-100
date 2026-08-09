@@ -380,10 +380,10 @@ fun SHA1HashScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "Recommended Alternatives",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF2E7D32)
-                )
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF2E7D32)
+                    )
 
                 Spacer(modifier = Modifier.height(12.dp))
 

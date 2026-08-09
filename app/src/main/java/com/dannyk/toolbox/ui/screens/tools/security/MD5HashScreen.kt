@@ -420,10 +420,10 @@ fun MD5HashScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "For security, use SHA-256 or better",
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Medium,
-                    color = Color(0xFF2E7D32)
-                )
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xFF2E7D32)
+                    )
             }
         }
 
