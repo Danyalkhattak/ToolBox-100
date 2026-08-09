@@ -391,21 +391,6 @@ fun SettingsScreen(navController: NavHostController) {
                             icon = Icons.Default.Security,
                             onClick = { /* Privacy */ }
                         )
-                        
-                        SettingsItem(
-                            title = "Rate App",
-                            subtitle = "Support development",
-                            icon = Icons.Default.Star,
-                            onClick = {
-                                try {
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.dannyk.toolbox"))
-                                    context.startActivity(intent)
-                                } catch (e: Exception) {
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.dannyk.toolbox"))
-                                    context.startActivity(intent)
-                                }
-                            }
-                        )
                     }
                 }
             }

@@ -220,12 +220,11 @@ fun URLEncoderScreen(navController: NavHostController) {
                                         )
                                     }
                                     
-                                    Spacer(modifier = Modifier.weight(1f))
-                                    
                                     Text(
                                         char.description,
                                         style = MaterialTheme.typography.labelSmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        modifier = Modifier.fillMaxWidth()
                                     )
                                 }
                             }
@@ -267,7 +266,7 @@ fun URLEncoderScreen(navController: NavHostController) {
                         Triple("Slash", "/", "%2F")
                     )
 
-                    // Display in a compact grid format
+                    // Display in a compact grid format using Columns with equal sizing
                     commonEncodings.chunked(3).forEach { row ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -275,9 +274,9 @@ fun URLEncoderScreen(navController: NavHostController) {
                         ) {
                             row.forEach { (name, char, encoded) ->
                                 Surface(
-                                    modifier = Modifier.weight(1f),
                                     shape = MaterialTheme.shapes.small,
-                                    color = MaterialTheme.colorScheme.surfaceVariant
+                                    color = MaterialTheme.colorScheme.surfaceVariant,
+                                    modifier = Modifier.weight(1f)
                                 ) {
                                     Column(
                                         modifier = Modifier.padding(6.dp),

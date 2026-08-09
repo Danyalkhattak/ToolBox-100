@@ -5,6 +5,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -137,17 +139,18 @@ fun TipCalculatorScreen(navHostController: NavHostController) {
                         }
                     }
                     
-                    // Horizontal layout for chips
+                    // Horizontal layout for chips - scrollable to prevent wrapping
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .horizontalScroll(rememberScrollState()),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         listOf(10, 15, 18, 20, 25).forEach { value ->
                             FilterChip(
                                 selected = tipPercentage == value.toString(),
                                 onClick = { tipPercentage = value.toString() },
-                                label = { Text("$value%") },
-                                modifier = Modifier.weight(1f)
+                                label = { Text("$value%") }
                             )
                         }
                     }

@@ -26,6 +26,7 @@ class PreferencesManager(context: Context) {
         val RECENT_TOOLS_KEY = stringPreferencesKey("recent_tools")
         val HABITS_KEY = stringPreferencesKey("habits_data")
         val DAILY_RECORDS_KEY = stringPreferencesKey("daily_records_data")
+        val SELECTED_CATEGORY_KEY = stringPreferencesKey("selected_category")
         
         const val THEME_SYSTEM = "system"
         const val THEME_LIGHT = "light"
@@ -115,6 +116,23 @@ class PreferencesManager(context: Context) {
     suspend fun clearRecentHistory() {
         dataStore.edit { preferences ->
             preferences[RECENT_TOOLS_KEY] = ""
+        }
+    }
+    
+    // Selected Category (for persistent filter)
+    val selectedCategory: Flow<String> = dataStore.data.map { preferences ->
+        preferences[SELECTED_CATEGORY_KEY] ?: ""
+    }
+    
+    suspend fun setSelectedCategory(categoryName: String) {
+        dataStore.edit { preferences ->
+            preferences[SELECTED_CATEGORY_KEY] = categoryName
+        }
+    }
+    
+    suspend fun clearSelectedCategory() {
+        dataStore.edit { preferences ->
+            preferences[SELECTED_CATEGORY_KEY] = ""
         }
     }
     

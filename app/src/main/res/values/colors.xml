@@ -59,4 +59,7 @@
     
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Launcher icon background (green to match toolbox theme) -->
+    <color name="ic_launcher_background">#4CAF50</color>
 </resources>

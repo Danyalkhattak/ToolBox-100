@@ -40,6 +40,15 @@ fun HomeScreen(navController: NavHostController) {
     var searchQuery by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf<Category?>(null) }
     
+    // Load saved category on first composition
+    LaunchedEffect(Unit) {
+        preferencesManager.selectedCategory.collect { categoryName ->
+            if (categoryName.isNotEmpty()) {
+                selectedCategory = Category.entries.find { it.displayName == categoryName }
+            }
+        }
+    }
+    
     val favoriteIds by preferencesManager.favoriteIds.collectAsState(initial = emptySet())
     val recentTools by preferencesManager.recentTools.collectAsState(initial = emptyList())
     
@@ -146,7 +155,16 @@ fun HomeScreen(navController: NavHostController) {
                         categories = Category.entries,
                         selectedCategory = selectedCategory,
                         onCategorySelected = { category ->
-                            selectedCategory = if (selectedCategory == category) null else category
+                            val newCategory = if (selectedCategory == category) null else category
+                            selectedCategory = newCategory
+                            // Persist the selection
+                            coroutineScope.launch {
+                                if (newCategory != null) {
+                                    preferencesManager.setSelectedCategory(newCategory.displayName)
+                                } else {
+                                    preferencesManager.clearSelectedCategory()
+                                }
+                            }
                         }
                     )
                 }

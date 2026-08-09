@@ -282,12 +282,11 @@ fun URLDecoderScreen(navController: NavHostController) {
                                         )
                                     }
                                     
-                                    Spacer(modifier = Modifier.weight(1f))
-                                    
                                     Text(
                                         seq.description,
                                         style = MaterialTheme.typography.labelSmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        modifier = Modifier.fillMaxWidth()
                                     )
                                 }
                             }

@@ -5,6 +5,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -102,17 +104,18 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
             modifier = Modifier.fillMaxWidth()
         )
         
-        // Quick discount buttons
+        // Quick discount buttons - horizontal scrollable row to prevent wrapping
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             listOf("5%", "10%", "15%", "20%", "25%", "50%").forEach { pct ->
                 FilterChip(
                     selected = discountPercent == pct.dropLast(1),
                     onClick = { discountPercent = pct.dropLast(1) },
-                    label = { Text(pct) },
-                    modifier = Modifier.weight(1f)
+                    label = { Text(pct) }
                 )
             }
         }
@@ -188,17 +191,18 @@ fun DiscountCalculatorScreen(navHostController: NavHostController) {
                 modifier = Modifier.fillMaxWidth()
             )
             
-            // Quick tax buttons
+            // Quick tax buttons - horizontal scrollable row to prevent wrapping
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 listOf("5%", "7%", "8.5%", "10%", "12%", "15%").forEach { tax ->
                     FilterChip(
                         selected = taxPercent == tax.dropLast(1),
                         onClick = { taxPercent = tax.dropLast(1) },
-                        label = { Text(tax) },
-                        modifier = Modifier.weight(1f)
+                        label = { Text(tax) }
                     )
                 }
             }
