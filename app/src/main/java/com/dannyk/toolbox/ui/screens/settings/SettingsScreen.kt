@@ -2,6 +2,7 @@ package com.dannyk.toolbox.ui.screens.settings
 
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,11 +33,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dannyk.toolbox.BuildConfig
+import com.dannyk.toolbox.R
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.tools.ToolRegistry
@@ -130,7 +133,7 @@ fun SettingsScreen(navController: NavHostController) {
                                     scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_SYSTEM) }
                                     selectedTheme = PreferencesManager.THEME_SYSTEM
                                 },
-                                modifier = Modifier.fillMaxWidth().weight(1f)
+                                modifier = Modifier.fillMaxWidth()
                             )
                             ThemeOption(
                                 text = "Light",
@@ -140,7 +143,7 @@ fun SettingsScreen(navController: NavHostController) {
                                     scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_LIGHT) }
                                     selectedTheme = PreferencesManager.THEME_LIGHT
                                 },
-                                modifier = Modifier.fillMaxWidth().weight(1f)
+                                modifier = Modifier.fillMaxWidth()
                             )
                             ThemeOption(
                                 text = "Dark",
@@ -150,7 +153,7 @@ fun SettingsScreen(navController: NavHostController) {
                                     scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_DARK) }
                                     selectedTheme = PreferencesManager.THEME_DARK
                                 },
-                                modifier = Modifier.fillMaxWidth().weight(1f)
+                                modifier = Modifier.fillMaxWidth()
                             )
                         }
                     }
@@ -179,7 +182,7 @@ fun SettingsScreen(navController: NavHostController) {
                                     onFavoriteClick = {
                                         scope.launch {
                                             if (tool.id in favoriteIds) {
-                                                preferencesManager.removeFromFavorites(tool.id)
+                                                preferencesManager.removeFavorite(tool.id)
                                             } else {
                                                 preferencesManager.addFavorite(tool.id)
                                             }
@@ -295,20 +298,11 @@ fun SettingsScreen(navController: NavHostController) {
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 // App Icon
-                                Surface(
-                                    shape = MaterialTheme.shapes.extraLarge,
-                                    color = MaterialTheme.colorScheme.primaryContainer,
+                                Image(
+                                    painter = painterResource(id = R.mipmap.ic_launcher),
+                                    contentDescription = "ToolBox-100 Icon",
                                     modifier = Modifier.size(72.dp)
-                                ) {
-                                    Box(contentAlignment = Alignment.Center) {
-                                        Icon(
-                                            imageVector = Icons.Default.Build,
-                                            contentDescription = null,
-                                            modifier = Modifier.size(40.dp),
-                                            tint = MaterialTheme.colorScheme.primary
-                                        )
-                                    }
-                                }
+                                )
                                 
                                 Spacer(modifier = Modifier.height(12.dp))
                                 
@@ -488,7 +482,7 @@ private fun SettingsItem(
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
-            Column(modifier = Modifier.fillMaxWidth().weight(1f)) {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = title,
                     style = MaterialTheme.typography.bodyLarge

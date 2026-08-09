@@ -1,5 +1,6 @@
 package com.dannyk.toolbox.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,7 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
+import com.dannyk.toolbox.R
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
 import com.dannyk.toolbox.domain.model.Category
@@ -58,11 +61,10 @@ fun HomeScreen(navController: NavHostController) {
             TopAppBar(
                 title = {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            imageVector = Icons.Default.Build,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(28.dp)
+                        Image(
+                            painter = painterResource(id = R.mipmap.ic_launcher),
+                            contentDescription = "ToolBox-100 Icon",
+                            modifier = Modifier.size(32.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
@@ -258,7 +260,7 @@ private fun CategoryChipsRow(
             // "All" chip
             FilterChip(
                 selected = selectedCategory == null,
-                onClick = { onCategorySelected(Category.CALCULATOR) }, // Will be set to null by logic
+                onClick = { /* Pass null to deselect - handled by parent */ },
                 label = { 
                     Text(
                         text = "All (${ToolRegistry.allTools.size})",
@@ -332,7 +334,7 @@ private fun WideToolCard(
             
             // Text content - full width available
             Column(
-                modifier = Modifier.fillMaxWidth().weight(1f)
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
                     text = tool.name,
@@ -393,8 +395,8 @@ private suspend fun toggleFavorite(
 ) {
     val currentFavorites = preferencesManager.favoriteIds.value
     if (toolId in currentFavorites) {
-        preferencesManager.removeFromFavorites(toolId)
+        preferencesManager.removeFavorite(toolId)
     } else {
-        preferencesManager.addToFavorites(toolId)
+        preferencesManager.addFavorite(toolId)
     }
 }
