@@ -673,7 +673,7 @@ private fun StatCard(
     }
 }
 
-// FlowRow-like implementation for history chips
+// Simple flow layout for history chips using Column
 @Composable
 private fun HistoryFlowRow(
     mainAxisSpacing: Dp = 8.dp,
@@ -681,44 +681,12 @@ private fun HistoryFlowRow(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {
-    androidx.compose.foundation.layout.Layout(
-        content = content,
-        modifier = modifier
-    ) { measurables, constraints ->
-        val placeables = measurables.map { measurable -> 
-            measurable.measure(constraints.copy(minWidth = 0, minHeight = 0)) 
-        }
-        
-        var x = 0
-        var y = 0
-        var rowHeight = 0
-        
-        val positions = placeables.map { placeable ->
-            if (x + placeable.width > constraints.maxWidth && x > 0) {
-                x = 0
-                y += rowHeight + crossAxisSpacing.roundToPx()
-                rowHeight = 0
-            }
-            
-            val position = Pair(x, y)
-            x += placeable.width + mainAxisSpacing.roundToPx()
-            rowHeight = maxOf(rowHeight, placeable.height)
-            
-            position
-        }
-        
-        val totalHeight = if (positions.isNotEmpty()) {
-            y + rowHeight
-        } else {
-            0
-        }
-        
-        layout(constraints.maxWidth, totalHeight) {
-            placeables.forEachIndexed { index, placeable ->
-                val pos = positions[index]
-                placeable.place(pos.first, pos.second)
-            }
-        }
+    // Use a simple Column with wrapped content
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(crossAxisSpacing)
+    ) {
+        content()
     }
 }
 
