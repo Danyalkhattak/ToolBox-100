@@ -508,6 +508,7 @@ fun PasswordGeneratorScreen(navController: NavHostController) {
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                }
             }
         }
 

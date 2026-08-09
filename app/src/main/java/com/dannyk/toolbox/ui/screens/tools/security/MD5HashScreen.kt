@@ -425,6 +425,7 @@ fun MD5HashScreen(navController: NavHostController) {
                         fontWeight = FontWeight.Medium,
                         color = Color(0xFF2E7D32)
                     )
+                }
             }
         }
 
