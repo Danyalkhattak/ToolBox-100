@@ -39,13 +39,16 @@ fun HomeScreen(navController: NavHostController) {
     
     var searchQuery by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf<Category?>(null) }
+    var categoryLoaded by remember { mutableStateOf(false) }
     
     // Load saved category on first composition
     LaunchedEffect(Unit) {
-        preferencesManager.selectedCategory.collect { categoryName ->
+        if (!categoryLoaded) {
+            val categoryName = preferencesManager.selectedCategory.first()
             if (categoryName.isNotEmpty()) {
                 selectedCategory = Category.entries.find { it.displayName == categoryName }
             }
+            categoryLoaded = true
         }
     }
     
