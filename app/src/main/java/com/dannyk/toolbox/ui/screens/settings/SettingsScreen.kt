@@ -309,7 +309,7 @@ fun SettingsScreen(navController: NavHostController) {
                     
                     // App info card - Centered
                     Card(
-                        modifier = Modifier.width(max(300.dp, LocalConfiguration.current.screenWidthDp.dp - 64.dp)),
+                        modifier = Modifier.width(maxOf(300.dp, (LocalConfiguration.current.screenWidthDp.dp - 64.dp))),
                         colors = CardDefaults.cardColors(
                             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
                         )
@@ -365,7 +365,7 @@ fun SettingsScreen(navController: NavHostController) {
                     // Links - centered with max width
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.width(max(300.dp, LocalConfiguration.current.screenWidthDp.dp - 64.dp)),
+                        modifier = Modifier.width(maxOf(300.dp, (LocalConfiguration.current.screenWidthDp.dp - 64.dp))),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         SettingsItem(

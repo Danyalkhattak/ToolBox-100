@@ -86,17 +86,17 @@ fun CoinFlipScreen(navHostController: NavHostController) {
         label = "coinScale"
     )
     
-    // Y-axis float animation
+    // Y-axis float animation (using raw pixel values)
     val floatAnimation by animateFloatAsState(
-        targetValue = if (isFlipping) (-30).dp.toPx() else 0f,
+        targetValue = if (isFlipping) -30f else 0f,
         animationSpec = keyframes {
             durationMillis = 1500
             0f at 0
-            (-20).dp.toPx() at 250
+            -20f at 250
             0f at 500
-            (-25).dp.toPx() at 750
+            -25f at 750
             0f at 1000
-            (-15).dp.toPx() at 1250
+            -15f at 1250
             0f at 1500
         },
         label = "coinFloat"
@@ -437,7 +437,7 @@ fun CoinFlipScreen(navHostController: NavHostController) {
                     Spacer(modifier = Modifier.height(12.dp))
                     
                     // History as compact chips
-                    FlowRow(
+                    HistoryFlowRow(
                         mainAxisSpacing = 8.dp,
                         crossAxisSpacing = 8.dp,
                         modifier = Modifier.fillMaxWidth()
@@ -675,17 +675,19 @@ private fun StatCard(
 
 // FlowRow-like implementation for history chips
 @Composable
-private fun FlowRow(
-    mainAxisSpacing: Dp,
-    crossAxisSpacing: Dp,
+private fun HistoryFlowRow(
+    mainAxisSpacing: Dp = 8.dp,
+    crossAxisSpacing: Dp = 8.dp,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {
-    Layout(
+    androidx.compose.foundation.layout.Layout(
         content = content,
         modifier = modifier
     ) { measurables, constraints ->
-        val placeables = measurables.map { it.measure(constraints.copy(minWidth = 0, minHeight = 0)) }
+        val placeables = measurables.map { measurable -> 
+            measurable.measure(constraints.copy(minWidth = 0, minHeight = 0)) 
+        }
         
         var x = 0
         var y = 0
@@ -712,7 +714,8 @@ private fun FlowRow(
         }
         
         layout(constraints.maxWidth, totalHeight) {
-            placeables.zip(positions).each { (placeable, pos) ->
+            placeables.forEachIndexed { index, placeable ->
+                val pos = positions[index]
                 placeable.place(pos.first, pos.second)
             }
         }
