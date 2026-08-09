@@ -1,169 +1,174 @@
-# ToolBox-100
+# 🔧 ToolBox-100
 
-A production-ready Android application with 100 fully functional utility tools.
+<p align="center">
+  <strong>100+ Essential Tools in One Beautiful Android App</strong>
+</p>
 
-## Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" alt="Version" />
+  <img src="https://img.shields.io/badge/API-26%2B-green.svg" alt="Min SDK" />
+  <img src="https://img.shields.io/badge/Target-35-brightgreen.svg" alt="Target SDK" />
+  <img src="https://img.shields.io/badge/Kotlin-2.0-purple.svg" alt="Kotlin" />
+  <img src="https://img.shields.io/badge/Compose-BOM%2024.09-blue.svg" alt="Compose" />
+  <img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License" />
+</p>
 
-- **100 Tools** across 10 categories
-- **Material Design 3** with dark/light/system theme support
-- **Offline-first** design - most tools work without internet
-- **Jetpack Compose** + **MVVM Architecture**
-- **Kotlin** with modern Android development practices
+---
 
-## Tool Categories
+## ✨ Features
 
-### Calculators (1-10)
-Basic Calculator, Scientific Calculator, Percentage Calculator, Discount Calculator, Tip Calculator, Split Bill Calculator, Age Calculator, Date Difference Calculator, Time Difference Calculator, BMI Calculator
+ToolBox-100 is a comprehensive utility app that packs **100+ essential tools** into one beautifully designed, offline-capable Android application. Built with modern Jetpack Compose and Material 3 design.
 
-### Converters (11-20)
-Length Converter, Weight Converter, Temperature Converter, Area Converter, Volume Converter, Speed Converter, Time Converter, Data Storage Converter, Number System Converter, Roman Numeral Converter
+### 📱 Tool Categories
 
-### Math (21-30)
-Fraction Calculator, Ratio Calculator, Proportion Calculator, Average Calculator, GCD & LCM, Prime Number Checker, Factorial Calculator, Power Calculator, Square Root Calculator, Random Number Generator
+| Category | Tools | Description |
+|----------|-------|-------------|
+| 🧮 **Calculators** | 10 | Basic, Scientific, BMI, Tip, Age, Date/Time & more |
+| 🔄 **Converters** | 10 | Length, Weight, Temperature, Area, Speed, Data & more |
+| ➕ **Math** | 10 | Fractions, GCD/LCM, Prime Checker, Factorial, Power & more |
+| 📝 **Text** | 10 | Word/Character Counter, Case Converter, Slug Generator & more |
+| 💻 **Developer** | 10 | JSON Formatter, Base64, URL Encoder, Regex Tester & more |
+| 🔒 **Security** | 10 | Password Generator, Hash Tools (MD5, SHA), Token Gen & more |
+| 🌐 **Internet** | 10 | IP Lookup, DNS, Ping, QR Codes, WiFi QR & more |
+| 🎨 **Image & Color** | 10 | Color Picker, Palette Generator, Image Resizer & more |
+| 📁 **Files** | 10 | PDF Converter, Hash Checker, File Info & more |
+| ⏰ **Everyday** | 10 | Stopwatch, Timer, Pomodoro, World Clock, Notes & more |
 
-### Text (31-40)
-Word Counter, Character Counter, Sentence Counter, Case Converter, Text Reverser, Remove Duplicate Lines, Sort Lines, Find & Replace, Text Diff, Slug Generator
+### 🎯 Key Highlights
 
-### Developer (41-50)
-JSON Formatter, JSON Validator, Base64 Encoder/Decoder, URL Encoder/Decoder, HTML Entity Encoder/Decoder, UUID Generator, Regex Tester
+- **🚀 Blazing Fast**: Built entirely with Jetpack Compose for smooth 60fps animations
+- **💾 Offline First**: All tools work without internet connection
+- **🎨 Beautiful UI**: Material 3 design with dynamic theming (Light/Dark/System)
+- **⭐ Smart Favorites**: Bookmark your most-used tools for quick access
+- **🕐 Recent History**: Automatically tracks recently used tools
+- **🔍 Powerful Search**: Instantly find any tool by name or description
+- **📊 Category Filtering**: Filter tools by category with horizontal chip selection
+- **🔒 Privacy Focused**: No data collection, no ads, fully open source
 
-### Security (51-60)
-Password Generator, Password Strength Checker, SHA-256 Hash, SHA-1 Hash, MD5 Hash, HMAC Generator, Random Token Generator, PIN Generator, Passphrase Generator, Hash Identifier
+---
 
-### Internet (61-70)
-My IP Address, DNS Lookup, Ping Tester, HTTP Status Checker, User-Agent Viewer, URL Parser, QR Code Generator, QR Code Scanner, Wi-Fi QR Generator, Barcode Scanner
+## 📸 Screenshots
 
-### Images & Colors (71-80)
-Image Compressor, Image Resizer, Image Cropper, Image Format Converter, Color Picker, HEX to RGB Converter, RGB to HSL Converter, Color Palette Generator, Contrast Checker, Image Metadata Viewer
+<!-- Add screenshots here when available -->
+<p align="center">
+  <!-- <img src="screenshots/home.png" width="200" alt="Home Screen" /> -->
+  <!-- <img src="screenshots/tools.png" width="200" alt="Tools List" /> -->
+  <!-- <img src="screenshots/settings.png" width="200" alt="Settings" /> -->
+</p>
+*Screenshots coming soon*
 
-### Files (81-90)
-Image to PDF, PDF to Images, File Size Converter, File Hash Checker, Text to PDF, Text to QR Code, QR Code to Text, File Extension Info, MIME Type Lookup, File Name Generator
+---
 
-### Everyday (91-100)
-Stopwatch, Countdown Timer, Pomodoro Timer, World Clock, Metronome, Coin Flip, Dice Roller, Random Choice Picker, Habit Counter, Notes
+## 🛠️ Tech Stack
 
-## Requirements
+- **Language**: Kotlin 2.0
+- **UI Framework**: Jetpack Compose BOM 2024.09
+- **Architecture**: MVVM + Clean Architecture
+- **Material Design**: Material 3 (You)
+- **Navigation**: Compose Navigation
+- **Data Storage**: DataStore Preferences
+- **Dependency Injection**: Manual DI (Kotlin)
+- **Build System**: Gradle with AGP 8.7
+- **Min SDK**: 26 (Android 8.0 Oreo)
+- **Target SDK**: 35 (Android 15)
 
-- Android Studio Hedgehog or newer
-- Android SDK 34+
-- JDK 17+
-- Gradle 8.5+
+---
 
-## Build Instructions
+## 📦 Installation
 
-### 1. Clone and Setup
+### From Source
 
 ```bash
+# Clone the repository
 git clone https://github.com/Danyalkhattak/ToolBox-100.git
-cd ToolBox-100
+
+# Open in Android Studio
+# Build and run on device/emulator
 ```
 
-### 2. Configure SDK Path
+### APK Releases
 
-Copy the template and set your SDK path:
+Download the latest APK from the [Releases](https://github.com/Danyalkhattak/ToolBox-100/releases) page.
 
-```bash
-cp local.properties.template local.properties
-# Edit local.properties and set sdk.dir to your Android SDK path
-```
+---
 
-### 3. Build Debug APK
-
-```bash
-./gradlew assembleDebug
-```
-
-The APK will be at: `app/build/outputs/apk/debug/app-debug.apk`
-
-### 4. Build Release APK
-
-```bash
-./gradlew assembleRelease
-```
-
-The APK will be at: `app/build/outputs/apk/release/app-release.apk`
-
-## Project Structure
+## 🏗️ Project Structure
 
 ```
 app/src/main/java/com/dannyk/toolbox/
-├── data/
-│   ├── local/
-│   │   ├── AppDatabase.kt          # Room database
-│   │   ├── NoteDao.kt              # Notes DAO
-│   │   ├── entity/                 # Database entities
-│   │   └── preferences/            # DataStore preferences
-├── domain/model/                   # Data models
-├── tools/
-│   └── ToolRegistry.kt             # All 100 tool definitions
 ├── ui/
-│   ├── components/                 # Reusable UI components
+│   ├── components/          # Reusable UI components
+│   │   └── CommonComponents.kt
+│   ├── navigation/         # Navigation graph
+│   │   └── Navigation.kt
 │   ├── screens/
-│   │   ├── HomeScreen.kt           # Main home screen
-│   │   ├── SettingsScreen.kt       # Settings screen
-│   │   └── tools/                  # All 100 tool screens
-│   │       ├── calculator/         # Tools 1-10
-│   │       ├── converters/         # Tools 11-20
-│   │       ├── math/               # Tools 21-30
-│   │       ├── text/               # Tools 31-40
-│   │       ├── developer/          # Tools 41-50
-│   │       ├── security/           # Tools 51-60
-│   │       ├── internet/           # Tools 61-70
-│   │       ├── image/              # Tools 71-80
-│   │       ├── files/              # Tools 81-90
-│   │       └── everyday/           # Tools 91-100
-│   ├── theme/                      # Material 3 theming
-│   └── navigation/                 # Navigation graph
-├── updates/                        # GitHub update checker
-├── MainActivity.kt                 # Main activity
-└── ToolBoxApplication.kt           # Application class
+│   │   ├── HomeScreen.kt    # Main home screen
+│   │   ├── settings/        # Settings screen
+│   │   └── tools/           # Tool screens by category
+│   │       ├── calculator/
+│   │       ├── converters/
+│   │       ├── math/
+│   │       ├── text/
+│   │       ├── developer/
+│   │       ├── security/
+│   │       ├── internet/
+│   │       ├── image/
+│   │       ├── files/
+│   │       └── everyday/
+│   └── theme/              # App theme configuration
+├── data/
+│   └── local/preferences/ # DataStore preferences
+├── domain/
+│   └── model/             # Domain models
+├── tools/
+│   └── ToolRegistry.kt     # Tool registry & search
+└── ToolBoxApplication.kt  # Application class
 ```
 
-## Key Dependencies
+---
 
-- Jetpack Compose BOM 2024.01.00
-- Material 3
-- Navigation Compose 2.7.6
-- Room 2.6.1
-- DataStore Preferences 1.0.0
-- OkHttp 4.12.0
-- ZXing 4.3.0 (QR/Barcode)
-- Coil 2.5.0 (Image loading)
+## 🤝 Contributing
 
-## Features Implemented
+Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) guide.
 
-### UI/UX
-- Material 3 design system
-- System/Light/Dark theme support
-- Responsive layouts
-- Smooth animations
-- Accessible components
+### Quick Start
 
-### Core Functionality
-- Search across all tools
-- Favorites with local persistence
-- Recently used tracking
-- Category browsing
-- Copy/share functionality
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-tool`)
+3. Commit your changes (`git commit -m 'Add amazing tool'`)
+4. Push to the branch (`git push origin feature/amazing-tool`)
+5. Open a Pull Request
 
-### Settings
-- Theme selection
-- Clear history
-- Version info
-- GitHub update checking via Releases API
+---
 
-### Offline Support
-- All calculators work offline
-- All converters work offline
-- All math tools work offline
-- All text tools work offline
-- All security tools work offline
-- Most developer tools work offline
+## 📄 License
 
-## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-MIT License - See LICENSE file for details
+---
 
-## Contributing
+## 👨‍💻 Author
 
-Contributions are welcome! Please read the contributing guidelines before submitting PRs.
+**Danny K** - [GitHub](https://github.com/Danyalkhattak)
+
+---
+
+## 🙏 Acknowledgments
+
+- [Jetpack Compose](https://developer.android.com/jetpack/compose) - Modern UI toolkit
+- [Material Design 3](https://m3.material.io/) - Design system
+- [AndroidX Libraries](https://developer.android.com/jetpack/androidx) - Core libraries
+- [Kotlin](https://kotlinlang.org/) - Programming language
+- All open-source libraries used in this project
+
+---
+
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Danyalkhattak/ToolBox-100&type=Date)](https://star-history.com/#Danyalkhattak/ToolBox-100&Date)
+
+---
+
+<p align="center">
+  <strong>If you find this project useful, please give it a star ⭐</strong>
+</p>

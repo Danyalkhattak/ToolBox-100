@@ -177,7 +177,7 @@ fun ToolCard(
             
             // Text content
             Column(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
                     text = tool.name,
@@ -248,7 +248,7 @@ fun CategoryCard(
             
             Spacer(modifier = Modifier.width(20.dp))
             
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = name,
                     style = MaterialTheme.typography.titleMedium,
@@ -373,7 +373,7 @@ fun ResultCard(
                     text = result,
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Medium,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.fillMaxWidth()
                 )
                 
                 if (onCopy != null) {
@@ -521,7 +521,7 @@ fun ToolHeader(
                 text = title,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.fillMaxWidth()
             )
             
             if (onFavorite != null) {

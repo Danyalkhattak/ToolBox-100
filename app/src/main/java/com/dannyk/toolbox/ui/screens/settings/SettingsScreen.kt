@@ -13,8 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
@@ -38,6 +39,8 @@ import androidx.navigation.NavHostController
 import com.dannyk.toolbox.BuildConfig
 import com.dannyk.toolbox.ToolBoxApplication
 import com.dannyk.toolbox.data.local.preferences.PreferencesManager
+import com.dannyk.toolbox.tools.ToolRegistry
+import com.dannyk.toolbox.ui.components.ToolCard
 import kotlinx.coroutines.launch
 import android.content.Context
 import androidx.compose.foundation.ScrollState
@@ -56,6 +59,15 @@ fun SettingsScreen(navController: NavHostController) {
         mutableStateOf(PreferencesManager.THEME_SYSTEM)
     }
     
+    // Recent tools for display
+    val recentTools by preferencesManager.recentTools.collectAsState(initial = emptyList())
+    val recentToolIds = recentTools.map { it.first }.take(10)
+    val recentToolsList = recentToolIds.mapNotNull { id -> ToolRegistry.getToolById(id) }
+    
+    // Favorites for display
+    val favoriteIds by preferencesManager.favoriteIds.collectAsState(initial = emptySet())
+    val favoriteTools = ToolRegistry.allTools.filter { it.id in favoriteIds }
+    
     LaunchedEffect(Unit) {
         preferencesManager.themeMode.collect { theme ->
             selectedTheme = theme
@@ -65,7 +77,18 @@ fun SettingsScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Settings", fontWeight = FontWeight.Bold) },
+                title = { 
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.Settings,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("Settings", fontWeight = FontWeight.Bold) 
+                    }
+                },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
@@ -77,187 +100,316 @@ fun SettingsScreen(navController: NavHostController) {
             )
         }
     ) { paddingValues ->
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .verticalScroll(rememberScrollState())
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             // Appearance Section
-            SettingsSection(title = "Appearance", icon = Icons.Default.Palette) {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(
-                        text = "Theme",
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+            item {
+                SettingsSection(title = "Appearance", icon = Icons.Default.Palette) {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = "Theme",
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     
-                    // Theme options
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        ThemeOption(
-                            text = "System",
-                            icon = Icons.Default.PhoneAndroid,
-                            selected = selectedTheme == PreferencesManager.THEME_SYSTEM,
-                            onClick = {
-                                scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_SYSTEM) }
-                                selectedTheme = PreferencesManager.THEME_SYSTEM
-                            },
-                            modifier = Modifier.weight(1f)
-                        )
-                        ThemeOption(
-                            text = "Light",
-                            icon = Icons.Default.Lightbulb,
-                            selected = selectedTheme == PreferencesManager.THEME_LIGHT,
-                            onClick = {
-                                scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_LIGHT) }
-                                selectedTheme = PreferencesManager.THEME_LIGHT
-                            },
-                            modifier = Modifier.weight(1f)
-                        )
-                        ThemeOption(
-                            text = "Dark",
-                            icon = Icons.Default.NightsStay,
-                            selected = selectedTheme == PreferencesManager.THEME_DARK,
-                            onClick = {
-                                scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_DARK) }
-                                selectedTheme = PreferencesManager.THEME_DARK
-                            },
-                            modifier = Modifier.weight(1f)
-                        )
+                        // Theme options
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            ThemeOption(
+                                text = "System",
+                                icon = Icons.Default.PhoneAndroid,
+                                selected = selectedTheme == PreferencesManager.THEME_SYSTEM,
+                                onClick = {
+                                    scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_SYSTEM) }
+                                    selectedTheme = PreferencesManager.THEME_SYSTEM
+                                },
+                                modifier = Modifier.fillMaxWidth().weight(1f)
+                            )
+                            ThemeOption(
+                                text = "Light",
+                                icon = Icons.Default.Lightbulb,
+                                selected = selectedTheme == PreferencesManager.THEME_LIGHT,
+                                onClick = {
+                                    scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_LIGHT) }
+                                    selectedTheme = PreferencesManager.THEME_LIGHT
+                                },
+                                modifier = Modifier.fillMaxWidth().weight(1f)
+                            )
+                            ThemeOption(
+                                text = "Dark",
+                                icon = Icons.Default.NightsStay,
+                                selected = selectedTheme == PreferencesManager.THEME_DARK,
+                                onClick = {
+                                    scope.launch { preferencesManager.setThemeMode(PreferencesManager.THEME_DARK) }
+                                    selectedTheme = PreferencesManager.THEME_DARK
+                                },
+                                modifier = Modifier.fillMaxWidth().weight(1f)
+                            )
+                        }
                     }
                 }
             }
             
-            Divider()
-            
-            // App Section
-            SettingsSection(title = "App", icon = Icons.Default.Apps) {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    SettingsItem(
-                        title = "Favorites",
-                        subtitle = "Manage your favorite tools",
-                        icon = Icons.Default.Star,
-                        onClick = { /* Navigate to favorites */ }
-                    )
-                    
-                    SettingsItem(
-                        title = "Recently Used Tools",
-                        subtitle = "${BuildConfig.VERSION_NAME}",
-                        icon = Icons.Default.History,
-                        onClick = { /* Show recent */ }
-                    )
-                    
-                    SettingsItem(
-                        title = "Clear Recent History",
-                        subtitle = "Remove all recently used tools",
-                        icon = Icons.Default.Delete,
-                        onClick = { showClearHistoryDialog = true }
-                    )
+            // Favorites Section
+            item {
+                Divider()
+                SettingsSection(title = "Favorites", icon = Icons.Default.Star) {
+                    if (favoriteTools.isEmpty()) {
+                        Text(
+                            text = "No favorites yet. Tap the heart icon on any tool to add it here.",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(vertical = 16.dp)
+                        )
+                    } else {
+                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            favoriteTools.take(5).forEach { tool ->
+                                ToolCard(
+                                    tool = tool,
+                                    onClick = {
+                                        navController.navigate(tool.route)
+                                    },
+                                    onFavoriteClick = {
+                                        scope.launch {
+                                            if (tool.id in favoriteIds) {
+                                                preferencesManager.removeFromFavorites(tool.id)
+                                            } else {
+                                                preferencesManager.addFavorite(tool.id)
+                                            }
+                                        }
+                                    }
+                                )
+                            }
+                            if (favoriteTools.size > 5) {
+                                TextButton(
+                                    onClick = { /* Show all favorites */ },
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    Text("View All ${favoriteTools.size} Favorites")
+                                }
+                            }
+                        }
+                    }
                 }
             }
             
-            Divider()
+            // Recently Used Section
+            item {
+                Divider()
+                SettingsSection(title = "Recently Used", icon = Icons.Default.History) {
+                    if (recentToolsList.isEmpty()) {
+                        Text(
+                            text = "No recent activity. Tools you use will appear here.",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(vertical = 16.dp)
+                        )
+                    } else {
+                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            recentToolsList.forEach { tool ->
+                                ToolCard(
+                                    tool = tool,
+                                    onClick = {
+                                        navController.navigate(tool.route)
+                                    }
+                                )
+                            }
+                            
+                            Spacer(modifier = Modifier.height(8.dp))
+                            
+                            OutlinedButton(
+                                onClick = {
+                                    showClearHistoryDialog = true
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = ButtonDefaults.outlinedButtonColors(
+                                    contentColor = MaterialTheme.colorScheme.error
+                                )
+                            ) {
+                                Icon(Icons.Default.Delete, contentDescription = null, modifier = Modifier.size(18.dp))
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text("Clear History")
+                            }
+                        }
+                    }
+                }
+            }
             
             // Updates Section
-            SettingsSection(title = "Updates", icon = Icons.Default.CloudDownload) {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    SettingsItem(
-                        title = "Current Version",
-                        subtitle = BuildConfig.VERSION_NAME,
-                        icon = Icons.Default.Info
-                    )
-                    
-                    SettingsItem(
-                        title = "Check for Updates",
-                        subtitle = "Check if a newer version is available",
-                        icon = Icons.Default.Download,
-                        onClick = { /* Check updates */ }
-                    )
-                }
-            }
-            
-            Divider()
-            
-            // About Section
-            SettingsSection(title = "About", icon = Icons.Default.Info) {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    // App info card
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+            item {
+                Divider()
+                SettingsSection(title = "Updates", icon = Icons.Default.CloudDownload) {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        SettingsItem(
+                            title = "Current Version",
+                            subtitle = BuildConfig.VERSION_NAME + " (Build ${BuildConfig.VERSION_CODE})",
+                            icon = Icons.Default.Info
                         )
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(16.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Build,
-                                contentDescription = null,
-                                modifier = Modifier.size(48.dp),
-                                tint = MaterialTheme.colorScheme.primary
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                text = "ToolBox-100",
-                                style = MaterialTheme.typography.headlineSmall,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Text(
-                                text = "Version ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                            Text(
-                                text = "100 tools in one app",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                        
+                        SettingsItem(
+                            title = "Check for Updates",
+                            subtitle = "Check GitHub for latest version",
+                            icon = Icons.Default.Download,
+                            onClick = {
+                                scope.launch {
+                                    try {
+                                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100/releases/latest"))
+                                        context.startActivity(intent)
+                                    } catch (e: Exception) {
+                                        // Fallback: open main repo
+                                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100"))
+                                        context.startActivity(intent)
+                                    }
+                                }
+                            }
+                        )
                     }
-                    
-                    SettingsItem(
-                        title = "GitHub Repository",
-                        subtitle = "View source code and report issues",
-                        icon = Icons.Default.Code,
-                        onClick = {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100"))
-                            context.startActivity(intent)
-                        }
-                    )
-                    
-                    SettingsItem(
-                        title = "Open Source Licenses",
-                        subtitle = "View third-party licenses",
-                        icon = Icons.Default.Description,
-                        onClick = { /* Show licenses dialog */ }
-                    )
-                    
-                    SettingsItem(
-                        title = "Privacy Policy",
-                        subtitle = "No data is collected or shared",
-                        icon = Icons.Default.Security,
-                        onClick = { /* Show privacy policy */ }
-                    )
                 }
             }
             
-            // Copyright
-            Text(
-                text = "\u00A9 2024 ToolBox-100. All rights reserved.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp),
-                textAlign = TextAlign.Center
-            )
+            // About Section - Centered
+            item {
+                Divider()
+                SettingsSection(title = "About", icon = Icons.Default.Info) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        modifier = Modifier.padding(vertical = 16.dp)
+                    ) {
+                        // App info card - Centered
+                        Card(
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                            )
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(24.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                // App Icon
+                                Surface(
+                                    shape = MaterialTheme.shapes.extraLarge,
+                                    color = MaterialTheme.colorScheme.primaryContainer,
+                                    modifier = Modifier.size(72.dp)
+                                ) {
+                                    Box(contentAlignment = Alignment.Center) {
+                                        Icon(
+                                            imageVector = Icons.Default.Build,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(40.dp),
+                                            tint = MaterialTheme.colorScheme.primary
+                                        )
+                                    }
+                                }
+                                
+                                Spacer(modifier = Modifier.height(12.dp))
+                                
+                                Text(
+                                    text = "ToolBox-100",
+                                    style = MaterialTheme.typography.headlineSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Center
+                                )
+                                
+                                Text(
+                                    text = "Version ${BuildConfig.VERSION_NAME}",
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    textAlign = TextAlign.Center
+                                )
+                                
+                                Text(
+                                    text = "100+ tools in one powerful app",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    textAlign = TextAlign.Center
+                                )
+                                
+                                Spacer(modifier = Modifier.height(8.dp))
+                                
+                                Text(
+                                    text = "Built with ❤️ using Jetpack Compose",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.primary,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+                        }
+                        
+                        // Links - also centered
+                        SettingsItem(
+                            title = "GitHub Repository",
+                            subtitle = "View source code, report issues & contribute",
+                            icon = Icons.Default.Code,
+                            onClick = {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Danyalkhattak/ToolBox-100"))
+                                context.startActivity(intent)
+                            }
+                        )
+                        
+                        SettingsItem(
+                            title = "Open Source Licenses",
+                            subtitle = "Third-party libraries used",
+                            icon = Icons.Default.Description,
+                            onClick = { /* Show licenses dialog */ }
+                        )
+                        
+                        SettingsItem(
+                            title = "Privacy Policy",
+                            subtitle = "No data is collected or shared",
+                            icon = Icons.Default.Security,
+                            onClick = { /* Show privacy policy */ }
+                        )
+                        
+                        SettingsItem(
+                            title = "Rate App",
+                            subtitle = "Support development with a review",
+                            icon = Icons.Default.Star,
+                            onClick = {
+                                try {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.dannyk.toolbox"))
+                                    context.startActivity(intent)
+                                } catch (e: Exception) {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.dannyk.toolbox"))
+                                    context.startActivity(intent)
+                                }
+                            }
+                        )
+                    }
+                }
+            }
+            
+            // Copyright - Centered
+            item {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 24.dp, bottom = 32.dp)
+                ) {
+                    Text(
+                        text = "\u00A9 2024 ToolBox-100. All rights reserved.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "Made with ❤️ by Danny K",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
         }
     }
     
@@ -326,7 +478,7 @@ private fun SettingsItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 8.dp),
+                .padding(vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
@@ -336,7 +488,7 @@ private fun SettingsItem(
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.fillMaxWidth().weight(1f)) {
                 Text(
                     text = title,
                     style = MaterialTheme.typography.bodyLarge

@@ -2,10 +2,9 @@ package com.dannyk.toolbox.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -33,6 +32,7 @@ fun HomeScreen(navController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
     
     var searchQuery by remember { mutableStateOf("") }
+    var selectedCategory by remember { mutableStateOf<Category?>(null) }
     
     val favoriteIds by preferencesManager.favoriteIds.collectAsState(initial = emptySet())
     val recentTools by preferencesManager.recentTools.collectAsState(initial = emptyList())
@@ -46,15 +46,31 @@ fun HomeScreen(navController: NavHostController) {
     val recentToolIds = recentTools.map { it.first }.take(10)
     val recentToolsList = recentToolIds.mapNotNull { id -> ToolRegistry.getToolById(id) }
     
+    // Filter tools by category
+    val filteredTools = if (selectedCategory != null) {
+        ToolRegistry.getToolsByCategory(selectedCategory!!)
+    } else {
+        ToolRegistry.allTools
+    }
+    
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "ToolBox-100",
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold
-                    )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.Build,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(28.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "ToolBox-100",
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 },
                 actions = {
                     IconButton(onClick = { navController.navigate("settings") }) {
@@ -102,7 +118,7 @@ fun HomeScreen(navController: NavHostController) {
                     }
                     
                     items(searchResults) { tool ->
-                        ToolCard(
+                        WideToolCard(
                             tool = tool,
                             onClick = {
                                 coroutineScope.launch {
@@ -118,18 +134,29 @@ fun HomeScreen(navController: NavHostController) {
                     }
                 }
             } else {
+                // Categories - Horizontal Chips
+                item {
+                    CategoryChipsRow(
+                        categories = Category.entries,
+                        selectedCategory = selectedCategory,
+                        onCategorySelected = { category ->
+                            selectedCategory = if (selectedCategory == category) null else category
+                        }
+                    )
+                }
+                
                 // Favorites Section
                 if (favoriteTools.isNotEmpty()) {
                     item {
                         SectionHeader(
-                            title = "Favorites",
+                            title = "⭐ Favorites (${favoriteTools.size})",
                             actionText = "See All",
                             onActionClick = { /* Navigate to favorites */ }
                         )
                     }
                     
-                    items(favoriteTools.take(6)) { tool ->
-                        ToolCard(
+                    items(favoriteTools.take(5)) { tool ->
+                        WideToolCard(
                             tool = tool,
                             onClick = {
                                 coroutineScope.launch {
@@ -150,16 +177,18 @@ fun HomeScreen(navController: NavHostController) {
                     item {
                         Spacer(modifier = Modifier.height(8.dp))
                         SectionHeader(
-                            title = "Recently Used",
+                            title = "🕐 Recently Used",
                             actionText = "Clear History",
                             onActionClick = {
-                                // Clear history action
+                                coroutineScope.launch {
+                                    preferencesManager.clearRecentHistory()
+                                }
                             }
                         )
                     }
                     
-                    items(recentToolsList) { tool ->
-                        ToolCard(
+                    items(recentToolsList.take(8)) { tool ->
+                        WideToolCard(
                             tool = tool,
                             onClick = {
                                 coroutineScope.launch {
@@ -175,57 +204,175 @@ fun HomeScreen(navController: NavHostController) {
                     }
                 }
                 
-                // Categories Section
+                // All Tools Section - Wide cards, one per line
                 item {
                     Spacer(modifier = Modifier.height(8.dp))
-                    SectionHeader(title = "Categories")
-                }
-                
-                val categories = Category.entries
-                items(categories) { category ->
-                    val toolsInCategory = ToolRegistry.getToolsByCategory(category)
-                    CategoryCard(
-                        name = category.displayName,
-                        icon = getToolIcon(toolsInCategory.firstOrNull()?.iconResName ?: "build"),
-                        toolCount = toolsInCategory.size,
-                        onClick = {
-                            // Could navigate to category detail screen
-                        }
+                    SectionHeader(
+                        title = if (selectedCategory != null) 
+                            "${selectedCategory!!.displayName} (${filteredTools.size})" 
+                        else 
+                            "All Tools (${ToolRegistry.allTools.size})"
                     )
                 }
                 
-                // All Tools Grid
-                item {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    SectionHeader(title = "All Tools")
-                }
-                
-                item {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(2),
-                        modifier = Modifier.height((ToolRegistry.allTools.size / 2 * 100).dp.coerceAtMost(2000.dp)),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        items(ToolRegistry.allTools) { tool ->
-                            ToolCard(
-                                tool = tool,
-                                onClick = {
-                                    coroutineScope.launch {
-                                        navigateToTool(navController, tool.id, preferencesManager)
-                                    }
-                                },
-                                onFavoriteClick = {
-                                    coroutineScope.launch {
-                                        toggleFavorite(tool.id, preferencesManager)
-                                    }
-                                },
-                                modifier = Modifier.height(90.dp)
-                            )
+                items(filteredTools) { tool ->
+                    WideToolCard(
+                        tool = tool,
+                        onClick = {
+                            coroutineScope.launch {
+                                navigateToTool(navController, tool.id, preferencesManager)
+                            }
+                        },
+                        onFavoriteClick = {
+                            coroutineScope.launch {
+                                toggleFavorite(tool.id, preferencesManager)
+                            }
                         }
-                    }
+                    )
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun CategoryChipsRow(
+    categories: List<Category>,
+    selectedCategory: Category?,
+    onCategorySelected: (Category) -> Unit
+) {
+    Column {
+        Text(
+            text = "Categories",
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 12.dp)
+        )
+        
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            // "All" chip
+            FilterChip(
+                selected = selectedCategory == null,
+                onClick = { onCategorySelected(Category.CALCULATOR) }, // Will be set to null by logic
+                label = { 
+                    Text(
+                        text = "All (${ToolRegistry.allTools.size})",
+                        style = MaterialTheme.typography.labelMedium
+                    ) 
+                },
+                modifier = Modifier.height(36.dp)
+            )
+            
+            categories.forEach { category ->
+                val count = ToolRegistry.getToolsByCategory(category).size
+                FilterChip(
+                    selected = selectedCategory == category,
+                    onClick = { onCategorySelected(category) },
+                    label = { 
+                        Text(
+                            text = "${category.displayName} ($count)",
+                            style = MaterialTheme.typography.labelMedium
+                        ) 
+                    },
+                    modifier = Modifier.height(36.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun WideToolCard(
+    tool: Tool,
+    onClick: () -> Unit,
+    onFavoriteClick: (() -> Unit)? = null
+) {
+    val context = LocalContext.current
+    val preferencesManager = (context.applicationContext as ToolBoxApplication).preferencesManager
+    val favoriteIds by preferencesManager.favoriteIds.collectAsState(initial = emptySet())
+    val isFavorite = tool.id in favoriteIds
+    
+    Card(
+        modifier = Modifier
+            .fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+        ),
+        onClick = onClick
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Icon
+            Surface(
+                shape = MaterialTheme.shapes.medium,
+                color = MaterialTheme.colorScheme.primaryContainer,
+                modifier = Modifier.size(44.dp)
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = getToolIcon(tool.iconResName),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
+            }
+            
+            Spacer(modifier = Modifier.width(14.dp))
+            
+            // Text content - full width available
+            Column(
+                modifier = Modifier.fillMaxWidth().weight(1f)
+            ) {
+                Text(
+                    text = tool.name,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = tool.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                )
+            }
+            
+            if (onFavoriteClick != null) {
+                Spacer(modifier = Modifier.width(8.dp))
+                IconButton(
+                    onClick = onFavoriteClick,
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Icon(
+                        imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        contentDescription = if (isFavorite) "Unfavorite" else "Favorite",
+                        tint = if (isFavorite) MaterialTheme.colorScheme.error 
+                               else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                    )
+                }
+            }
+            
+            // Arrow indicator
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+                modifier = Modifier.size(20.dp)
+            )
         }
     }
 }
@@ -244,5 +391,10 @@ private suspend fun toggleFavorite(
     toolId: Int,
     preferencesManager: PreferencesManager
 ) {
-    // Toggle would be handled via state
+    val currentFavorites = preferencesManager.favoriteIds.value
+    if (toolId in currentFavorites) {
+        preferencesManager.removeFromFavorites(toolId)
+    } else {
+        preferencesManager.addToFavorites(toolId)
+    }
 }
