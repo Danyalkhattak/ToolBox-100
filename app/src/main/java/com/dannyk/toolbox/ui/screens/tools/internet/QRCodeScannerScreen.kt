@@ -108,7 +108,7 @@ fun QRCodeScannerScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f, fill = true),
+                    .fillMaxHeight(),
                 contentAlignment = Alignment.Center
             ) {
                 if (hasCameraPermission) {
